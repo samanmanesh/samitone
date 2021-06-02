@@ -5,35 +5,37 @@ import { useEffect, useState } from "react";
 function App() {
   const [loop, setLoop] = useState(null);
   const [isActive, setIsActive] = useState(false);
+  const [stepLength, setStepLength] = useState(16);
+  const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([
-    {
-      notes: [
-        {
-          pitch: "C3",
-          duration: "8n",
-          order: 0,
-          active: false,
-        },
-        {
-          pitch: "D3",
-          duration: "8n",
-          order: 1,
-          active: false,
-        },
-        {
-          pitch: "D3",
-          duration: "8n",
-          order: 2,
-          active: false,
-        },
-        {
-          pitch: "D3",
-          duration: "8n",
-          order: 3,
-          active: false,
-        },
-      ],
-    },
+    // {
+    //   notes: [
+    //     {
+    //       pitch: "C3",
+    //       duration: "8n",
+    //       order: 0,
+    //       active: false,
+    //     },
+    //     {
+    //       pitch: "D3",
+    //       duration: "8n",
+    //       order: 1,
+    //       active: false,
+    //     },
+    //     {
+    //       pitch: "D3",
+    //       duration: "8n",
+    //       order: 2,
+    //       active: false,
+    //     },
+    //     {
+    //       pitch: "D3",
+    //       duration: "8n",
+    //       order: 3,
+    //       active: false,
+    //     },
+    //   ],
+    // },
   ]);
 
   const [order, setOrder] = useState(0);
@@ -55,9 +57,8 @@ function App() {
     //*play a note every quarter-note
     // setLoop(
     let i = 0;
-    const barLength = 4;
     const callback = (time) => {
-      const currOrder = i % barLength;
+      const currOrder = i % stepLength;
       i++;
       setOrder(currOrder);
       tracks.forEach((track) => {
@@ -73,7 +74,7 @@ function App() {
         }
       });
     };
-    new Tone.Loop(callback, "4n").start(0);
+    new Tone.Loop(callback, bps).start(0);
     Tone.Transport.start();
   };
 
@@ -81,12 +82,31 @@ function App() {
     Tone.Transport.stop();
   };
 
+  const addTrack = () => {
+    const newTrack = {};
+    const notes = []
+    for (let i = 0; i < stepLength; i++) {
+      const note = {
+        pitch: "C3",
+        duration: "8n",
+        order: i,
+        active: false,
+      };
+      notes.push(note)
+    }
+    newTrack.notes = notes;
+    setTracks(prev => [...prev, newTrack]);
+  };
+
   return (
     <div className="App">
       {order}
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
+
+    
       <div
+        // for turning on and off the sound of each box
         onClick={() => {
           tracks[0].notes[0].active = !tracks[0].notes[0].active;
         }}
@@ -116,13 +136,14 @@ function App() {
         box4
       </div>
 
-      {/* <div
+      <div
         onClick={() => {
           const currentNotes = tracks[0].notes;
           currentNotes.push({
             pitch: "C3",
             duration: "8n",
             order: 0,
+            active: false,
           });
           const updatedTrack = tracks[0];
           updatedTrack.notes = currentNotes;
@@ -138,6 +159,7 @@ function App() {
             pitch: "C3",
             duration: "8n",
             order: 1,
+            active: false,
           });
           const updatedTrack = tracks[0];
           updatedTrack.notes = currentNotes;
@@ -153,6 +175,7 @@ function App() {
             pitch: "C3",
             duration: "8n",
             order: 2,
+            active: false,
           });
           const updatedTrack = tracks[0];
           updatedTrack.notes = currentNotes;
@@ -168,6 +191,7 @@ function App() {
             pitch: "C3",
             duration: "8n",
             order: 3,
+            active: false,
           });
           const updatedTrack = tracks[0];
           updatedTrack.notes = currentNotes;
@@ -175,7 +199,7 @@ function App() {
         }}
       >
         add note 3
-      </div> */}
+      </div>
     </div>
   );
 }

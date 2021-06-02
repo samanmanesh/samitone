@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [loop, setLoop] = useState(null);
+  const [isActive, setIsActive] = useState(false);
   const [tracks, setTracks] = useState([
     {
       notes: [
@@ -11,25 +12,30 @@ function App() {
           pitch: "C3",
           duration: "8n",
           order: 0,
-          active: true
+          active: false,
+        },
+        {
+          pitch: "D3",
+          duration: "8n",
+          order: 1,
+          active: false,
         },
         {
           pitch: "D3",
           duration: "8n",
           order: 2,
+          active: false,
+        },
+        {
+          pitch: "D3",
+          duration: "8n",
+          order: 3,
+          active: false,
         },
       ],
     },
-    {
-      notes: [
-        {
-          pitch: "A3",
-          duration: "8n",
-          order: 3,
-        },
-      ],
-    }
   ]);
+
   const [order, setOrder] = useState(0);
   useEffect(() => {
     //attach a click listener to a play button
@@ -41,75 +47,27 @@ function App() {
   }, []);
 
   const play = () => {
-    // create two monophonic synths
-    // const synthA = new Tone.FMSynth().toDestination();
-    // const synthB = new Tone.AMSynth().toDestination();
-    // //todo its not stop at the exact time figure that out
-    //play another note every off quarter-note, by starting it "8n"
-    // const loopB = new Tone.Loop((time) => {
-    //   synthB.triggerAttackRelease("C4", "8n", time);
-    // }, "4n").start("8n");
-    // the loops start when the Transport is started
-    // // ramp up to 800 bpm over 10 seconds
-    // Tone.Transport.bpm.rampTo(800, 10);
-    //==================================/
-    // const synth = new Tone.PolySynth(Tone.Synth).toDestination();
-    // const now = Tone.now();
-    // synth.triggerAttack("A4", now);
-    // synth.triggerAttack("F4", now + 0.5);
-    // synth.triggerAttack("A4", now + 1);
-    // synth.triggerAttack("C5", now + 3 );
-    // synth.triggerAttack("E5", now + 2);
-    // synth.triggerRelease(["A4", "F4", "A4", "C5", "E5"], now + 4);
-    //=================================/
-    // const player = new Tone.Player(
-    //   "https://tonejs.github.io/audio/berklee/gong_1.mp3"
-    // ).toDestination();
-    // Tone.loaded().then(() => {
-    //   player.start();
-    // });
-    //=================================/
-
     // create several monophonic synths
     const synthA = new Tone.FMSynth().toDestination();
-    const synthB = new Tone.AMSynth().toDestination();
-
-    // const synth = new Tone.PolySynth(Tone.Synth).toDestination();
-    // const now = Tone.now();
-    // const loop = new Tone.Loop((time) => {
-
-    //   const loop1= new Tone.Loop((time)=> {
-    //     synthA.triggerAttackRelease("E2", "8n", time);
-    //   }, "2".start(1));
-    //   Tone.Transport.start()
-    // synthB.triggerAttackRelease("D2", "2n", time);
-    // synthC.triggerAttackRelease("C2", "8n", time);
-
-    // }, "4").start(0);
-    // Tone.Transport.start(0);
-    // // Tone.Transport.bpm();
-    // // Tone.Transport.loop = true;
-
-    // Tone.Transport.stop(40);
-    const synthLoop = { synthA, synthB };
-    // const synth = new Tone.Synth().toDestination();
-    // synth.triggerAttackRelease("C4", "8n");
+    // const synthB = new Tone.AMSynth().toDestination();
 
     // Loop
     //*play a note every quarter-note
     // setLoop(
     let i = 0;
-    const barLength = 4
+    const barLength = 4;
     const callback = (time) => {
       const currOrder = i % barLength;
       i++;
       setOrder(currOrder);
       tracks.forEach((track) => {
         console.log(track.notes);
-        //* Find the note for this track that is supposed 
+        //* Find the note for this track that is supposed
         //* to play at the current order
-        const note = track.notes.find((note) => note.order === currOrder && note.active);
-        //* If we succesfully found the note
+        const note = track.notes.find(
+          (note) => note.order === currOrder && note.active === true
+        );
+        //* If we successfully found the note
         if (note) {
           synthA.triggerAttackRelease(note.pitch, note.duration);
         }
@@ -129,6 +87,36 @@ function App() {
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
       <div
+        onClick={() => {
+          tracks[0].notes[0].active = !tracks[0].notes[0].active;
+        }}
+      >
+        box1
+      </div>
+      <div
+        onClick={() => {
+          tracks[0].notes[1].active = !tracks[0].notes[1].active;
+        }}
+      >
+        box2
+      </div>
+      <div
+        onClick={() => {
+          tracks[0].notes[2].active = !tracks[0].notes[2].active;
+        }}
+      >
+        box3
+      </div>
+      <div
+        onClick={() => {
+          tracks[0].notes[3].active = !tracks[0].notes[3].active;
+        }}
+      >
+        {" "}
+        box4
+      </div>
+
+      {/* <div
         onClick={() => {
           const currentNotes = tracks[0].notes;
           currentNotes.push({
@@ -187,7 +175,7 @@ function App() {
         }}
       >
         add note 3
-      </div>
+      </div> */}
     </div>
   );
 }

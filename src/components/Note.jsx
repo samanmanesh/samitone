@@ -4,8 +4,7 @@ import styled from "styled-components";
 const NoteWrapper = styled.span`
   background: ${props => props.active ? 'limegreen':'lightgrey'};
   border: 1px solid ${props => props.onStep ? 'yellow' : 'transparent'};
-  margin: 0.3rem;
-  padding: 1rem;
+  padding: 0.4rem;
   cursor: pointer;
   color: black;
 `;

@@ -6,7 +6,7 @@ import TrackRow from "./TrackRow";
 function App() {
   const [loop, setLoop] = useState(null);
   const [isActive, setIsActive] = useState(false);
-  const [stepLength, setStepLength] = useState(16);
+  const [stepLength, setStepLength] = useState(24);
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
@@ -21,7 +21,7 @@ function App() {
   const play = () => {
     // create several monophonic synths
     // const synthB = new Tone.AMSynth().toDestination();
-    
+    if (loop) loop.stop(0)
     // Loop
     //*play a note every quarter-note
     // setLoop(
@@ -44,7 +44,8 @@ function App() {
         }
       });
     };
-    new Tone.Loop(callback, bps).start(0);
+    setLoop(new Tone.Loop(callback, bps).start(0))
+    
     Tone.Transport.start();
   };
 
@@ -81,7 +82,6 @@ function App() {
   };
   return (
     <div className="App">
-      {/* <h1>{currentStep}</h1> */}
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
       <button onClick={addTrack}>Add Track +</button>

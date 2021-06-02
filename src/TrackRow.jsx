@@ -9,6 +9,9 @@ const TrackRowWrapper = styled.div`
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  width:100%;
 `;
 
 export default function TrackRow({ track, updateTrack, currentStep }) {

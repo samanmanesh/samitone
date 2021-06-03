@@ -10,6 +10,7 @@ function App() {
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const [instruments, setInstruments] = useState();
   const reference = useRef();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function App() {
         setCurrentStep(step);
         i++;
         tracks.forEach((track) => {
-        const synthA = track.instrument.toDestination();
+          const synth = track.instrument.toDestination();
         console.log(track.notes);
         //* Find the note for this track that is supposed
         //* to play at the current order
@@ -42,7 +43,9 @@ function App() {
         );
         //* If we successfully found the note
         if (note) {
-          synthA.triggerAttackRelease(note.pitch, note.duration);
+          if(instruments) {
+            
+            synth.triggerAttackRelease(note.pitch, note.duration);}
         }
       });
     };
@@ -58,10 +61,11 @@ function App() {
   const addTrack = () => {
     const newTrack = {
       id: uuidv4(),
-      instrument: new Tone.AMSynth()
+      instrument: instruments
+      // instrument: new Tone.AMSynth()
     };
     const notes = [];
-    //adding the maxLength instead stepLength
+    //*adding the maxLength instead stepLength
     const maxLength = 64;
     // for (let i = 0; i < stepLength; i++)
     for (let i = 0; i < maxLength; i++) {
@@ -105,6 +109,8 @@ function App() {
       <input type="number" ref={reference} onKeyPress={ stepLengthHandler}
         />
       {/* <button onclick={()=> setStepLength(ref.current.value) }></button> */}
+        <button onClick={()=> setInstruments(new Tone.AMSynth())}>FMSynth</button>
+        <button onClick={()=> setInstruments(new Tone.FMSynth())}>AMSynth</button>
     </div>
   );
 }

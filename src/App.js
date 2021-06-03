@@ -1,15 +1,17 @@
 import "./App.scss";
 import * as Tone from "tone";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TrackRow from "./TrackRow";
 function App() {
   const [loop, setLoop] = useState(null);
-  const [isActive, setIsActive] = useState(false);
-  const [stepLength, setStepLength] = useState(24);
+  // const [isActive, setIsActive] = useState(false);
+  const [stepLength, setStepLength] = useState();
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const reference = useRef();
+
   useEffect(() => {
     //attach a click listener to a play button
     document.querySelector("button")?.addEventListener("click", async () => {
@@ -59,7 +61,10 @@ function App() {
       instrument: new Tone.AMSynth()
     };
     const notes = [];
-    for (let i = 0; i < stepLength; i++) {
+    //adding the maxLength instead stepLength
+    const maxLength = 64;
+    // for (let i = 0; i < stepLength; i++)
+    for (let i = 0; i < maxLength; i++) {
       const note = {
         pitch: "C3",
         duration: "8n",
@@ -72,6 +77,8 @@ function App() {
     setTracks((prev) => [...prev, newTrack]);
   };
 
+  console.log(tracks);
+
   const updateTrack = (trackID, updatedTrack) => {
     console.log("going to update", trackID, updatedTrack);
     const updateTrackIndex = tracks.findIndex((track) => track.id === trackID);
@@ -80,14 +87,24 @@ function App() {
     updatedTracks[updateTrackIndex] = updatedTrack;
     setTracks([...updatedTracks]);
   };
+
+  const stepLengthHandler = (e) => {
+    if (e.key === "Enter") {
+      setStepLength(reference.current.value);
+    }
+  }
+
   return (
     <div className="App">
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
       <button onClick={addTrack}>Add Track +</button>
       {tracks.map((track) => (
-        <TrackRow track={track} key={uuidv4()} updateTrack={updateTrack} currentStep={currentStep}/>
+        <TrackRow track={track} key={uuidv4()} updateTrack={updateTrack} currentStep={currentStep} stepLength={stepLength}/>
       ))}
+      <input type="number" ref={reference} onKeyPress={ stepLengthHandler}
+        />
+      {/* <button onclick={()=> setStepLength(ref.current.value) }></button> */}
     </div>
   );
 }

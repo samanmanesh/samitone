@@ -10,6 +10,7 @@ const NoteWrapper = styled.span`
 `;
 
 export default function Note({ note, toggleNote, currentStep }) {
+    console.log(note.active," check");
   return <NoteWrapper active={note.active} onClick={toggleNote} onStep={currentStep === note.order}>
       {note.order}
   </NoteWrapper>;

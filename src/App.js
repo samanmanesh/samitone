@@ -3,14 +3,15 @@ import * as Tone from "tone";
 import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TrackRow from "./TrackRow";
+import {instruments} from './helpers/instruments'
+
 function App() {
   const [loop, setLoop] = useState(null);
-  // const [isActive, setIsActive] = useState(false);
-  const [stepLength, setStepLength] = useState();
+  const [stepLength, setStepLength] = useState(16);
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
-  const [instruments, setInstruments] = useState();
+  // const [instruments, setInstruments] = useState();
   const reference = useRef();
 
   useEffect(() => {
@@ -21,20 +22,24 @@ function App() {
     });
   }, []);
 
+  const getInstrument = instrumentName => instruments[instrumentName]
+
   const play = () => {
     // create several monophonic synths
     // const synthB = new Tone.AMSynth().toDestination();
-    if (loop) loop.stop(0)
+    if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note
     // setLoop(
-      let i = 0;
-      const callback = (time) => {
-        const step = i % stepLength;
-        setCurrentStep(step);
-        i++;
-        tracks.forEach((track) => {
-          const synth = track.instrument.toDestination();
+    let i = 0;
+    const callback = (time) => {
+      const step = i % stepLength;
+      setCurrentStep(step);
+      i++;
+      tracks.forEach((track) => {
+        // console.log('>>', getInstrument(track.instrument))
+        const synth = getInstrument(track.instrument).toDestination();
+        // const synth = new Tone.AMSynth().toDestination();
         console.log(track.notes);
         //* Find the note for this track that is supposed
         //* to play at the current order
@@ -43,14 +48,14 @@ function App() {
         );
         //* If we successfully found the note
         if (note) {
-          if(instruments) {
-            
-            synth.triggerAttackRelease(note.pitch, note.duration);}
+          if (instruments) {
+            synth.triggerAttackRelease(note.pitch, note.duration);
+          }
         }
       });
     };
-    setLoop(new Tone.Loop(callback, bps).start(0))
-    
+    setLoop(new Tone.Loop(callback, bps).start(0));
+
     Tone.Transport.start();
   };
 
@@ -61,8 +66,7 @@ function App() {
   const addTrack = () => {
     const newTrack = {
       id: uuidv4(),
-      instrument: instruments
-      // instrument: new Tone.AMSynth()
+      instrument: 'AM'
     };
     const notes = [];
     //*adding the maxLength instead stepLength
@@ -96,7 +100,7 @@ function App() {
     if (e.key === "Enter") {
       setStepLength(reference.current.value);
     }
-  }
+  };
 
   return (
     <div className="App">
@@ -104,13 +108,22 @@ function App() {
       <button onClick={pause}>Pause</button>
       <button onClick={addTrack}>Add Track +</button>
       {tracks.map((track) => (
-        <TrackRow track={track} key={uuidv4()} updateTrack={updateTrack} currentStep={currentStep} stepLength={stepLength}/>
-      ))}
-      <input type="number" ref={reference} onKeyPress={ stepLengthHandler}
+        <TrackRow
+          track={track}
+          key={uuidv4()}
+          updateTrack={updateTrack}
+          currentStep={currentStep}
+          stepLength={stepLength}
         />
+      ))}
+      <input type="number" ref={reference} onKeyPress={stepLengthHandler} />
       {/* <button onclick={()=> setStepLength(ref.current.value) }></button> */}
-        <button onClick={()=> setInstruments(new Tone.AMSynth())}>FMSynth</button>
-        <button onClick={()=> setInstruments(new Tone.FMSynth())}>AMSynth</button>
+      {/* <button onClick={() => setInstruments(new Tone.AMSynth())}>
+        FMSynth
+      </button>
+      <button onClick={() => setInstruments(new Tone.FMSynth())}>
+        AMSynth
+      </button> */}
     </div>
   );
 }

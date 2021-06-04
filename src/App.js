@@ -3,7 +3,7 @@ import * as Tone from "tone";
 import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TrackRow from "./TrackRow";
-import {instruments} from './helpers/instruments'
+import { instruments } from "./helpers/instruments";
 
 function App() {
   const [loop, setLoop] = useState(null);
@@ -11,6 +11,8 @@ function App() {
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const stepOptions = [4, 8, 16, 24, 32, 64];
+
   // const [instruments, setInstruments] = useState();
   const reference = useRef();
 
@@ -22,7 +24,7 @@ function App() {
     });
   }, []);
 
-  const getInstrument = instrumentName => instruments[instrumentName]
+  const getInstrument = (instrumentName) => instruments[instrumentName];
 
   const play = () => {
     // create several monophonic synths
@@ -40,6 +42,7 @@ function App() {
         // console.log('>>', getInstrument(track.instrument))
         const synth = getInstrument(track.instrument).toDestination();
         // const synth = new Tone.AMSynth().toDestination();
+        console.log(track.instrument, "check2");
         console.log(track.notes);
         //* Find the note for this track that is supposed
         //* to play at the current order
@@ -66,7 +69,7 @@ function App() {
   const addTrack = () => {
     const newTrack = {
       id: uuidv4(),
-      instrument: 'AM'
+      instrument: "AM",
     };
     const notes = [];
     //*adding the maxLength instead stepLength
@@ -96,12 +99,9 @@ function App() {
     setTracks([...updatedTracks]);
   };
 
-  const stepLengthHandler = (e) => {
-    if (e.key === "Enter") {
-      setStepLength(reference.current.value);
-    }
-  };
-
+  
+  
+  console.log(stepLength, "check");
   return (
     <div className="App">
       <button onClick={play}>Play</button>
@@ -116,14 +116,18 @@ function App() {
           stepLength={stepLength}
         />
       ))}
-      <input type="number" ref={reference} onKeyPress={stepLengthHandler} />
-      {/* <button onclick={()=> setStepLength(ref.current.value) }></button> */}
-      {/* <button onClick={() => setInstruments(new Tone.AMSynth())}>
-        FMSynth
-      </button>
-      <button onClick={() => setInstruments(new Tone.FMSynth())}>
-        AMSynth
-      </button> */}
+      <select
+        value={stepLength}
+        onChange={(e) => setStepLength(e.target.value)}
+      >
+        {stepOptions.map((e) => (
+          <option value={e} key={uuidv4()}>
+            {e}
+          </option>
+        ))}
+        
+      </select>
+      
     </div>
   );
 }

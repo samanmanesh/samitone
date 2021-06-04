@@ -58,6 +58,7 @@ export default function TrackRow({
             </option>
           ))}
         </select>
+        
       </TrackDetails>
       <Notes>
         {track.notes

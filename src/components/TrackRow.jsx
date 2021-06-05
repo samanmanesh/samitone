@@ -27,22 +27,16 @@ export default function TrackRow({
   stepLength,
 }) {
   const changedNote = (note) => {
-    console.log(track.notes, "toggled note", note.order);
 
     const updatedNotes = track.notes;
     updatedNotes[note.order].active = !updatedNotes[note.order].active;
     updateTrack(track.id, { ...track, notes: updatedNotes });
   };
-  console.log(stepLength);
 
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
   };
-  //   const allNotes = track.notes.filter((note) => note.order < stepLength);
-  //   const wantedNotes = allNotes.filter((desiredNote)=> desiredNote.order < stepLength);
 
-  //   console.log(allNotes, "is this");
-  console.log();
   const instrumentKeys = Object.keys(instruments);
   return (
     <TrackRowWrapper>
@@ -72,11 +66,6 @@ export default function TrackRow({
             />
           ))}
       </Notes>
-
-      {/* //*before changing the size of steps  */}
-      {/* {track.notes.map((note) => (
-        <Note note={note} key={uuidv4()} toggleNote={() => changedNote(note)} currentStep={currentStep}/>
-      ))} */}
     </TrackRowWrapper>
   );
 }

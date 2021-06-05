@@ -3,23 +3,24 @@ import * as Tone from "tone";
 import { v4 as uuidv4 } from "uuid";
 import { getInstrument } from "../helpers/instruments";
 import TrackRow from './TrackRow'
+
 export default function TrackPlayer({tracks, addTrack, updateTrack, stepLength, bps}) {
   // Song Playing
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const play = () => {
-    // create several monophonic synths
+
     if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note
     let i = 0;
-    tracks.forEach((track) => {
-      const instrument = getInstrument(track.instrument);
-      const synth = instrument.sound.toDestination();
-      // const filter = new Tone.Filter(filterNum, "lowpass").toDestination();
-      // synth.connect(filter);
-    });
+    // tracks.forEach((track) => {
+    //   const instrument = getInstrument(track.instrument);
+    //   const synth = instrument.sound.toDestination();
+    //   // const filter = new Tone.Filter(filterNum, "lowpass").toDestination();
+    //   // synth.connect(filter);
+    // });
     const callback = (time) => {
       const step = i % stepLength;
       setCurrentStep(step);

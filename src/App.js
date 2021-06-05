@@ -16,11 +16,7 @@ function App() {
 
   // const [octave, setOctave] = useState()
   const stepOptions = [4, 8, 16, 24, 32, 64];
-  // const chords = {
-  //   A:["A","C#","E"],
-  //   Am:["A", "C", "E"]
-  // }
-
+  
   // const [instruments, setInstruments] = useState();
 
   const reference = useRef();
@@ -33,12 +29,7 @@ function App() {
     });
   }, []);
 
-  // const getChord = (chordName) =>{
-  //   const desiredChord = chords.find(chord => chord === chordName);
-  //   console.log(desiredChord, "is read");
-  //   // return desiredChord;
-  // }
-
+  
   const addTrack = () => {
     const newTrack = {
       id: uuidv4(),
@@ -62,17 +53,15 @@ function App() {
     setTracks((prev) => [...prev, newTrack]);
   };
 
-  console.log("COMPONENT REFRESHED");
+  
   const updateTrack = (trackID, updatedTrack) => {
-    console.log("going to update", trackID, updatedTrack);
+    
     const updateTrackIndex = tracks.findIndex((track) => track.id === trackID);
-    console.log("updating track at index", updateTrackIndex);
     const updatedTracks = [...tracks];
     updatedTracks[updateTrackIndex] = updatedTrack;
     setTracks([...updatedTracks]);
   };
 
-  console.log(stepLength, "check");
   return (
     <div className="App">
       <select

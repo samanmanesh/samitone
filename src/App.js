@@ -11,6 +11,7 @@ function App() {
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
+  // const [octave, setOctave] = useState()
   const stepOptions = [4, 8, 16, 24, 32, 64];
 
   // const [instruments, setInstruments] = useState();
@@ -24,11 +25,10 @@ function App() {
     });
   }, []);
 
-  const getInstrument = (instrumentName) => instruments[instrumentName];
+  const getInstrument = (instrumentName) => instruments[instrumentName].sound;
 
   const play = () => {
     // create several monophonic synths
-    // const synthB = new Tone.AMSynth().toDestination();
     if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note
@@ -51,12 +51,19 @@ function App() {
         );
         //* If we successfully found the note
         if (note) {
-          if (instruments) {
-            synth.triggerAttackRelease(note.pitch, note.duration);
+          if (track.instrument === "Kick" || track.instrument === "AM" || track.instrument === "FM" || track.instrument === "Duo") {
+            synth.triggerAttackRelease(`${note.pitch}${note.octave}`, note.duration);
+          }
+          if(track.instrument=== "Sample"){
+
+            console.log("it works");
+            synth.triggerAttackRelease(["C1", "E1", "G1", "B1"], note.duration);
+
           }
         }
       });
     };
+
     setLoop(new Tone.Loop(callback, bps).start(0));
 
     Tone.Transport.start();
@@ -74,10 +81,13 @@ function App() {
     const notes = [];
     //*adding the maxLength instead stepLength
     const maxLength = 64;
-    // for (let i = 0; i < stepLength; i++)
+    // const CMajorScale = ["C","D","E","F","G"]
     for (let i = 0; i < maxLength; i++) {
       const note = {
-        pitch: "C3",
+        // pitch: CMajorScale[i % 5]
+        pitch: "C",
+        // octave: (i+1)%3,
+        octave: "2",
         duration: "8n",
         order: i,
         active: false,
@@ -125,8 +135,8 @@ function App() {
             {e}
           </option>
         ))}
-        
       </select>
+      <input type="number" value={bps} onChange={(e) => setBps(e.target.value)}/>
       
     </div>
   );

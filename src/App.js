@@ -1,8 +1,35 @@
-import "./App.scss";
+// import "./App.scss";
 import * as Tone from "tone";
 import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TrackPlayer from "./components/TrackPlayer";
+import styled from "styled-components";
+
+const AppWrapper = styled.div`
+  color: white;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto; 
+  grid-template-areas: "palyBar playBar playBar playBar"
+  "body body body sidebar"
+  "effect effect effect effect";
+
+
+  /* padding: 3rem; */
+
+
+  /* button {
+    margin-left: 1rem;
+    width: 5rem;
+    height: 2rem;
+  } */
+`;
+
+const Header = styled.div`
+  grid-area: playBar;
+  width:100wh;
+  height: 2rem;
+`;
 
 function App() {
   const [stepLength, setStepLength] = useState(16);
@@ -16,7 +43,7 @@ function App() {
 
   // const [octave, setOctave] = useState()
   const stepOptions = [4, 8, 16, 24, 32, 64];
-  
+
   // const [instruments, setInstruments] = useState();
 
   const reference = useRef();
@@ -29,7 +56,6 @@ function App() {
     });
   }, []);
 
-  
   const addTrack = () => {
     const newTrack = {
       id: uuidv4(),
@@ -53,9 +79,7 @@ function App() {
     setTracks((prev) => [...prev, newTrack]);
   };
 
-  
   const updateTrack = (trackID, updatedTrack) => {
-    
     const updateTrackIndex = tracks.findIndex((track) => track.id === trackID);
     const updatedTracks = [...tracks];
     updatedTracks[updateTrackIndex] = updatedTrack;
@@ -63,7 +87,8 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <AppWrapper>
+      <Header></Header>
       <select
         value={stepLength}
         onChange={(e) => setStepLength(e.target.value)}
@@ -115,7 +140,7 @@ function App() {
           </span>
         </div>
       </div>
-    </div>
+    </AppWrapper>
   );
 }
 

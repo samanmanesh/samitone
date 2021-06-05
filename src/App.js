@@ -2,8 +2,7 @@ import "./App.scss";
 import * as Tone from "tone";
 import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
-import TrackRow from "./TrackRow";
-import { instruments } from "./helpers/instruments";
+import TrackPlayer from "./components/TrackPlayer";
 
 function App() {
   const [stepLength, setStepLength] = useState(16);
@@ -14,9 +13,6 @@ function App() {
   const [feedbackDelayNum, setFeedbackDelayNum] = useState(0.5);
 
   // General
-  // Song Playing
-  const [loop, setLoop] = useState(null);
-  const [currentStep, setCurrentStep] = useState(0);
 
   // const [octave, setOctave] = useState()
   const stepOptions = [4, 8, 16, 24, 32, 64];
@@ -37,84 +33,11 @@ function App() {
     });
   }, []);
 
-  const getInstrument = (instrumentName) => instruments[instrumentName];
-
   // const getChord = (chordName) =>{
   //   const desiredChord = chords.find(chord => chord === chordName);
   //   console.log(desiredChord, "is read");
   //   // return desiredChord;
   // }
-
-  
-  const play = () => {
-    // create several monophonic synths
-    if (loop) loop.stop(0);
-    // Loop
-    //*play a note every quarter-note
-    let i = 0;
-    tracks.forEach((track) => {
-      const instrument = getInstrument(track.instrument)
-      const synth = instrument.sound.toDestination();
-      const filter = new Tone.Filter(
-        filterNum,
-        "lowpass"
-      ).toDestination();
-      synth.connect(filter);  
-    })
-    const callback = (time) => {
-      const step = i % stepLength;
-      setCurrentStep(step);
-      i++;
-      tracks.forEach((track) => {
-        const instrument = getInstrument(track.instrument)
-        const synth = instrument.sound.toDestination();
-        //* Find the note for this track that is supposed
-        //* to play at the current order
-        const note = track.notes.find(
-          (note) => note.order === step && note.active === true
-        );
-        //* If we successfully found the note
-        if (note) {
-          if (
-            track.instrument === "Kick" ||
-            track.instrument === "AM" ||
-            track.instrument === "FM" ||
-            track.instrument === "Duo"
-          ) {
-            synth.triggerAttackRelease(
-              `${note.pitch}${note.octave}`,
-              note.duration
-            );
-            const distortion = new Tone.Distortion(0.4).toDestination();
-            
-            // const feedbackDelay = new Tone.FeedbackDelay(
-            //   delayTime,
-            //   feedbackDelayNum
-            // ).toDestination();
-            //connect a player to the distortion
-            // synth.connect(distortion);
-            // synth.connect(feedbackDelay);
-          }
-
-          if (track.instrument === "Sample") {
-            // synth.triggerAttackRelease(["C1", "E1", "G1", "B1"], note.duration);
-            synth.triggerAttackRelease(
-              `${note.pitch}${note.octave}`,
-              note.duration
-            );
-          }
-        }
-      });
-    };
-
-    setLoop(new Tone.Loop(callback, bps).start(0));
-
-    Tone.Transport.start();
-  };
-
-  const pause = () => {
-    Tone.Transport.stop();
-  };
 
   const addTrack = () => {
     const newTrack = {
@@ -139,8 +62,7 @@ function App() {
     setTracks((prev) => [...prev, newTrack]);
   };
 
-
-  console.log("COMPONENT REFRESHED")
+  console.log("COMPONENT REFRESHED");
   const updateTrack = (trackID, updatedTrack) => {
     console.log("going to update", trackID, updatedTrack);
     const updateTrackIndex = tracks.findIndex((track) => track.id === trackID);
@@ -153,18 +75,6 @@ function App() {
   console.log(stepLength, "check");
   return (
     <div className="App">
-      <button onClick={play}>Play</button>
-      <button onClick={pause}>Pause</button>
-      <button onClick={addTrack}>Add Track +</button>
-      {tracks.map((track) => (
-        <TrackRow
-          track={track}
-          key={uuidv4()}
-          updateTrack={updateTrack}
-          currentStep={currentStep}
-          stepLength={stepLength}
-        />
-      ))}
       <select
         value={stepLength}
         onChange={(e) => setStepLength(e.target.value)}
@@ -180,8 +90,14 @@ function App() {
         value={bps}
         onChange={(e) => setBps(e.target.value)}
       />
-
       <div>
+        <TrackPlayer
+          tracks={tracks}
+          addTrack={addTrack}
+          updateTrack={updateTrack}
+          stepLength={stepLength}
+          bps={bps}
+        />
         <h1>Effect</h1>
         <div>
           Filter

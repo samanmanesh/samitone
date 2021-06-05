@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import Note from "./components/Note";
-import { instruments } from "./helpers/instruments";
+import Note from "./Note";
+import { instruments } from "../helpers/instruments";
 
 const TrackRowWrapper = styled.div`
   background: rgb(50, 50, 50);

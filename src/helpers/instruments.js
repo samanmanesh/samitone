@@ -3,6 +3,9 @@ export const InstrumentType = {
   Synth: "synth",
   Beat: "beat",
 };
+
+export const getInstrument = (instrumentName) => instruments[instrumentName];
+  
 export const instruments = {
   FM: { sound: new Tone.FMSynth(), octave: 5, type: InstrumentType.Synth },
   // AM: new Tone.AMSynth(),

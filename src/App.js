@@ -6,14 +6,18 @@ import TrackRow from "./TrackRow";
 import { instruments } from "./helpers/instruments";
 
 function App() {
-  const [loop, setLoop] = useState(null);
   const [stepLength, setStepLength] = useState(16);
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
-  const [currentStep, setCurrentStep] = useState(0);
   const [filterNum, setFilterNum] = useState(400);
   const [delayTime, setDelayTime] = useState(0.125);
   const [feedbackDelayNum, setFeedbackDelayNum] = useState(0.5);
+
+  // General
+  // Song Playing
+  const [loop, setLoop] = useState(null);
+  const [currentStep, setCurrentStep] = useState(0);
+
   // const [octave, setOctave] = useState()
   const stepOptions = [4, 8, 16, 24, 32, 64];
   // const chords = {
@@ -41,17 +45,16 @@ function App() {
   //   // return desiredChord;
   // }
 
+  
   const play = () => {
     // create several monophonic synths
     if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note
-    // setLoop(
     let i = 0;
     tracks.forEach((track) => {
       const instrument = getInstrument(track.instrument)
       const synth = instrument.sound.toDestination();
-      console.log(synth);
       const filter = new Tone.Filter(
         filterNum,
         "lowpass"
@@ -65,7 +68,6 @@ function App() {
       tracks.forEach((track) => {
         const instrument = getInstrument(track.instrument)
         const synth = instrument.sound.toDestination();
-        console.log(synth);
         //* Find the note for this track that is supposed
         //* to play at the current order
         const note = track.notes.find(
@@ -95,7 +97,11 @@ function App() {
           }
 
           if (track.instrument === "Sample") {
-            synth.triggerAttackRelease(["C1", "E1", "G1", "B1"], note.duration);
+            // synth.triggerAttackRelease(["C1", "E1", "G1", "B1"], note.duration);
+            synth.triggerAttackRelease(
+              `${note.pitch}${note.octave}`,
+              note.duration
+            );
           }
         }
       });
@@ -133,8 +139,8 @@ function App() {
     setTracks((prev) => [...prev, newTrack]);
   };
 
-  console.log(tracks);
 
+  console.log("COMPONENT REFRESHED")
   const updateTrack = (trackID, updatedTrack) => {
     console.log("going to update", trackID, updatedTrack);
     const updateTrackIndex = tracks.findIndex((track) => track.id === trackID);

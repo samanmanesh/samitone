@@ -3,6 +3,17 @@ import * as Tone from "tone";
 import { v4 as uuidv4 } from "uuid";
 import { getInstrument } from "../helpers/instruments";
 import TrackRow from './TrackRow'
+import styled from "styled-components";
+
+
+
+const TrackPlayerContainer = styled.div`
+background: red;
+grid-area: body;
+  
+`;
+
+
 
 export default function TrackPlayer({tracks, addTrack, updateTrack, stepLength, bps}) {
   // Song Playing
@@ -77,7 +88,9 @@ export default function TrackPlayer({tracks, addTrack, updateTrack, stepLength, 
   };
 
   return (
-    <div>
+    <TrackPlayerContainer>
+      
+
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
       <button onClick={addTrack}>Add Track +</button>
@@ -90,6 +103,6 @@ export default function TrackPlayer({tracks, addTrack, updateTrack, stepLength, 
           stepLength={stepLength}
         />
       ))}
-    </div>
+    </TrackPlayerContainer>
   );
 }

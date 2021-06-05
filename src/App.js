@@ -3,20 +3,21 @@ import * as Tone from "tone";
 import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TrackPlayer from "./components/TrackPlayer";
+import Effect from "./components/Effect";
+import ControlBar from "./components/ControlBar"
 import styled from "styled-components";
 
 const AppWrapper = styled.div`
   color: white;
   display: grid;
-  grid-template-columns: 50px 50px 50px 50px;
-  grid-template-rows: auto; 
-  grid-template-areas: "palyBar playBar playBar playBar"
-  "body body body sidebar"
-  "effect effect effect effect";
-
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "palyBar playBar playBar playBar"
+    "body body body sidebar"
+    "effect effect effect effect";
 
   /* padding: 3rem; */
-
 
   /* button {
     margin-left: 1rem;
@@ -25,11 +26,11 @@ const AppWrapper = styled.div`
   } */
 `;
 
-const Header = styled.div`
-  grid-area: playBar;
-  width:100wh;
-  height: 2rem;
-`;
+// const Header = styled.div`
+//   grid-area: playBar;
+//   width: 100wh;
+//   height: 2rem;
+// `;
 
 function App() {
   const [stepLength, setStepLength] = useState(16);
@@ -42,7 +43,7 @@ function App() {
   // General
 
   // const [octave, setOctave] = useState()
-  const stepOptions = [4, 8, 16, 24, 32, 64];
+  // const stepOptions = [4, 8, 16, 24, 32, 64];
 
   // const [instruments, setInstruments] = useState();
 
@@ -88,31 +89,40 @@ function App() {
 
   return (
     <AppWrapper>
-      <Header></Header>
-      <select
-        value={stepLength}
-        onChange={(e) => setStepLength(e.target.value)}
-      >
-        {stepOptions.map((e) => (
-          <option value={e} key={uuidv4()}>
-            {e}
-          </option>
-        ))}
-      </select>
-      <input
-        type="number"
-        value={bps}
-        onChange={(e) => setBps(e.target.value)}
-      />
-      <div>
-        <TrackPlayer
-          tracks={tracks}
-          addTrack={addTrack}
-          updateTrack={updateTrack}
-          stepLength={stepLength}
-          bps={bps}
+      
+     < ControlBar setBps={setBps} bps={bps} setStepLength={setStepLength} stepLength={setStepLength} />
+      {/* <Header>
+        <section>display section</section>
+        <div>controlPanel</div>
+        <div>Hello this a test</div>
+
+        <input
+          type="number"
+          value={bps}
+          onChange={(e) => setBps(e.target.value)}
         />
-        <h1>Effect</h1>
+        <select
+          value={stepLength}
+          onChange={(e) => setStepLength(e.target.value)}
+        >
+          {stepOptions.map((e) => (
+            <option value={e} key={uuidv4()}>
+              {e}
+            </option>
+          ))}
+        </select>
+      </Header> */}
+
+      <TrackPlayer
+        tracks={tracks}
+        addTrack={addTrack}
+        updateTrack={updateTrack}
+        stepLength={stepLength}
+        bps={bps}
+      />
+
+      <Effect />
+      {/* <h1>Effect</h1>
         <div>
           Filter
           <input
@@ -139,7 +149,7 @@ function App() {
             />
           </span>
         </div>
-      </div>
+      </div> */}
     </AppWrapper>
   );
 }

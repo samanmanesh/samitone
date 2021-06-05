@@ -11,10 +11,18 @@ function App() {
   const [bps, setBps] = useState(0.5);
   const [tracks, setTracks] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const [filterNum, setFilterNum] = useState(400);
+  const [delayTime, setDelayTime] = useState(0.125);
+  const [feedbackDelayNum, setFeedbackDelayNum] = useState(0.5);
   // const [octave, setOctave] = useState()
   const stepOptions = [4, 8, 16, 24, 32, 64];
+  // const chords = {
+  //   A:["A","C#","E"],
+  //   Am:["A", "C", "E"]
+  // }
 
   // const [instruments, setInstruments] = useState();
+
   const reference = useRef();
 
   useEffect(() => {
@@ -25,7 +33,13 @@ function App() {
     });
   }, []);
 
-  const getInstrument = (instrumentName) => instruments[instrumentName].sound;
+  const getInstrument = (instrumentName) => instruments[instrumentName];
+
+  // const getChord = (chordName) =>{
+  //   const desiredChord = chords.find(chord => chord === chordName);
+  //   console.log(desiredChord, "is read");
+  //   // return desiredChord;
+  // }
 
   const play = () => {
     // create several monophonic synths
@@ -34,16 +48,24 @@ function App() {
     //*play a note every quarter-note
     // setLoop(
     let i = 0;
+    tracks.forEach((track) => {
+      const instrument = getInstrument(track.instrument)
+      const synth = instrument.sound.toDestination();
+      console.log(synth);
+      const filter = new Tone.Filter(
+        filterNum,
+        "lowpass"
+      ).toDestination();
+      synth.connect(filter);  
+    })
     const callback = (time) => {
       const step = i % stepLength;
       setCurrentStep(step);
       i++;
       tracks.forEach((track) => {
-        // console.log('>>', getInstrument(track.instrument))
-        const synth = getInstrument(track.instrument).toDestination();
-        // const synth = new Tone.AMSynth().toDestination();
-        console.log(track.instrument, "check2");
-        console.log(track.notes);
+        const instrument = getInstrument(track.instrument)
+        const synth = instrument.sound.toDestination();
+        console.log(synth);
         //* Find the note for this track that is supposed
         //* to play at the current order
         const note = track.notes.find(
@@ -51,14 +73,29 @@ function App() {
         );
         //* If we successfully found the note
         if (note) {
-          if (track.instrument === "Kick" || track.instrument === "AM" || track.instrument === "FM" || track.instrument === "Duo") {
-            synth.triggerAttackRelease(`${note.pitch}${note.octave}`, note.duration);
+          if (
+            track.instrument === "Kick" ||
+            track.instrument === "AM" ||
+            track.instrument === "FM" ||
+            track.instrument === "Duo"
+          ) {
+            synth.triggerAttackRelease(
+              `${note.pitch}${note.octave}`,
+              note.duration
+            );
+            const distortion = new Tone.Distortion(0.4).toDestination();
+            
+            // const feedbackDelay = new Tone.FeedbackDelay(
+            //   delayTime,
+            //   feedbackDelayNum
+            // ).toDestination();
+            //connect a player to the distortion
+            // synth.connect(distortion);
+            // synth.connect(feedbackDelay);
           }
-          if(track.instrument=== "Sample"){
 
-            console.log("it works");
+          if (track.instrument === "Sample") {
             synth.triggerAttackRelease(["C1", "E1", "G1", "B1"], note.duration);
-
           }
         }
       });
@@ -84,9 +121,7 @@ function App() {
     // const CMajorScale = ["C","D","E","F","G"]
     for (let i = 0; i < maxLength; i++) {
       const note = {
-        // pitch: CMajorScale[i % 5]
         pitch: "C",
-        // octave: (i+1)%3,
         octave: "2",
         duration: "8n",
         order: i,
@@ -109,8 +144,6 @@ function App() {
     setTracks([...updatedTracks]);
   };
 
-  
-  
   console.log(stepLength, "check");
   return (
     <div className="App">
@@ -136,8 +169,41 @@ function App() {
           </option>
         ))}
       </select>
-      <input type="number" value={bps} onChange={(e) => setBps(e.target.value)}/>
-      
+      <input
+        type="number"
+        value={bps}
+        onChange={(e) => setBps(e.target.value)}
+      />
+
+      <div>
+        <h1>Effect</h1>
+        <div>
+          Filter
+          <input
+            type="number"
+            value={filterNum}
+            onChange={(e) => setFilterNum(e.target.value)}
+          />
+        </div>
+        <div>
+          <span>
+            Delay Time
+            <input
+              type="number"
+              value={delayTime}
+              onChange={(e) => setDelayTime(e.target.value)}
+            />
+          </span>
+          <span>
+            Feedback Delay number
+            <input
+              type="number"
+              value={feedbackDelayNum}
+              onChange={(e) => setFeedbackDelayNum(e.target.value)}
+            />
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

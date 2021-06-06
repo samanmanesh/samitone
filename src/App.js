@@ -10,11 +10,14 @@ import styled from "styled-components";
 const AppWrapper = styled.div`
   color: white;
   display: grid;
+  width: 1440px;
+  height: 1024px;
+  border: 1px solid white;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows:  auto;
   grid-template-areas:
-    "palyBar playBar playBar playBar"
-    "body body body sidebar"
+    "playBar playBar playBar playBar"
+    "body body body body"
     "effect effect effect effect";
 
   /* padding: 3rem; */

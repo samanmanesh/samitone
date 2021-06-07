@@ -35,7 +35,7 @@ const DisplayPanel = styled.div`
   display: flex;
 
   div {
-    background-color: rgb(157, 157, 157);
+    background-color: ${colors.background.panel};
     color: black;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ const DisplayPanel = styled.div`
     justify-content: space-around;
   }
   div:nth-child(4) {
-    background: rgb(36, 34, 34);
+    background: ${colors.background.panelDarker};
     color: white;
     width: auto;
     flex-direction: row;
@@ -94,6 +94,8 @@ const DisplayPanel = styled.div`
     }
     div:nth-child(1){
         /* background: #381c1c; */
+        color: white;
+        //add font size then
         
     }
     div:nth-child(2){

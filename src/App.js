@@ -7,7 +7,9 @@ import Effect from "./components/Effect";
 import ControlBar from "./components/ControlBar"
 import styled from "styled-components";
 import colors from "./styles";
+import {sizes} from "./styles";
 
+console.log(sizes,"this");
 const AppWrapper = styled.div`
   color: white;
   background: ${colors.background.primary};
@@ -16,7 +18,7 @@ const AppWrapper = styled.div`
   height: 100vh;
   
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows:  5rem auto;
+  grid-template-rows:  ${sizes.headerHeight} auto;
   grid-template-areas:
     "playBar playBar playBar playBar"
     "body body body body"

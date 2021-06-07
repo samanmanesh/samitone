@@ -13,21 +13,6 @@ const Header = styled.div`
 
   /* height: 2rem; */
 `;
-const ControlPanel = styled.div`
-  button {
-    all: unset;
-    /* width: 1rem;
-    height: 1rem; */
-    margin: 0.1rem;
-    padding: 0.5rem;
-    /* background: ${colors.background.secondary}; */
-
-    img {
-      width: 1.7rem;
-      height: 1.7rem;
-    }
-  }
-`;
 
 const DisplayPanel = styled.div`
   /* background: #874c4c; */
@@ -56,51 +41,80 @@ const DisplayPanel = styled.div`
   }
 
   div:nth-child(3) {
-    width: 20rem;
+    width: 15rem;
     flex-direction: row;
     justify-content: space-around;
   }
   div:nth-child(4) {
     background: ${colors.background.panelDarker};
     color: white;
-    width: auto;
+    /* width: auto; */
     flex-direction: row;
     justify-content: space-around;
-    p {
-        margin-left: 1rem;
-        font-size: 1ch;
-        
-    }
 
-   
+    margin-left: 0.5rem;
+    /* font-size: 1ch;     */
+
     div {
-        background: inherit;
-        
-        border: none;
-        width:inherit;
-        display: flex;
-        flex-direction: column;
-        /* justify-content:space-around; */
+      background: inherit;
+
+      border: none;
+      width: inherit;
+      display: flex;
+      flex-direction: column;
+      /* justify-content:space-around; */
 
       button {
         all: unset;
         cursor: pointer;
-        margin: .2rem 1rem 0 1rem ;
-        img{
-            width: 1rem;
-            height: 1rem;
+        margin: 0.2rem 1rem 0 1rem;
+        img {
+          width: 1rem;
+          height: 1rem;
         }
       }
     }
-    div:nth-child(1){
-        /* background: #381c1c; */
-        color: white;
-        //add font size then
-        
+    div:nth-child(1) {
+      /* background: #381c1c; */
+      color: white;
+      //add font size then
     }
-    div:nth-child(2){
-        color:white;
+    div:nth-child(2) {
+      color: white;
+    }
+  }
+`;
 
+const ControlPanel = styled.div`
+  button {
+    all: unset;
+    /* width: 1rem;
+  height: 1rem; */
+    margin: 0.1rem;
+    padding: 0.5rem;
+    /* background: ${colors.background.secondary}; */
+
+    img {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+  }
+`;
+
+const AddTrack = styled.div`
+  display: flex;
+
+  div {
+    background: ${colors.background.secondary};
+      border-radius:.4rem;
+    margin-right: 2rem;
+    border-radius: 0.4rem;
+    width: 7rem;
+    height: 4rem;
+    button {
+      all: unset;
+      cursor: pointer;
+      
     }
   }
 `;
@@ -164,10 +178,20 @@ export default function ControlBar({ setBps, bps, stepLength, setStepLength }) {
         </ControlPanel>
       </section>
 
-      <section>
-        <div>Add Drum</div>
-        <div>Add Melody</div>
-      </section>
+      <AddTrack>
+        <div>
+          <button>
+            <img src="icons/plus.svg" alt="plus" />
+            Instrument Drum
+          </button>
+        </div>
+        <div>
+          <button>
+            <img src="icons/plus.svg" alt="plus" />
+            Instrument Melody
+          </button>
+        </div>
+      </AddTrack>
 
       {/* <input
         type="number"

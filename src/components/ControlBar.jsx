@@ -41,7 +41,7 @@ const DisplayPanel = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 0.3rem;
     height: 3.5rem;
     width: 7rem;
@@ -66,10 +66,39 @@ const DisplayPanel = styled.div`
     width: auto;
     flex-direction: row;
     justify-content: space-around;
+    p {
+        margin-left: 1rem;
+        font-size: 1ch;
+        
+    }
 
-    button {
-      /* all: unset; */
-      border: 1px solid white;
+   
+    div {
+        background: inherit;
+        
+        border: none;
+        width:inherit;
+        display: flex;
+        flex-direction: column;
+        /* justify-content:space-around; */
+
+      button {
+        all: unset;
+        cursor: pointer;
+        margin: .2rem 1rem 0 1rem ;
+        img{
+            width: 1rem;
+            height: 1rem;
+        }
+      }
+    }
+    div:nth-child(1){
+        /* background: #381c1c; */
+        
+    }
+    div:nth-child(2){
+        color:white;
+
     }
   }
 `;
@@ -104,8 +133,8 @@ export default function ControlBar({ setBps, bps, stepLength, setStepLength }) {
           </div>
           <div>
             {" "}
-            <p>Tempo</p> <p>110 bps</p>
-            <section>
+            <div>Tempo</div> <div>110 bps</div>
+            <div>
               <button>
                 {" "}
                 <img src="icons/arrow-up-red.svg" alt="arrow up" />{" "}
@@ -114,7 +143,7 @@ export default function ControlBar({ setBps, bps, stepLength, setStepLength }) {
                 {" "}
                 <img src="icons/arrow-down-red.svg" alt="arrow down" />
               </button>
-            </section>
+            </div>
           </div>
         </DisplayPanel>
       </section>

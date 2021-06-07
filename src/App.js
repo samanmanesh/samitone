@@ -10,9 +10,9 @@ import styled from "styled-components";
 const AppWrapper = styled.div`
   color: white;
   display: grid;
-  width: 1440px;
-  height: 1024px;
-  border: 1px solid white;
+  width: 100vw;
+  height: 100vh;
+  
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows:  auto;
   grid-template-areas:
@@ -92,8 +92,12 @@ function App() {
 
   return (
     <AppWrapper>
-      
-     < ControlBar setBps={setBps} bps={bps} setStepLength={setStepLength} stepLength={setStepLength} />
+      <ControlBar
+        setBps={setBps}
+        bps={bps}
+        setStepLength={setStepLength}
+        stepLength={setStepLength}
+      />
       {/* <Header>
         <section>display section</section>
         <div>controlPanel</div>

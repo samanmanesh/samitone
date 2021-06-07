@@ -16,6 +16,17 @@ const Notes = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  & > * {
+    margin-right: 0.5rem;
+    
+    &:nth-child(${props => props.barLength}n) {
+      margin-right: 1rem;
+    }
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `;
 const TrackDetails = styled.div`
   display: flex;
@@ -54,7 +65,7 @@ export default function TrackRow({
         </select>
         
       </TrackDetails>
-      <Notes>
+      <Notes barLength={4}>
         {track.notes
           .filter((note) => note.order < stepLength)
           .map((note) => (

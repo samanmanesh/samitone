@@ -4,53 +4,54 @@ import styled from "styled-components";
 
 const Header = styled.div`
   grid-area: playBar;
-      /* background: pink; */
+  /* background: pink; */
   /* width: 100wh; */
 
   /* height: 2rem; */
-
-  
-
 `;
 const ControlPanel = styled.div`
-    display: flex;
+  display: flex;
 
-    button{
-      all: unset;
+  button {
+      
+    all: unset;
+    width: 1rem;
+    height: 1rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background: #1b1b4f;
+
+    img {
       width: 1rem;
       height: 1rem;
-      margin: .5rem;
-      padding: .5rem;
-      background: #1b1b4f;
-
-      img{
-          width: 1rem;
-          height: 1rem;
-      }
+    }
   }
 `;
 
-
-export default function ControlBar(setBps, bps, stepLength, setStepLength) {
+export default function ControlBar({setBps, bps, stepLength, setStepLength}) {
   const stepOptions = [4, 8, 16, 24, 32, 64];
-
   return (
     <Header>
       <section>
         <ControlPanel>
           <button>
-              <img src="icons/back.svg" alt="back" />
-              </button>
+            <img src="icons/back.svg" alt="back" />
+          </button>
           <button>
-          <img src="icons/next.svg" alt="next" />
-              </button>
+            <img src="icons/next.svg" alt="next" />
+          </button>
           <button>
-          <img src="icons/restart.svg" alt="restart" /></button>
+            <img src="icons/restart.svg" alt="restart" />
+          </button>
           <button>
-          <img src="icons/play.svg" alt="play" /></button>
+            <img src="icons/play.svg" alt="play" />
+          </button>
           <button>
-          <img src="icons/record.svg" alt="record" /></button>
-          <button><img src="icons/repeat.svg" alt="repeat"/></button>
+            <img src="icons/record.svg" alt="record" />
+          </button>
+          <button>
+            <img src="icons/repeat.svg" alt="repeat" />
+          </button>
         </ControlPanel>
       </section>
 
@@ -66,7 +67,7 @@ export default function ControlBar(setBps, bps, stepLength, setStepLength) {
         onChange={(e) => setStepLength(e.target.value)}
       >
         {stepOptions.map((e) => (
-          <option value={e} key={uuidv4()}>
+          <option value={e} key={uuidv4()} >
             {e}
           </option>
         ))}

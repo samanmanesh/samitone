@@ -4,9 +4,9 @@ import styled from "styled-components";
 const NoteWrapper = styled.span`
   background: ${(props) => (props.active ? "limegreen" : "lightgrey")};
   border: 1px solid ${(props) => (props.onStep ? "yellow" : "transparent")};
-  padding: 0.4rem;
+  width: 100%;
   cursor: pointer;
-  color: black;
+  color: #6d5050;
 `;
 
 export default function Note({ note, toggleNote, currentStep }) {

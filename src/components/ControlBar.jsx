@@ -1,69 +1,149 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
-import colors from '../styles';
+import colors from "../styles";
 
 const Header = styled.div`
   grid-area: playBar;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   /* background: pink; */
   /* width: 100wh; */
 
   /* height: 2rem; */
 `;
 const ControlPanel = styled.div`
-  display: flex;
-
   button {
-      
     all: unset;
-    width: 1rem;
-    height: 1rem;
+    /* width: 1rem;
+    height: 1rem; */
     margin: 0.1rem;
     padding: 0.5rem;
-    background: ${colors.background.secondary};
+    /* background: ${colors.background.secondary}; */
 
     img {
-      width: 1rem;
-      height: 1rem;
+      width: 1.7rem;
+      height: 1.7rem;
     }
   }
 `;
 
-export default function ControlBar({setBps, bps, stepLength, setStepLength}) {
+const DisplayPanel = styled.div`
+  /* background: #874c4c; */
+  /* padding: 0.5rem; */
+  display: flex;
+
+  div {
+    background-color: rgb(157, 157, 157);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 0.3rem;
+    height: 3.5rem;
+    width: 7rem;
+    margin-left: 0.3rem;
+    p {
+      margin: 0;
+    }
+  }
+
+  div:nth-child(1) {
+    margin-left: 1rem;
+  }
+
+  div:nth-child(3) {
+    width: 20rem;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  div:nth-child(4) {
+    background: rgb(36, 34, 34);
+    color: white;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-around;
+
+    button {
+      /* all: unset; */
+      border: 1px solid white;
+    }
+  }
+`;
+
+export default function ControlBar({ setBps, bps, stepLength, setStepLength }) {
   const stepOptions = [4, 8, 16, 24, 32, 64];
   return (
     <Header>
       <section>
+        <DisplayPanel>
+          <div>
+            <p>001</p> <p>Bar</p>
+          </div>
+          <div>
+            {" "}
+            <p>1</p> <p>Beat</p>{" "}
+          </div>
+          <div>
+            {" "}
+            <span>
+              {" "}
+              <p>01</p> <p>HR</p>{" "}
+            </span>
+            <span>
+              {" "}
+              <p>00</p> <p>MIN</p>{" "}
+            </span>
+            <span>
+              {" "}
+              <p>001</p> <p>SEC</p>{" "}
+            </span>
+          </div>
+          <div>
+            {" "}
+            <p>Tempo</p> <p>110 bps</p>
+            <section>
+              <button>
+                {" "}
+                <img src="icons/arrow-up-red.svg" alt="arrow up" />{" "}
+              </button>
+              <button>
+                {" "}
+                <img src="icons/arrow-down-red.svg" alt="arrow down" />
+              </button>
+            </section>
+          </div>
+        </DisplayPanel>
+      </section>
+
+      <section>
         <ControlPanel>
-          <button>
-            <img src="icons/back.svg" alt="back" />
-          </button>
-          <button>
-            <img src="icons/next.svg" alt="next" />
-          </button>
-          <button>
-            <img src="icons/restart.svg" alt="restart" />
-          </button>
           <button>
             <img src="icons/play.svg" alt="play" />
           </button>
           <button>
-            <img src="icons/record.svg" alt="record" />
+            <img src="icons/stop.svg" alt="stop" />
           </button>
           <button>
-            <img src="icons/repeat.svg" alt="repeat" />
+            <img src="icons/record-black.svg" alt="record-black" />
           </button>
         </ControlPanel>
       </section>
 
-      <section>display section</section>
+      <section>
+        <div>Add Drum</div>
+        <div>Add Melody</div>
+      </section>
 
-      <input
+      {/* <input
         type="number"
         value={bps}
         onChange={(e) => setBps(e.target.value)}
-      />
-      <select
+      /> */}
+      {/* <select
         value={stepLength}
         onChange={(e) => setStepLength(e.target.value)}
       >
@@ -72,7 +152,7 @@ export default function ControlBar({setBps, bps, stepLength, setStepLength}) {
             {e}
           </option>
         ))}
-      </select>
+      </select> */}
     </Header>
   );
 }

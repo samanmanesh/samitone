@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 
 const EffectContainer = styled.div`
-  background: brown;
+  background: #1f3054;
   grid-area: effect;
 `;
 

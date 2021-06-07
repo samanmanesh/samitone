@@ -16,7 +16,7 @@ const AppWrapper = styled.div`
   height: 100vh;
   
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows:  auto;
+  grid-template-rows:  5rem auto;
   grid-template-areas:
     "playBar playBar playBar playBar"
     "body body body body"

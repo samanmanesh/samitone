@@ -6,7 +6,7 @@ import TrackRow from "./TrackRow";
 import styled from "styled-components";
 
 const TrackPlayerContainer = styled.div`
-  background: red;
+  background: #381c1c;
   grid-area: body;
 `;
 

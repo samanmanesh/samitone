@@ -13,3 +13,10 @@ const colors = {
     }
 }
 export default colors;
+
+
+export const sizes = {
+    headerHeight: '3rem',
+    sidebarWidth: '30ch',
+
+}

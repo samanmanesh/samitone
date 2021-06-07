@@ -8,6 +8,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
   /* background: pink; */
   /* width: 100wh; */
 
@@ -19,51 +20,41 @@ const DisplayPanel = styled.div`
   /* padding: 0.5rem; */
   display: flex;
 
-  div {
+  & > div {
     background-color: ${colors.background.panel};
     color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid white; */
     border-radius: 0.3rem;
     height: 3.5rem;
-    width: 7rem;
-    margin-left: 0.3rem;
+    min-width: 7rem;
+    margin-right: 0.5rem;
     p {
       margin: 0;
     }
   }
 
-  div:nth-child(1) {
-    margin-left: 1rem;
-  }
-
-  div:nth-child(3) {
-    width: 15rem;
+  .duration {
     flex-direction: row;
     justify-content: space-around;
   }
-  div:nth-child(4) {
+
+  .tempo {
     background: ${colors.background.panelDarker};
     color: white;
-    /* width: auto; */
     flex-direction: row;
     justify-content: space-around;
-
-    margin-left: 0.5rem;
-    /* font-size: 1ch;     */
-
+    & > div:first-child {
+      align-self: flex-end;
+    }
     div {
       background: inherit;
-
       border: none;
       width: inherit;
       display: flex;
       flex-direction: column;
-      /* justify-content:space-around; */
-
       button {
         all: unset;
         cursor: pointer;
@@ -74,14 +65,7 @@ const DisplayPanel = styled.div`
         }
       }
     }
-    div:nth-child(1) {
-      /* background: #381c1c; */
-      color: white;
-      //add font size then
-    }
-    div:nth-child(2) {
-      color: white;
-    }
+    color: white;
   }
 `;
 
@@ -106,7 +90,7 @@ const AddTrack = styled.div`
 
   div {
     background: ${colors.background.secondary};
-      border-radius:.4rem;
+    border-radius: 0.4rem;
     margin-right: 2rem;
     border-radius: 0.4rem;
     width: 7rem;
@@ -114,7 +98,6 @@ const AddTrack = styled.div`
     button {
       all: unset;
       cursor: pointer;
-      
     }
   }
 `;
@@ -129,34 +112,26 @@ export default function ControlBar({ setBps, bps, stepLength, setStepLength }) {
             <p>001</p> <p>Bar</p>
           </div>
           <div>
-            {" "}
-            <p>1</p> <p>Beat</p>{" "}
+            <p>1</p> <p>Beat</p>
           </div>
-          <div>
-            {" "}
+          <div className="duration">
             <span>
-              {" "}
-              <p>01</p> <p>HR</p>{" "}
+              <p>01</p> <p>HR</p>
             </span>
             <span>
-              {" "}
-              <p>00</p> <p>MIN</p>{" "}
+              <p>00</p> <p>MIN</p>
             </span>
             <span>
-              {" "}
-              <p>001</p> <p>SEC</p>{" "}
+              <p>001</p> <p>SEC</p>
             </span>
           </div>
-          <div>
-            {" "}
+          <div className="tempo">
             <div>Tempo</div> <div>110 bps</div>
             <div>
               <button>
-                {" "}
-                <img src="icons/arrow-up-red.svg" alt="arrow up" />{" "}
+                <img src="icons/arrow-up-red.svg" alt="arrow up" />
               </button>
               <button>
-                {" "}
                 <img src="icons/arrow-down-red.svg" alt="arrow down" />
               </button>
             </div>

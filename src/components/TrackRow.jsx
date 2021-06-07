@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Note from "./Note";
-import { instruments } from "../helpers/instruments";
+import { getInstrument, instruments } from "../helpers/instruments";
 
 const TrackRowWrapper = styled.div`
   background: rgb(50, 50, 50);
@@ -38,7 +38,6 @@ export default function TrackRow({
   stepLength,
 }) {
   const changedNote = (note) => {
-
     const updatedNotes = track.notes;
     updatedNotes[note.order].active = !updatedNotes[note.order].active;
     updateTrack(track.id, { ...track, notes: updatedNotes });
@@ -48,7 +47,9 @@ export default function TrackRow({
     updateTrack(track.id, { ...track, instrument: instrument });
   };
 
+  console.log(getInstrument(track.instrument));
   const instrumentKeys = Object.keys(instruments);
+  const colors = getInstrument(track.instrument).colors;
   return (
     <TrackRowWrapper>
       <TrackDetails>
@@ -74,6 +75,7 @@ export default function TrackRow({
               toggleNote={() => changedNote(note)}
               currentStep={currentStep}
               key={uuidv4()}
+              colors={colors}
             />
           ))}
       </Notes>

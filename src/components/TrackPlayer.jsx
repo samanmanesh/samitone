@@ -2,26 +2,26 @@ import React, { useState } from "react";
 import * as Tone from "tone";
 import { v4 as uuidv4 } from "uuid";
 import { getInstrument } from "../helpers/instruments";
-import TrackRow from './TrackRow'
+import TrackRow from "./TrackRow";
 import styled from "styled-components";
 
-
-
 const TrackPlayerContainer = styled.div`
-background: red;
-grid-area: body;
-  
+  background: red;
+  grid-area: body;
 `;
 
-
-
-export default function TrackPlayer({tracks, addTrack, updateTrack, stepLength, bps}) {
+export default function TrackPlayer({
+  tracks,
+  addTrack,
+  updateTrack,
+  stepLength,
+  bps,
+}) {
   // Song Playing
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const play = () => {
-
     if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note
@@ -56,7 +56,7 @@ export default function TrackPlayer({tracks, addTrack, updateTrack, stepLength, 
               `${note.pitch}${note.octave}`,
               note.duration
             );
-            const distortion = new Tone.Distortion(0.4).toDestination();
+            // const distortion = new Tone.Distortion(0.4).toDestination();
 
             // const feedbackDelay = new Tone.FeedbackDelay(
             //   delayTime,
@@ -89,8 +89,6 @@ export default function TrackPlayer({tracks, addTrack, updateTrack, stepLength, 
 
   return (
     <TrackPlayerContainer>
-      
-
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
       <button onClick={addTrack}>Add Track +</button>

@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
+import colors from '../styles';
 
 const Header = styled.div`
   grid-area: playBar;
@@ -17,9 +18,9 @@ const ControlPanel = styled.div`
     all: unset;
     width: 1rem;
     height: 1rem;
-    margin: 0.5rem;
+    margin: 0.1rem;
     padding: 0.5rem;
-    background: #1b1b4f;
+    background: ${colors.background.secondary};
 
     img {
       width: 1rem;

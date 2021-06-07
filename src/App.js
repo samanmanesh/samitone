@@ -6,9 +6,11 @@ import TrackPlayer from "./components/TrackPlayer";
 import Effect from "./components/Effect";
 import ControlBar from "./components/ControlBar"
 import styled from "styled-components";
+import colors from "./styles";
 
 const AppWrapper = styled.div`
   color: white;
+  background: ${colors.background.primary};
   display: grid;
   width: 100vw;
   height: 100vh;

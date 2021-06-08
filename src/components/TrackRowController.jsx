@@ -25,7 +25,7 @@ const TrackDetails = styled.div`
 
 export default function TrackRowController({ track }) {
   
-    const updateTrack = useSong();
+    const {updateTrack} = useSong();
 
     const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });

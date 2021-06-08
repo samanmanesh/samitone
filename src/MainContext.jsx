@@ -1,12 +1,15 @@
-import React, { useState, creatContext } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-export const MainContext = creatContext();
+// export const MainContext = createContext();
+export const MainContext = React.createContext();
 
 export const PlayProvider = (props) => {
-
-
-    const [tracks, setTracks] = useState([]);
+  const [tracks, setTracks] = useState([]);
+  const [options, setOptions] = useState({
+      bps: 120,
+      stepLength: 4
+  })
 
   const addTrack = () => {
     const newTrack = {
@@ -38,8 +41,16 @@ export const PlayProvider = (props) => {
     setTracks([...updatedTracks]);
   };
 
+  const contextValue = {
+      tracks,
+      setTracks,
+      addTrack,
+      updateTrack,
+      options,
+      setOptions
+  }
   return (
-    <MainContext.Provider value={([tracks, setTracks], addTrack, updateTrack)}>
+    <MainContext.Provider value={contextValue}>
       {props.children}
     </MainContext.Provider>
   );

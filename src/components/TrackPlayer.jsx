@@ -18,16 +18,12 @@ export default function TrackPlayer({
   stepLength,
   bps,
 }) {
-  
-  const [[tracks, setTracks], addTrack, updateTrack]= useContext(MainContext);
+  const { tracks, setTracks, addTrack, updateTrack } = useContext(MainContext);
   // Song Playing
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const play = () => {
-
-    
-
     if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note

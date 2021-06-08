@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import colors from "../styles";
 import DisplayPanel from "./DisplayPanel";
+import useSong from "../helpers/useSong";
 const Header = styled.div`
   grid-area: playBar;
   display: flex;
@@ -49,7 +50,7 @@ const AddTrack = styled.div`
   }
 `;
 
-export default function ControlBar({ setBps, bps, stepLength, setStepLength }) {
+export default function ControlBar({ stepLength, setStepLength }) {
   const stepOptions = [4, 8, 16, 24, 32, 64];
   return (
     <Header>

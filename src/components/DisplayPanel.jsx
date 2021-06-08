@@ -1,5 +1,6 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
+import useSong from "../helpers/useSong";
 import colors from "../styles";
 const DisplayPanelWrapper = styled.div`
   /* background: #874c4c; */
@@ -23,7 +24,7 @@ const DisplayPanelWrapper = styled.div`
   }
 
   .duration {
-    width:15rem;
+    width: 15rem;
     flex-direction: row;
     justify-content: space-around;
   }
@@ -56,38 +57,45 @@ const DisplayPanelWrapper = styled.div`
   }
 `;
 
-
 export default function DisplayPanel() {
-    return (
-             <DisplayPanelWrapper>
-          <div>
-            <p>001</p> <p>Bar</p>
-          </div>
-          <div>
-            <p>1</p> <p>Beat</p>
-          </div>
-          <div className="duration">
-            <span>
-              <p>01</p> <p>HR</p>
-            </span>
-            <span>
-              <p>00</p> <p>MIN</p>
-            </span>
-            <span>
-              <p>001</p> <p>SEC</p>
-            </span>
-          </div>
-          <div className="tempo">
-            <div>Tempo</div> <div>110 bps</div>
-            <div>
-              <button>
-                <img src="icons/arrow-up-red.svg" alt="arrow up" />
-              </button>
-              <button>
-                <img src="icons/arrow-down-red.svg" alt="arrow down" />
-              </button>
-            </div>
-          </div>
-        </DisplayPanelWrapper>
-    )
+  const {options, setOptions} = useSong();
+
+  console.log(options)
+  const changeTempo = increment => {
+    let newTempo = options.bps;
+    newTempo += increment;
+    setOptions({...options, bps: newTempo})
+  }
+  return (
+    <DisplayPanelWrapper>
+      <div>
+        <p>001</p> <p>Bar</p>
+      </div>
+      <div>
+        <p>1</p> <p>Beat</p>
+      </div>
+      <div className="duration">
+        <span>
+          <p>01</p> <p>HR</p>
+        </span>
+        <span>
+          <p>00</p> <p>MIN</p>
+        </span>
+        <span>
+          <p>001</p> <p>SEC</p>
+        </span>
+      </div>
+      <div className="tempo">
+        <div>Tempo</div> <div>{options.bps} bps</div>
+        <div>
+          <button onClick={() => changeTempo(1)}>
+            <img src="icons/arrow-up-red.svg" alt="arrow up" />
+          </button>
+          <button onClick={() => changeTempo(-1)}>
+            <img src="icons/arrow-down-red.svg" alt="arrow down" />
+          </button>
+        </div>
+      </div>
+    </DisplayPanelWrapper>
+  );
 }

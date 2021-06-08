@@ -1,36 +1,53 @@
 import React from "react";
 import styled from "styled-components";
+import colors from "../styles";
 import { v4 as uuidv4 } from "uuid";
 import Note from "./Note";
 import { getInstrument, instruments } from "../helpers/instruments";
+import TrackRowController from "./TrackRowController";
 
 const TrackRowWrapper = styled.div`
-  background: rgb(50, 50, 50);
+  /* background: ${colors.background.panelDarker}; */
+  /* display: flex; */
   border: 1px solid white;
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 0.5rem;
+
+  .controller-notes-container {
+    display: flex;
+    justify-content: space-between;
+    background: #753781;
+    & > div {margin:1rem;}
+  }
+  .effects-volume-container {
+    display: flex;
+    justify-content: space-between;
+    background: #357e56;
+    & > div {margin:1rem;}
+  }
 `;
 
 const Notes = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  /* width: 100%; */
   & > * {
     margin-right: 0.5rem;
-    
-    &:nth-child(${props => props.barLength}n) {
+
+    &:nth-child(${(props) => props.barLength}n) {
       margin-right: 1rem;
     }
-    
+
     &:last-child {
       margin-right: 0;
     }
   }
 `;
-const TrackDetails = styled.div`
-  display: flex;
-`;
+// const TrackDetails = styled.div`
+//   display: flex;
+// `;
+
 export default function TrackRow({
   track,
   updateTrack,
@@ -52,12 +69,10 @@ export default function TrackRow({
   const colors = getInstrument(track.instrument).colors;
   return (
     <TrackRowWrapper>
+      <section className="controller-notes-container">
+        <TrackRowController updateTrack={updateTrack} track={track} />
 
-       
-
-      <TrackDetails>
-        
-        
+        {/* <TrackDetails>
         <span>{track.instrument}</span>
         <select
           value={track.instrument}
@@ -69,21 +84,25 @@ export default function TrackRow({
             </option>
           ))}
         </select>
-        
-      </TrackDetails>
-      <Notes barLength={4}>
-        {track.notes
-          .filter((note) => note.order < stepLength)
-          .map((note) => (
-            <Note
-              note={note}
-              toggleNote={() => changedNote(note)}
-              currentStep={currentStep}
-              key={uuidv4()}
-              colors={colors}
-            />
-          ))}
-      </Notes>
+      </TrackDetails> */}
+        <Notes barLength={4}>
+          {track.notes
+            .filter((note) => note.order < stepLength)
+            .map((note) => (
+              <Note
+                note={note}
+                toggleNote={() => changedNote(note)}
+                currentStep={currentStep}
+                key={uuidv4()}
+                colors={colors}
+              />
+            ))}
+        </Notes>
+      </section>
+      <section className="effects-volume-container">
+        <div >effect</div>
+        <div>volume section</div>
+      </section>
     </TrackRowWrapper>
   );
 }

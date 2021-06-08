@@ -4,26 +4,30 @@ import colors from "../styles";
 import { v4 as uuidv4 } from "uuid";
 
 const TrackController = styled.div`
-display: flex;
+  display: flex;
 
-& > img {margin:1rem;}
-& > button {margin:1rem;}
-& > div {margin:1rem;}
+  & > img {
+    margin: 1rem;
+  }
+  & > button {
+    margin: 1rem;
+  }
+  & > div {
+    margin: 1rem;
+  }
 `;
 
 const TrackDetails = styled.div`
   display: flex;
 `;
 
-export default function TrackRowController({track ,updateTrack }) {
-
-    const changedInstrument = (instrument) => {
-        updateTrack(track.id, { ...track, instrument: instrument });
-      };
+export default function TrackRowController({ track, updateTrack }) {
+  const changedInstrument = (instrument) => {
+    updateTrack(track.id, { ...track, instrument: instrument });
+  };
 
   return (
     <TrackController>
-
       <img src="" alt="instruments icons" />
       <button>Mute</button>
       <button>Solo</button>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import * as Tone from "tone";
 import { v4 as uuidv4 } from "uuid";
 import { getInstrument } from "../helpers/instruments";
 import TrackRow from "./TrackRow";
 import styled from "styled-components";
+import { MainContext } from "../MainContext";
 
 const TrackPlayerContainer = styled.div`
   background: #381c1c;
@@ -11,17 +12,22 @@ const TrackPlayerContainer = styled.div`
 `;
 
 export default function TrackPlayer({
-  tracks,
-  addTrack,
-  updateTrack,
+  // tracks,
+  // addTrack,
+  // updateTrack,
   stepLength,
   bps,
 }) {
+  
+  const [[tracks, setTracks], addTrack, updateTrack]= useContext(MainContext);
   // Song Playing
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const play = () => {
+
+    
+
     if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note

@@ -8,8 +8,6 @@ import TrackRowController from "./TrackRowController";
 import useSong from "../helpers/useSong";
 
 const TrackRowWrapper = styled.div`
-  /* background: ${colors.background.panelDarker}; */
-  /* display: flex; */
   border: 1px solid white;
   border-radius: 0.25rem;
   padding: 1rem;
@@ -49,9 +47,6 @@ const Notes = styled.div`
     }
   }
 `;
-// const TrackDetails = styled.div`
-//   display: flex;
-// `;
 
 export default function TrackRow({ track }) {
   
@@ -62,36 +57,16 @@ export default function TrackRow({ track }) {
     updatedNotes[note.order].active = !updatedNotes[note.order].active;
     updateTrack(track.id, { ...track, notes: updatedNotes });
   };
-
-  // const changedInstrument = (instrument) => {
-  //   updateTrack(track.id, { ...track, instrument: instrument });
-  // };
-
-  // console.log(getInstrument(track.instrument));
-
-  // const instrumentKeys = Object.keys(instruments);
+  
 
   const colors = getInstrument(track.instrument).colors;
   
   return (
     <TrackRowWrapper>
       <section className="controller-notes-container">
-        {/* <TrackRowController updateTrack={updateTrack} track={track} /> */}
         <TrackRowController  track={track} />
 
-        {/* <TrackDetails>
-        <span>{track.instrument}</span>
-        <select
-          value={track.instrument}
-          onChange={(e) => changedInstrument(e.target.value)}
-        >
-          {instrumentKeys.map((e) => (
-            <option value={e} key={uuidv4()}>
-              {e}
-            </option>
-          ))}
-        </select>
-      </TrackDetails> */}
+        
 
         <Notes barLength={4}>
           {track.notes

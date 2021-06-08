@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../styles";
 import { v4 as uuidv4 } from "uuid";
+import { getInstrument, instruments } from "../helpers/instruments";
+import useSong from "../helpers/useSong";
 
 const TrackController = styled.div`
   display: flex;
@@ -21,11 +23,15 @@ const TrackDetails = styled.div`
   display: flex;
 `;
 
-export default function TrackRowController({ track, updateTrack }) {
-  const changedInstrument = (instrument) => {
-    updateTrack(track.id, { ...track, instrument: instrument });
-  };
+export default function TrackRowController({ track }) {
+  
+    const updateTrack = useSong();
 
+    const changedInstrument = (instrument) => {
+    updateTrack(track.id, { ...track, instrument: instrument });
+    
+  };
+  const instrumentKeys = Object.keys(instruments);
   return (
     <TrackController>
       <img src="" alt="instruments icons" />
@@ -33,19 +39,19 @@ export default function TrackRowController({ track, updateTrack }) {
       <button>Solo</button>
       <div>
         instruments name
-        {/* <TrackDetails>
+        <TrackDetails>
           <span>{track.instrument}</span>
           <select
-          value={track.instrument}
-          onChange={(e) => changedInstrument(e.target.value)}
-        >
-          {instrumentKeys.map((e) => (
-            <option value={e} key={uuidv4()}>
-              {e}
-            </option>
-          ))}
-        </select>
-        </TrackDetails> */}
+            value={track.instrument}
+            onChange={(e) => changedInstrument(e.target.value)}
+          >
+            {instrumentKeys.map((e) => (
+              <option value={e} key={uuidv4()}>
+                {e}
+              </option>
+            ))}
+          </select>
+        </TrackDetails>
       </div>
       <div>
         Velocity

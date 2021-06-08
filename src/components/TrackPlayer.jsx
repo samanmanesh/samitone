@@ -1,11 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import * as Tone from "tone";
 import { v4 as uuidv4 } from "uuid";
 import { getInstrument } from "../helpers/instruments";
 import TrackRow from "./TrackRow";
 import styled from "styled-components";
-import { MainContext } from "../MainContext";
-
+import useSong from "../helpers/useSong";
 const TrackPlayerContainer = styled.div`
   background: #381c1c;
   grid-area: body;
@@ -18,7 +17,7 @@ export default function TrackPlayer({
   stepLength,
   bps,
 }) {
-  const { tracks, setTracks, addTrack, updateTrack } = useContext(MainContext);
+  const { tracks, setTracks, addTrack, updateTrack } = useSong();
   // Song Playing
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
@@ -28,12 +27,7 @@ export default function TrackPlayer({
     // Loop
     //*play a note every quarter-note
     let i = 0;
-    // tracks.forEach((track) => {
-    //   const instrument = getInstrument(track.instrument);
-    //   const synth = instrument.sound.toDestination();
-    //   // const filter = new Tone.Filter(filterNum, "lowpass").toDestination();
-    //   // synth.connect(filter);
-    // });
+   
     const callback = (time) => {
       const step = i % stepLength;
       setCurrentStep(step);
@@ -98,9 +92,9 @@ export default function TrackPlayer({
         <TrackRow
           track={track}
           key={uuidv4()}
-          updateTrack={updateTrack}
-          currentStep={currentStep}
-          stepLength={stepLength}
+          // updateTrack={updateTrack}
+          // currentStep={currentStep}
+          // stepLength={stepLength}
         />
       ))}
     </TrackPlayerContainer>

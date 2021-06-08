@@ -102,27 +102,7 @@ function App() {
         setStepLength={setStepLength}
         stepLength={setStepLength}
       />
-      {/* <Header>
-        <section>display section</section>
-        <div>controlPanel</div>
-        <div>Hello this a test</div>
-
-        <input
-          type="number"
-          value={bps}
-          onChange={(e) => setBps(e.target.value)}
-        />
-        <select
-          value={stepLength}
-          onChange={(e) => setStepLength(e.target.value)}
-        >
-          {stepOptions.map((e) => (
-            <option value={e} key={uuidv4()}>
-              {e}
-            </option>
-          ))}
-        </select>
-      </Header> */}
+      
 
       <TrackPlayer
         tracks={tracks}
@@ -133,34 +113,7 @@ function App() {
       />
 
       <Effect />
-      {/* <h1>Effect</h1>
-        <div>
-          Filter
-          <input
-            type="number"
-            value={filterNum}
-            onChange={(e) => setFilterNum(e.target.value)}
-          />
-        </div>
-        <div>
-          <span>
-            Delay Time
-            <input
-              type="number"
-              value={delayTime}
-              onChange={(e) => setDelayTime(e.target.value)}
-            />
-          </span>
-          <span>
-            Feedback Delay number
-            <input
-              type="number"
-              value={feedbackDelayNum}
-              onChange={(e) => setFeedbackDelayNum(e.target.value)}
-            />
-          </span>
-        </div>
-      </div> */}
+      
     </AppWrapper>
   );
 }

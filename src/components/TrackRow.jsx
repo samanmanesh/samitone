@@ -52,7 +52,12 @@ export default function TrackRow({
   const colors = getInstrument(track.instrument).colors;
   return (
     <TrackRowWrapper>
+
+       
+
       <TrackDetails>
+        
+        
         <span>{track.instrument}</span>
         <select
           value={track.instrument}

@@ -37,6 +37,7 @@ const DisplayPanel = styled.div`
   }
 
   .duration {
+    width:15rem;
     flex-direction: row;
     justify-content: space-around;
   }

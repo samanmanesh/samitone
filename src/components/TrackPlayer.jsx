@@ -87,7 +87,7 @@ export default function TrackPlayer({
       });
     };
 
-    setLoop(new Tone.Loop(callback, bps).start(0));
+    setLoop(new Tone.Loop(callback, options.bps).start(0));
 
     Tone.Transport.start();
   };

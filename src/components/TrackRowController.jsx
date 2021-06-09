@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }from "react";
 import styled from "styled-components";
 import colors from "../styles";
 import { v4 as uuidv4 } from "uuid";
@@ -28,7 +28,9 @@ const TrackDetails = styled.div`
 `;
 
 export default function TrackRowController({ track }) {
-  const { updateTrack } = useSong();
+  
+    const { updateTrack } = useSong();
+    const {dropDown, setDropDown} = useState(false);
 
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
@@ -40,27 +42,49 @@ export default function TrackRowController({ track }) {
   // Get all instruments of same InstrumentType
   const instruments = getInstrumentsByType(currentInstrumentType);
   const instrumentKeys = instruments.map(e => e.name)
+
+//   const onChange=(e) =>{
+
+//     changedInstrument(e.target.value)
+//     setDropDown(false);
+//   }
+
+//   const onFocus =()=>{
+//     console.log("focus");
+//     setDropDown(true);
+//   }
+//   const handleClick = () => {
+//     setDropDown(true);
+//   }
   return (
     <TrackController>
       <img src="" alt="instruments icons" />
       <button>Mute</button>
       <button>Solo</button>
+      
+      
       <div>
         instruments name
         <TrackDetails>
           <span>{track.instrument}</span>
+         
           <select
             value={track.instrument}
             onChange={(e) => changedInstrument(e.target.value)}
+            key="instrument-selector"
+            // onChange={(e) => onChange(e.target.value) }
+            // onFocus ={() => setDropDown(true)}
           >
-            {instrumentKeys.map((e) => (
-              <option value={e} key={uuidv4()}>
+            {instrumentKeys.map((e, i) => (
+              <option value={e} key={`instrument-selector__${i}`} >
                 {e}
               </option>
             ))}
           </select>
         </TrackDetails>
-      </div>
+       </div>
+      
+      
       <div>
         Velocity
         <button>0</button>

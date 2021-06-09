@@ -44,7 +44,7 @@ const AddTrack = styled.div`
 `;
 // export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
-  const { options, setOptions, addTrack } = useSong();
+  const { options, setOptions, addTrack,play, pause } = useSong();
   const [showModal, setShowModal] = useState(false);
   const [selectedInstrument, setSelectedInstrument] = useState(null);
   const stepOptions = [4, 8, 16, 24, 32, 64];
@@ -62,12 +62,12 @@ export default function ControlBar() {
 
       <section>
         <ControlPanel>
-          {/* <button onClick={play}> */}
-            <button >
+          <button onClick={play}>
+            {/* <button > */}
             <img src="icons/play.svg" alt="play" />
           </button>
-          {/* <button onClick={pause}> */}
-            <button >
+          <button onClick={pause}>
+            {/* <button > */}
             <img src="icons/stop.svg" alt="stop" />
           </button>
           <button>

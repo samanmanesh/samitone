@@ -90,7 +90,6 @@ function App() {
 
   return (
     <PlayProvider>
-      <button>lol</button>
       <AppWrapper>
         <ControlBar
           // setBps={setBps}

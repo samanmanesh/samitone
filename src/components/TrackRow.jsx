@@ -60,6 +60,7 @@ export default function TrackRow({ track, currentStep }) {
   
 
   console.log(getInstrument(track.instrument))
+  
   const colors = getInstrument(track.instrument).colors;
   
   return (

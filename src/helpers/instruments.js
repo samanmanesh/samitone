@@ -15,7 +15,7 @@ export const InstrumentType = {
 export const getInstrument = (instrumentName) =>
   instruments.find((instrument) => instrument.name === instrumentName);
 
-export const getInstrumentsByType = instrumentType => 
+export const getInstrumentsByType = (instrumentType) => 
   instruments.filter((instrument) => instrument.type === instrumentType);
 
 

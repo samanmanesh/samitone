@@ -39,14 +39,14 @@ export default function TrackPlayer({
     let i = 0;
    
     const callback = (time) => {
-      console.log('callback')
+      // console.log('callback')
       // const step = i % stepLength;
       const step = i % options.stepLength;
       setCurrentStep(step);
       i++;
       tracks.forEach((track) => {
         const instrument = getInstrument(track.instrument);
-        console.log('callback:', instrument)
+        // console.log('callback:', instrument)
         const synth = instrument.sound.toDestination();
         //* Find the note for this track that is supposed
         //* to play at the current order
@@ -102,7 +102,7 @@ export default function TrackPlayer({
     <TrackPlayerContainer>
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
-      <button onClick={addTrack}>Add Track +</button>
+      {/* <button onClick={() =>addTrack("AM")}>Add Track +</button> */}
       {tracks.map((track) => (
         <TrackRow
           track={track}

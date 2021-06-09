@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 const ModalWrapper = styled.div`
@@ -17,7 +17,18 @@ const ModalContainer = styled.div`
   background: rgb(0,0,0);
   color: white;
 `;
+
+
 export default function Modal({handleClose, children}) {
+
+  function handleKeyDown(e) {
+    document.removeEventListener('keydown', this)
+    if (e.key === "Escape")
+      handleClose();
+  }
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+  }, [])
     return (
         <ModalWrapper onMouseDown={() => handleClose()}>
             <ModalContainer onMouseDown={e => e.stopPropagation()}>

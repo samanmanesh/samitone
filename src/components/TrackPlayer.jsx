@@ -106,7 +106,7 @@ export default function TrackPlayer({
       {tracks.map((track) => (
         <TrackRow
           track={track}
-          key={uuidv4()}
+          key={track.id}
           // updateTrack={updateTrack}
           currentStep={currentStep}
           // stepLength={stepLength}

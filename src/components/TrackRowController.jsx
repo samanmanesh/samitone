@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import colors from "../styles";
 import { v4 as uuidv4 } from "uuid";
@@ -8,6 +8,7 @@ import {
   instruments,
 } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
+import Selector from "./Selector";
 
 const TrackController = styled.div`
   display: flex;
@@ -28,9 +29,8 @@ const TrackDetails = styled.div`
 `;
 
 export default function TrackRowController({ track }) {
-  
-    const { updateTrack } = useSong();
-    const {dropDown, setDropDown} = useState(false);
+  const { updateTrack } = useSong();
+  const { dropDown, setDropDown } = useState(false);
 
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
@@ -41,33 +41,48 @@ export default function TrackRowController({ track }) {
 
   // Get all instruments of same InstrumentType
   const instruments = getInstrumentsByType(currentInstrumentType);
-  const instrumentKeys = instruments.map(e => e.name)
+  const instrumentKeys = instruments.map((e) => e.name);
 
-//   const onChange=(e) =>{
+  //   const onChange=(e) =>{
 
-//     changedInstrument(e.target.value)
-//     setDropDown(false);
-//   }
+  //     changedInstrument(e.target.value)
+  //     setDropDown(false);
+  //   }
 
-//   const onFocus =()=>{
-//     console.log("focus");
-//     setDropDown(true);
-//   }
-//   const handleClick = () => {
-//     setDropDown(true);
-//   }
+  //   const onFocus =()=>{
+  //     console.log("focus");
+  //     setDropDown(true);
+  //   }
+  //   const handleClick = () => {
+  //     setDropDown(true);
+  //   }
+  const [selectedOption, setSelectedOption] = useState('');
+  const handleChange = selectedOption => {
+      setSelectedOption(selectedOption)
+    console.log(`Option selected:`, selectedOption);
+  };
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
+
   return (
     <TrackController>
       <img src="" alt="instruments icons" />
       <button>Mute</button>
       <button>Solo</button>
-      
-      
+
       <div>
         instruments name
         <TrackDetails>
           <span>{track.instrument}</span>
-         
+          <Selector
+            value={track.instrument}
+            onChange={handleChange}
+            options={options}
+            key="apple"
+          />
           <select
             value={track.instrument}
             onChange={(e) => changedInstrument(e.target.value)}
@@ -76,15 +91,14 @@ export default function TrackRowController({ track }) {
             // onFocus ={() => setDropDown(true)}
           >
             {instrumentKeys.map((e, i) => (
-              <option value={e} key={`instrument-selector__${i}`} >
+              <option value={e} key={`instrument-selector__${i}`}>
                 {e}
               </option>
             ))}
           </select>
         </TrackDetails>
-       </div>
-      
-      
+      </div>
+
       <div>
         Velocity
         <button>0</button>

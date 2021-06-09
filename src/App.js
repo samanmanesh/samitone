@@ -3,6 +3,7 @@ import { PlayProvider } from "./contexts/PlayContext";
 import TrackPlayer from "./components/TrackPlayer";
 import Effect from "./components/Effect";
 import ControlBar from "./components/ControlBar";
+import AssistantBar from "./components/AssistantBar";
 import styled from "styled-components";
 import colors from "./styles";
 import { sizes } from "./styles";
@@ -15,9 +16,10 @@ const AppWrapper = styled.div`
   height: 100vh;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: ${sizes.headerHeight} auto;
+  grid-template-rows: ${sizes.headerHeight} ${sizes.assistantHeight}  auto;
   grid-template-areas:
     "playBar playBar playBar playBar"
+    "helper helper helper helper"
     "body body body body"
     "effect effect effect effect";
 `;
@@ -27,6 +29,7 @@ function App() {
       <MainProvider>
         <PlayProvider>
           <ControlBar />
+          <AssistantBar />
           <TrackPlayer />
           <Effect />
         </PlayProvider>

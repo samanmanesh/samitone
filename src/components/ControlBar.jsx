@@ -7,6 +7,8 @@ import useSong from "../helpers/useSong";
 import Modal from "./Modal";
 import { getInstrumentsByType, instruments, InstrumentType } from "../helpers/instruments";
 import usePlay from "../helpers/usePlay"
+
+
 const Header = styled.div`
   grid-area: playBar;
   display: flex;

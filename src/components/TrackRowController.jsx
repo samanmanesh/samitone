@@ -6,7 +6,7 @@ import { getInstrument, instruments } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
 
 const TrackController = styled.div`
-  display: flex;
+  display: flex; 
 
   & > img {
     margin: 1rem;

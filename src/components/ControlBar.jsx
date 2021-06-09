@@ -52,7 +52,7 @@ const AddTrack = styled.div`
 // export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
 
-  const {options, setOptions} = useSong();
+  const {options, setOptions, addTrack} = useSong();
 
   const stepOptions = [4, 8, 16, 24, 32, 64];
   return (
@@ -77,13 +77,13 @@ export default function ControlBar() {
 
       <AddTrack>
         <div>
-          <button>
+          <button onClick={addTrack} >
             <img src="icons/plus.svg" alt="plus" />
             Instrument Drum
           </button>
         </div>
         <div>
-          <button>
+          <button onClick={addTrack} >
             <img src="icons/plus.svg" alt="plus" />
             Instrument Melody
           </button>

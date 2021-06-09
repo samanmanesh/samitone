@@ -1,5 +1,6 @@
 import * as Tone from "tone";
 import colors from "../styles";
+
 export const InstrumentType = {
   Synth: "synth",
   Beat: "beat",

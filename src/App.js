@@ -1,6 +1,7 @@
 import * as Tone from "tone";
 import { useEffect, useState, useRef } from "react";
 import { PlayProvider } from "./MainContext";
+import{PlayPauseHandler} from "./contexts/PlayContext"
 
 // import { v4 as uuidv4 } from "uuid";
 
@@ -91,6 +92,7 @@ function App() {
   return (
     <PlayProvider>
       <AppWrapper>
+       <PlayPauseHandler>
         <ControlBar
           // setBps={setBps}
           // bps={bps}
@@ -109,6 +111,7 @@ function App() {
         />
 
         <Effect />
+        </PlayPauseHandler>
       </AppWrapper>
    
     </PlayProvider>

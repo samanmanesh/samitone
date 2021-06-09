@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import colors from "../styles";
@@ -6,6 +6,7 @@ import DisplayPanel from "./DisplayPanel";
 import useSong from "../helpers/useSong";
 import Modal from "./Modal";
 import { getInstrumentsByType, instruments, InstrumentType } from "../helpers/instruments";
+import {PlayContext} from "../contexts/PlayContext";
 const Header = styled.div`
   grid-area: playBar;
   display: flex;
@@ -43,10 +44,11 @@ const AddTrack = styled.div`
   }
 `;
 // export default function ControlBar({ stepLength, setStepLength })
-export default function ControlBar({play, pause}) {
+export default function ControlBar() {
   const { options, setOptions, addTrack } = useSong();
+  const {play,pause} = useContext(PlayContext);
+
   const [showModal, setShowModal] = useState(false);
-  const [selectedInstrument, setSelectedInstrument] = useState(null);
   const stepOptions = [4, 8, 16, 24, 32, 64];
 
   const handleAddTrack = instrumentName => {

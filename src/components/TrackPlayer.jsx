@@ -93,7 +93,7 @@ export default function TrackPlayer({
           track={track}
           key={uuidv4()}
           // updateTrack={updateTrack}
-          // currentStep={currentStep}
+          currentStep={currentStep}
           // stepLength={stepLength}
         />
       ))}

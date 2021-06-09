@@ -49,8 +49,11 @@ const AddTrack = styled.div`
     }
   }
 `;
+// export default function ControlBar({ stepLength, setStepLength })
+export default function ControlBar() {
 
-export default function ControlBar({ stepLength, setStepLength }) {
+  const {options, setOptions} = useSong();
+
   const stepOptions = [4, 8, 16, 24, 32, 64];
   return (
     <Header>
@@ -87,21 +90,25 @@ export default function ControlBar({ stepLength, setStepLength }) {
         </div>
       </AddTrack>
 
-      {/* <input
+      <input
         type="number"
-        value={bps}
-        onChange={(e) => setBps(e.target.value)}
-      /> */}
-      {/* <select
-        value={stepLength}
-        onChange={(e) => setStepLength(e.target.value)}
+        // value={bps}
+        value={options.bps}
+        // onChange={(e) => setBps(e.target.value)}
+        onChange={(e) => setOptions({...options, bps : e.target.value})}
+      />
+      <select
+        // value={stepLength}
+        value={options.stepLength}
+        // onChange={(e) => setStepLength(e.target.value)}
+        onChange={(e) => setOptions({...options, stepLength: e.target.value})}
       >
         {stepOptions.map((e) => (
           <option value={e} key={uuidv4()} >
             {e}
           </option>
         ))}
-      </select> */}
+      </select>
     </Header>
   );
 }

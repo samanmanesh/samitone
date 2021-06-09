@@ -42,8 +42,8 @@ const AppWrapper = styled.div`
 // `;
 
 function App() {
-  const [stepLength, setStepLength] = useState(16);
-  const [bps, setBps] = useState(0.5);
+  // const [stepLength, setStepLength] = useState(16);
+  // const [bps, setBps] = useState(0.5);
   // const [tracks, setTracks] = useState([]);
   // const [filterNum, setFilterNum] = useState(400);
   // const [delayTime, setDelayTime] = useState(0.125);
@@ -101,18 +101,18 @@ function App() {
       
       <AppWrapper>
         <ControlBar
-          setBps={setBps}
-          bps={bps}
-          setStepLength={setStepLength}
-          stepLength={setStepLength}
+          // setBps={setBps}
+          // bps={bps}
+          // setStepLength={setStepLength}
+          // stepLength={setStepLength}
         />
 
         <TrackPlayer
           // tracks={tracks}
           // addTrack={addTrack}
           // updateTrack={updateTrack}
-          stepLength={stepLength}
-          bps={bps}
+          // stepLength={stepLength}
+          // bps={bps}
         />
 
         <Effect />

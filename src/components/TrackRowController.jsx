@@ -20,7 +20,7 @@ const TrackController = styled.div`
 `;
 
 const TrackDetails = styled.div`
-  display: flex;
+  /* display: flex; */
 `;
 
 export default function TrackRowController({ track }) {

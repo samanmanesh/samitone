@@ -7,8 +7,8 @@ export const MainContext = React.createContext();
 export const PlayProvider = (props) => {
   const [tracks, setTracks] = useState([]);
   const [options, setOptions] = useState({
-      bps: 120,
-      stepLength: 4
+      bps: 0.5,
+      stepLength: 16
   })
 
   const addTrack = () => {

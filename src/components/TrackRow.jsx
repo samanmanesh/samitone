@@ -32,7 +32,7 @@ const TrackRowWrapper = styled.div`
 `;
 
 const Notes = styled.div`
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   /* width: 100%; */
   & > * {
@@ -48,9 +48,9 @@ const Notes = styled.div`
   }
 `;
 
-export default function TrackRow({ track }) {
+export default function TrackRow({ track, currentStep }) {
   
-  const { updateTrack, currentStep, stepLength } = useSong();
+  const { updateTrack, stepLength } = useSong();
 
   const changedNote = (note) => {
     const updatedNotes = track.notes;
@@ -65,8 +65,6 @@ export default function TrackRow({ track }) {
     <TrackRowWrapper>
       <section className="controller-notes-container">
         <TrackRowController  track={track} />
-
-        
 
         <Notes barLength={4}>
           {track.notes

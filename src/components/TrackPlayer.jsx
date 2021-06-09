@@ -105,9 +105,6 @@ export default function TrackPlayer({
 
   return (
     <TrackPlayerContainer>
-      {/* <button onClick={play}>Play</button>
-      <button onClick={pause}>Pause</button> */}
-      {/* <button onClick={() =>addTrack("AM")}>Add Track +</button> */}
       {tracks.map((track) => (
         <TrackRow
           track={track}

@@ -62,10 +62,12 @@ export default function ControlBar() {
 
       <section>
         <ControlPanel>
-          <button>
+          {/* <button onClick={play}> */}
+            <button >
             <img src="icons/play.svg" alt="play" />
           </button>
-          <button>
+          {/* <button onClick={pause}> */}
+            <button >
             <img src="icons/stop.svg" alt="stop" />
           </button>
           <button>

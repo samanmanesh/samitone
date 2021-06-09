@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-// export const MainContext = createContext();
-export const MainContext = React.createContext();
+export const MainContext = createContext();
 
 export const MainProvider = (props) => {
   const [tracks, setTracks] = useState([]);

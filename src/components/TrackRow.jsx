@@ -50,7 +50,7 @@ const Notes = styled.div`
 
 export default function TrackRow({ track, currentStep }) {
   
-  const { updateTrack, stepLength } = useSong();
+  const { updateTrack, options } = useSong();
 
   const changedNote = (note) => {
     const updatedNotes = track.notes;
@@ -68,7 +68,7 @@ export default function TrackRow({ track, currentStep }) {
 
         <Notes barLength={4}>
           {track.notes
-            .filter((note) => note.order < stepLength)
+            .filter((note) => note.order < options.stepLength)
             .map((note) => (
               <Note
                 note={note}

@@ -14,10 +14,10 @@ export default function TrackPlayer({
   // tracks,
   // addTrack,
   // updateTrack,
-  stepLength,
+  // stepLength,
   bps,
 }) {
-  const { tracks, setTracks, addTrack, updateTrack } = useSong();
+  const { tracks, setTracks, addTrack, updateTrack, options, setOptions } = useSong();
   // Song Playing
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
@@ -29,7 +29,8 @@ export default function TrackPlayer({
     let i = 0;
    
     const callback = (time) => {
-      const step = i % stepLength;
+      // const step = i % stepLength;
+      const step = i % options.stepLength;
       setCurrentStep(step);
       i++;
       tracks.forEach((track) => {

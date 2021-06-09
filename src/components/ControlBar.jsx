@@ -43,8 +43,8 @@ const AddTrack = styled.div`
   }
 `;
 // export default function ControlBar({ stepLength, setStepLength })
-export default function ControlBar() {
-  const { options, setOptions, addTrack,play, pause } = useSong();
+export default function ControlBar({play, pause}) {
+  const { options, setOptions, addTrack } = useSong();
   const [showModal, setShowModal] = useState(false);
   const [selectedInstrument, setSelectedInstrument] = useState(null);
   const stepOptions = [4, 8, 16, 24, 32, 64];

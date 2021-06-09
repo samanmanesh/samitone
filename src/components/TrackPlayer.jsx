@@ -5,6 +5,8 @@ import { getInstrument } from "../helpers/instruments";
 import TrackRow from "./TrackRow";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
+
+
 const TrackPlayerContainer = styled.div`
   background: #381c1c;
   grid-area: body;
@@ -15,6 +17,7 @@ export default function TrackPlayer({
   // addTrack,
   // updateTrack,
   // stepLength,
+  
   bps,
 }) {
   const { tracks, setTracks, addTrack, updateTrack, options, setOptions } = useSong();

@@ -48,7 +48,6 @@ function App() {
   // const [filterNum, setFilterNum] = useState(400);
   // const [delayTime, setDelayTime] = useState(0.125);
   // const [feedbackDelayNum, setFeedbackDelayNum] = useState(0.5);
-
   // General
 
   // const [octave, setOctave] = useState()
@@ -88,6 +87,7 @@ function App() {
   //   setTracks([...updatedTracks]);
   // };
 
+  
   return (
     <PlayProvider>
       <AppWrapper>
@@ -96,9 +96,11 @@ function App() {
           // bps={bps}
           // setStepLength={setStepLength}
           // stepLength={setStepLength}
+         
         />
 
         <TrackPlayer
+         
           // tracks={tracks}
           // addTrack={addTrack}
           // updateTrack={updateTrack}

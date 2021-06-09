@@ -8,7 +8,6 @@ import {
   instruments,
 } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
-import Selector from "./Selector";
 
 const TrackController = styled.div`
   display: flex;
@@ -30,7 +29,6 @@ const TrackDetails = styled.div`
 
 export default function TrackRowController({ track }) {
   const { updateTrack } = useSong();
-  const { dropDown, setDropDown } = useState(false);
 
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
@@ -43,24 +41,7 @@ export default function TrackRowController({ track }) {
   const instruments = getInstrumentsByType(currentInstrumentType);
   const instrumentKeys = instruments.map((e) => e.name);
 
-  //   const onChange=(e) =>{
-
-  //     changedInstrument(e.target.value)
-  //     setDropDown(false);
-  //   }
-
-  //   const onFocus =()=>{
-  //     console.log("focus");
-  //     setDropDown(true);
-  //   }
-  //   const handleClick = () => {
-  //     setDropDown(true);
-  //   }
-  const [selectedOption, setSelectedOption] = useState('');
-  const handleChange = selectedOption => {
-      setSelectedOption(selectedOption)
-    console.log(`Option selected:`, selectedOption);
-  };
+  
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -77,18 +58,10 @@ export default function TrackRowController({ track }) {
         instruments name
         <TrackDetails>
           <span>{track.instrument}</span>
-          <Selector
-            value={track.instrument}
-            onChange={handleChange}
-            options={options}
-            key="apple"
-          />
           <select
             value={track.instrument}
             onChange={(e) => changedInstrument(e.target.value)}
             key="instrument-selector"
-            // onChange={(e) => onChange(e.target.value) }
-            // onFocus ={() => setDropDown(true)}
           >
             {instrumentKeys.map((e, i) => (
               <option value={e} key={`instrument-selector__${i}`}>

@@ -97,7 +97,7 @@ export default function ControlBar() {
         <Modal handleClose={() => setShowModal(false)}>
           <h3>Select Instrument</h3>
           {
-            getInstrumentsByType(showModal).map(instrument => <div onClick={() => handleAddTrack(instrument.name)}>{instrument.name}</div>)
+            getInstrumentsByType(showModal).map(instrument => <div onClick={() => handleAddTrack(instrument.name)} key={instrument.name}>{instrument.name}</div>)
           }
         </Modal>
       )}
@@ -113,9 +113,10 @@ export default function ControlBar() {
         value={options.stepLength}
         // onChange={(e) => setStepLength(e.target.value)}
         onChange={(e) => setOptions({ ...options, stepLength: e.target.value })}
+        key="step-select"
       >
         {stepOptions.map((e) => (
-          <option value={e} key={uuidv4()}>
+          <option value={e} key={e}>
             {e}
           </option>
         ))}

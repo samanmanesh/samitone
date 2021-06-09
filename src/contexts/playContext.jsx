@@ -3,11 +3,9 @@ import * as Tone from "tone";
 import { getInstrument } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
 
-
-
 export const PlayContext = createContext();
 
-export const PlayPauseHandler = (props) => {
+export const PlayProvider = (props) => {
     const { tracks, options } = useSong();
     const [loop, setLoop] = useState(null);
     const [currentStep, setCurrentStep] = useState(0);

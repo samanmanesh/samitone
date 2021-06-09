@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 // export const MainContext = createContext();
 export const MainContext = React.createContext();
 
-export const PlayProvider = (props) => {
+export const MainProvider = (props) => {
   const [tracks, setTracks] = useState([]);
   const [options, setOptions] = useState({
       bps: 0.5,

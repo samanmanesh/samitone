@@ -8,13 +8,14 @@ export const PlayProvider = (props) => {
   const [tracks, setTracks] = useState([]);
   const [options, setOptions] = useState({
       bps: 0.5,
-      stepLength: 16
+      stepLength: 16,
+      selectedInstrument: "AM",
   })
 
   const addTrack = () => {
     const newTrack = {
       id: uuidv4(),
-      instrument: "AM",
+      instrument: options.selectedInstrument,
     };
     const notes = [];
     //*adding the maxLength instead stepLength

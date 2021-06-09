@@ -84,6 +84,8 @@ export default function TrackPlayer({
     Tone.Transport.stop();
   };
 
+  
+
   return (
     <TrackPlayerContainer>
       <button onClick={play}>Play</button>

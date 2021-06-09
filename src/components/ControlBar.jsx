@@ -77,7 +77,8 @@ export default function ControlBar() {
 
       <AddTrack>
         <div>
-          <button onClick={addTrack} >
+          <button  onClick={addTrack}
+          onClick={() => setOptions({...options, selectedInstrument: "Kick" })} >
             <img src="icons/plus.svg" alt="plus" />
             Instrument Drum
           </button>

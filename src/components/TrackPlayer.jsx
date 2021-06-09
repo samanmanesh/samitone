@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import * as Tone from "tone";
 import { v4 as uuidv4 } from "uuid";
 import { getInstrument } from "../helpers/instruments";
@@ -22,19 +22,31 @@ export default function TrackPlayer({
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
-  const play = () => {
+  // useEffect(() => {
+  //   //attach a click listener to a play button
+  //   document.querySelector("button")?.addEventListener("click", async () => {
+  //     await Tone.start();
+  //     console.log("audio is ready");
+  //   });
+  // }, []);
+
+  const play = async () => {
+    await Tone.start();
+    console.log('hit play')
     if (loop) loop.stop(0);
     // Loop
     //*play a note every quarter-note
     let i = 0;
    
     const callback = (time) => {
+      console.log('callback')
       // const step = i % stepLength;
       const step = i % options.stepLength;
       setCurrentStep(step);
       i++;
       tracks.forEach((track) => {
         const instrument = getInstrument(track.instrument);
+        console.log('callback:', instrument)
         const synth = instrument.sound.toDestination();
         //* Find the note for this track that is supposed
         //* to play at the current order
@@ -84,7 +96,7 @@ export default function TrackPlayer({
     Tone.Transport.stop();
   };
 
-  
+
 
   return (
     <TrackPlayerContainer>

@@ -1,31 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import colors from "../styles";
 import DisplayPanel from "./DisplayPanel";
 import useSong from "../helpers/useSong";
+import Modal from "./Modal";
+import { getInstrumentsByType, instruments, InstrumentType } from "../helpers/instruments";
 const Header = styled.div`
   grid-area: playBar;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  /* background: pink; */
-  /* width: 100wh; */
-
-  /* height: 2rem; */
 `;
-
 
 const ControlPanel = styled.div`
   button {
     all: unset;
-    /* width: 1rem;
-  height: 1rem; */
     margin: 0.1rem;
     padding: 0.5rem;
-    /* background: ${colors.background.secondary}; */
-
     img {
       width: 1.7rem;
       height: 1.7rem;
@@ -51,14 +44,20 @@ const AddTrack = styled.div`
 `;
 // export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
-
-  const {options, setOptions, addTrack} = useSong();
-
+  const { options, setOptions, addTrack } = useSong();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedInstrument, setSelectedInstrument] = useState(null);
   const stepOptions = [4, 8, 16, 24, 32, 64];
+
+  const handleAddTrack = instrumentName => {
+    addTrack(instrumentName);
+    setShowModal(false);
+  };
+
   return (
     <Header>
       <section>
-       <DisplayPanel />
+        <DisplayPanel />
       </section>
 
       <section>
@@ -77,35 +76,42 @@ export default function ControlBar() {
 
       <AddTrack>
         <div>
-          <button  onClick={addTrack}
-          onClick={() => setOptions({...options, selectedInstrument: "Kick" })} >
+          <button onClick={() => setShowModal(InstrumentType.Beat)}>
             <img src="icons/plus.svg" alt="plus" />
             Instrument Drum
           </button>
         </div>
         <div>
-          <button onClick={addTrack} >
+          <button onClick={() => setShowModal(InstrumentType.Synth)}>
             <img src="icons/plus.svg" alt="plus" />
             Instrument Melody
           </button>
         </div>
       </AddTrack>
 
+      {showModal && (
+        <Modal handleClose={() => setShowModal(false)}>
+          <h3>Select Instrument</h3>
+          {
+            getInstrumentsByType(showModal).map(instrument => <div onClick={() => handleAddTrack(instrument.name)}>{instrument.name}</div>)
+          }
+        </Modal>
+      )}
       <input
         type="number"
         // value={bps}
         value={options.bps}
         // onChange={(e) => setBps(e.target.value)}
-        onChange={(e) => setOptions({...options, bps : e.target.value})}
+        onChange={(e) => setOptions({ ...options, bps: e.target.value })}
       />
       <select
         // value={stepLength}
         value={options.stepLength}
         // onChange={(e) => setStepLength(e.target.value)}
-        onChange={(e) => setOptions({...options, stepLength: e.target.value})}
+        onChange={(e) => setOptions({ ...options, stepLength: e.target.value })}
       >
         {stepOptions.map((e) => (
-          <option value={e} key={uuidv4()} >
+          <option value={e} key={uuidv4()}>
             {e}
           </option>
         ))}

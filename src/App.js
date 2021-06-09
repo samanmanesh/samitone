@@ -58,14 +58,6 @@ function App() {
 
   const reference = useRef();
 
-  useEffect(() => {
-    //attach a click listener to a play button
-    document.querySelector("button")?.addEventListener("click", async () => {
-      await Tone.start();
-      console.log("audio is ready");
-    });
-  }, []);
-
   // const addTrack = () => {
   //   const newTrack = {
   //     id: uuidv4(),
@@ -98,7 +90,7 @@ function App() {
 
   return (
     <PlayProvider>
-      
+      <button>lol</button>
       <AppWrapper>
         <ControlBar
           // setBps={setBps}

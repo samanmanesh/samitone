@@ -2,11 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../styles";
 import { v4 as uuidv4 } from "uuid";
-import { getInstrument, instruments } from "../helpers/instruments";
+import {
+  getInstrument,
+  getInstrumentsByType,
+  instruments,
+} from "../helpers/instruments";
 import useSong from "../helpers/useSong";
 
 const TrackController = styled.div`
-  display: flex; 
+  display: flex;
 
   & > img {
     margin: 1rem;
@@ -24,14 +28,18 @@ const TrackDetails = styled.div`
 `;
 
 export default function TrackRowController({ track }) {
-  
-    const {updateTrack} = useSong();
+  const { updateTrack } = useSong();
 
-    const changedInstrument = (instrument) => {
+  const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
-    
   };
-  const instrumentKeys = Object.keys(instruments);
+
+  // Get what this track type is
+  const currentInstrumentType = getInstrument(track.instrument).type;
+
+  // Get all instruments of same InstrumentType
+  const instruments = getInstrumentsByType(currentInstrumentType);
+  const instrumentKeys = instruments.map(e => e.name)
   return (
     <TrackController>
       <img src="" alt="instruments icons" />

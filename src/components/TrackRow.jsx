@@ -7,6 +7,7 @@ import { getInstrument, instruments } from "../helpers/instruments";
 import TrackRowController from "./TrackRowController";
 import useSong from "../helpers/useSong";
 
+
 const TrackRowWrapper = styled.div`
   border: 1px solid white;
   border-radius: 0.25rem;
@@ -60,7 +61,7 @@ export default function TrackRow({ track, currentStep }) {
   
 
   console.log(getInstrument(track.instrument))
-  
+
   const colors = getInstrument(track.instrument).colors;
   
   return (

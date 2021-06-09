@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import TrackRow from "./TrackRow";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
-import { PlayContext } from "../contexts/PlayContext";
+import usePlay from "../helpers/usePlay"
 
 const TrackPlayerContainer = styled.div`
   background: #381c1c;
@@ -11,7 +11,7 @@ const TrackPlayerContainer = styled.div`
 
 export default function TrackPlayer({ bps }) {
   const { tracks } = useSong();
-  const { currentStep } = useContext(PlayContext);
+  const { currentStep } = usePlay();
 
   return (
     <TrackPlayerContainer>

@@ -6,7 +6,7 @@ import DisplayPanel from "./DisplayPanel";
 import useSong from "../helpers/useSong";
 import Modal from "./Modal";
 import { getInstrumentsByType, instruments, InstrumentType } from "../helpers/instruments";
-import {PlayContext} from "../contexts/PlayContext";
+import usePlay from "../helpers/usePlay"
 const Header = styled.div`
   grid-area: playBar;
   display: flex;
@@ -46,7 +46,7 @@ const AddTrack = styled.div`
 // export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
   const { options, setOptions, addTrack } = useSong();
-  const {play,pause} = useContext(PlayContext);
+  const {play,pause} = usePlay();
 
   const [showModal, setShowModal] = useState(false);
   const stepOptions = [4, 8, 16, 24, 32, 64];

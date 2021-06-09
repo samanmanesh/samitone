@@ -1,6 +1,5 @@
 import React, { useState, createContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-
 export const MainContext = createContext();
 
 export const MainProvider = (props) => {

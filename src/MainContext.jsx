@@ -14,24 +14,32 @@ export const MainProvider = (props) => {
       id: uuidv4(),
       instrument: instrumentName,
     };
-    const notes = [];
+    // const notes = [[]];
+    const rows =[];
+    
     //*adding the maxLength instead stepLength
     const maxLength = 64;
     // const CMajorScale = ["C","D","E","F","G"]
-    if(instrumentName === "AM")
-    for(let j = 0; j < 7 ; j++) 
-    for (let i = 0; i < maxLength; i++) {
-      const note = {
-        pitch: "C",
-        octave: "2",
-        duration: "8n",
-        order: i,
-        active: false,
-      };
-      notes.push(note);
-    }
-    newTrack.notes = notes;
+    // if(instrumentName === "AM")
+    for(let j = 0; j < 2 ; j++){
+        const notes = [];    
+        for (let i = 0; i < maxLength; i++) {
+            const note = {
+              pitch: "C",
+              octave: "2",
+              duration: "8n",
+              row: j,
+              order: i,
+              active: false,
+            };
+            notes.push(note);
+          }
+          rows.push(notes);
+    } 
+    
+    newTrack.notes = rows;
     setTracks((prev) => [...prev, newTrack]);
+    console.log(tracks);
   };
 
   const updateTrack = (trackID, updatedTrack) => {

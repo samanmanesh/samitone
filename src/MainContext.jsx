@@ -21,7 +21,7 @@ export const MainProvider = (props) => {
     const maxLength = 64;
     // const CMajorScale = ["C","D","E","F","G"]
     // if(instrumentName === "AM")
-    for(let j = 0; j < 2 ; j++){
+    for(let j = 0; j < 7 ; j++){
         const notes = [];    
         for (let i = 0; i < maxLength; i++) {
             const note = {

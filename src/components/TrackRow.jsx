@@ -56,48 +56,17 @@ export default function TrackRow({ track, currentStep }) {
 
   const changedNote = (note) => {
     console.log("changed note", note);
+
     const updatedNotes = track.notes;
     updatedNotes[note.row][note.order].active =
       !updatedNotes[note.row][note.order].active;
+      
     console.log("calling update track", updatedNotes);
     updateTrack(track.id, { ...track, notes: updatedNotes });
   };
 
-  // console.log(getInstrument(track.instrument));
-
-  // const notesRows = [];
-
-  // const notesFilter = () => {
-  //   for (let i = 0; i < track.notes.length; i++) {
-  //     // console.log(track.notes.length, " track notes length");
-  //     // console.log(track.notes[i], "loop check");
-  //     console.log(
-  //       track.notes[i].filter((note) => note.order < options.stepLength),
-  //       "loop check2"
-  //     );
-  //     console.log(track.notes[i], " check if it is increased");
-
-  //     //*way 1
-  //     return track.notes[i]
-  //       .filter((note) => note.order < options.stepLength)
-  //       .map((note) => (
-  //         <Note
-  //           note={note}
-  //           toggleNote={() => changedNote(note)}
-  //           currentStep={currentStep}
-  //           key={uuidv4()}
-  //           colors={colors}
-  //         />
-  //       ));
-  //     // //*way2
-  //     // notesRows.push(track.notes[i].filter((note) => note.order < options.stepLength))
-  //   }
-  // };
-  // // console.log(track, "check2");
-  // // console.log(notesRows,"notesRows")
 
   const colors = getInstrument(track.instrument).colors;
-  // console.log(track.notes, "check it out");
 
   return (
     <TrackRowWrapper>
@@ -121,29 +90,6 @@ export default function TrackRow({ track, currentStep }) {
         ))}
         </NotesWrapper>
 
-        {/* {notesFilter()}
-            {notesRows.map((note) => (note).map((note)=> 
-              <Note
-                note={note}
-                toggleNote={() => changedNote(note)}
-                currentStep={currentStep}
-                key={uuidv4()}
-                colors={colors}
-              />
-            ))} */}
-
-        {/* {track.notes
-            .filter((note) => note.order < options.stepLength)
-            .map((note) => (
-              <Note
-                note={note}
-                toggleNote={() => changedNote(note)}
-                currentStep={currentStep}
-                key={uuidv4()}
-                colors={colors}
-              />
-            ))} */}
-        {/* </Notes> */}
       </section>
 
       <section className="effects-volume-container">

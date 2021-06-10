@@ -110,19 +110,7 @@ export default function ControlBar() {
         // onChange={(e) => setBps(e.target.value)}
         onChange={(e) => setOptions({ ...options, bps: e.target.value })}
       />
-      <select
-        // value={stepLength}
-        value={options.stepLength}
-        // onChange={(e) => setStepLength(e.target.value)}
-        onChange={(e) => setOptions({ ...options, stepLength: e.target.value })}
-        key="step-select"
-      >
-        {stepOptions.map((e) => (
-          <option value={e} key={e}>
-            {e}
-          </option>
-        ))}
-      </select>
+      
     </Header>
   );
 }

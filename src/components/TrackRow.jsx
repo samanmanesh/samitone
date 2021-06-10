@@ -9,6 +9,7 @@ import useSong from "../helpers/useSong";
 
 const NotesWrapper = styled.div`
   width: 100%;
+  background:brown;
 `;
 const TrackRowWrapper = styled.div`
   border: 1px solid white;
@@ -19,7 +20,7 @@ const TrackRowWrapper = styled.div`
   .controller-notes-container {
     display: flex;
     justify-content: space-between;
-    background: #753781;
+    /* background: #753781; */
     & > div {
       margin: 1rem;
     }
@@ -64,36 +65,36 @@ export default function TrackRow({ track, currentStep }) {
 
   // console.log(getInstrument(track.instrument));
 
-  const notesRows = [];
+  // const notesRows = [];
 
-  const notesFilter = () => {
-    for (let i = 0; i < track.notes.length; i++) {
-      // console.log(track.notes.length, " track notes length");
-      // console.log(track.notes[i], "loop check");
-      console.log(
-        track.notes[i].filter((note) => note.order < options.stepLength),
-        "loop check2"
-      );
-      console.log(track.notes[i], " check if it is increased");
+  // const notesFilter = () => {
+  //   for (let i = 0; i < track.notes.length; i++) {
+  //     // console.log(track.notes.length, " track notes length");
+  //     // console.log(track.notes[i], "loop check");
+  //     console.log(
+  //       track.notes[i].filter((note) => note.order < options.stepLength),
+  //       "loop check2"
+  //     );
+  //     console.log(track.notes[i], " check if it is increased");
 
-      //*way 1
-      return track.notes[i]
-        .filter((note) => note.order < options.stepLength)
-        .map((note) => (
-          <Note
-            note={note}
-            toggleNote={() => changedNote(note)}
-            currentStep={currentStep}
-            key={uuidv4()}
-            colors={colors}
-          />
-        ));
-      // //*way2
-      // notesRows.push(track.notes[i].filter((note) => note.order < options.stepLength))
-    }
-  };
-  // console.log(track, "check2");
-  // console.log(notesRows,"notesRows")
+  //     //*way 1
+  //     return track.notes[i]
+  //       .filter((note) => note.order < options.stepLength)
+  //       .map((note) => (
+  //         <Note
+  //           note={note}
+  //           toggleNote={() => changedNote(note)}
+  //           currentStep={currentStep}
+  //           key={uuidv4()}
+  //           colors={colors}
+  //         />
+  //       ));
+  //     // //*way2
+  //     // notesRows.push(track.notes[i].filter((note) => note.order < options.stepLength))
+  //   }
+  // };
+  // // console.log(track, "check2");
+  // // console.log(notesRows,"notesRows")
 
   const colors = getInstrument(track.instrument).colors;
   // console.log(track.notes, "check it out");

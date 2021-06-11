@@ -45,12 +45,11 @@ export default function TrackRowController({ track }) {
 
   const rowList = [1, 2, 3, 4, 5, 6, 7];
 
-  const addRowHandler = (e) => {
-      console.log("it is read")
-    setOptions({...options, addRow: e})
-
+  const addRowHandler = (rowToDisplay) => {
+      updateTrack(track.id, {...track,  rowDisplay: rowToDisplay });
+      console.log(track.rowDisplay,"rowDisplay")
   }
-  console.log(options.addRow,"addrow")
+  
   return (
     <TrackController>
       <div>

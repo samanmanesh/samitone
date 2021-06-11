@@ -14,6 +14,7 @@ export const MainProvider = (props) => {
     const newTrack = {
       id: uuidv4(),
       instrument: instrumentName,
+      rowDisplay: 1,
     };
     const rows =[];
     

@@ -14,7 +14,6 @@ export const MainProvider = (props) => {
       id: uuidv4(),
       instrument: instrumentName,
     };
-    // const notes = [[]];
     const rows =[];
     
     //*adding the maxLength instead stepLength

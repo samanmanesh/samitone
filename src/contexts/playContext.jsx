@@ -13,11 +13,11 @@ export const PlayProvider = (props) => {
   const play = async () => {
     await Tone.start();
     console.log("hit play");
+
     if (loop) loop.stop(0);
     // Loop
-    //*play a note every quarter-note
+    
     let i = 0;
-
     const callback = (time) => {
       const step = i % options.stepLength;
       setCurrentStep(step);
@@ -36,6 +36,7 @@ export const PlayProvider = (props) => {
         // let duration = 0;
         track.notes.forEach(row => {
           const currentNote = row[step];
+          console.log(currentNote,"currentNote")
           if (currentNote.active) {
             synth.triggerAttackRelease(
               `${currentNote.pitch}${currentNote.octave}`,

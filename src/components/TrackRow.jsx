@@ -9,7 +9,7 @@ import useSong from "../helpers/useSong";
 
 const NotesWrapper = styled.div`
   width: 100%;
-  background:brown;
+  background: brown;
 `;
 const TrackRowWrapper = styled.div`
   border: 1px solid white;
@@ -65,31 +65,51 @@ export default function TrackRow({ track, currentStep }) {
     updateTrack(track.id, { ...track, notes: updatedNotes });
   };
 
-
   const colors = getInstrument(track.instrument).colors;
-
+  const rowBeDisplayed = 4;
   return (
     <TrackRowWrapper>
       <section className="controller-notes-container">
         <TrackRowController track={track} />
         <NotesWrapper>
-        {track.notes.map((row) => (
-          <Notes barLength={4}>
-            {row
-              .filter((note) => note.order < options.stepLength)
-              .map((note) => (
-                <Note
-                  note={note}
-                  toggleNote={() => changedNote(note)}
-                  currentStep={currentStep}
-                  key={uuidv4()}
-                  colors={colors}
-                />
-              ))}
-          </Notes>
-        ))}
+          {(track.instrument === "AM" ||
+            track.instrument === "FM" ||
+            track.instrument === "Duo" ||
+            track.instrument === "Sample") &&
+            track.notes.map((row) => (
+              <Notes barLength={4}>
+                {row
+                  .filter((note) => note.order < options.stepLength && note.row < rowBeDisplayed)
+                  .map((note) => (
+                    <Note
+                      note={note}
+                      toggleNote={() => changedNote(note)}
+                      currentStep={currentStep}
+                      key={uuidv4()}
+                      colors={colors}
+                    />
+                  ))}
+              </Notes>
+            ))}
+            
+            {track.instrument === "Kick" 
+             &&
+            track.notes.map((row) => (
+              <Notes barLength={4}>
+                {row
+                  .filter((note) => note.order < options.stepLength && note.row < 1)
+                  .map((note) => (
+                    <Note
+                      note={note}
+                      toggleNote={() => changedNote(note)}
+                      currentStep={currentStep}
+                      key={uuidv4()}
+                      colors={colors}
+                    />
+                  ))}
+              </Notes>
+            ))}
         </NotesWrapper>
-
       </section>
 
       <section className="effects-volume-container">

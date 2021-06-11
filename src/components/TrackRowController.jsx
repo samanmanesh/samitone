@@ -44,14 +44,16 @@ export default function TrackRowController({ track }) {
   const instrumentKeys = instruments.map((e) => e.name);
 
   
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
+  
 
   return (
     <TrackController>
+    
+        <select name="" id="">
+            <option value=""></option>
+
+        </select>
+
       <img src="" alt="instruments icons" />
       <button>Mute</button>
       <button>Solo</button>

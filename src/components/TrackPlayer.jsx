@@ -9,7 +9,7 @@ const TrackPlayerContainer = styled.div`
   grid-area: body;
 `;
 
-export default function TrackPlayer({ bps }) {
+export default function TrackPlayer() {
   const { tracks } = useSong();
   const { currentStep } = usePlay();
 

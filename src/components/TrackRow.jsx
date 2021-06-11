@@ -9,7 +9,7 @@ import useSong from "../helpers/useSong";
 
 const NotesWrapper = styled.div`
   width: 100%;
-  background: brown;
+  background: #1E1E1E;
 `;
 const TrackRowWrapper = styled.div`
   border: 1px solid white;
@@ -37,7 +37,9 @@ const TrackRowWrapper = styled.div`
 
 const Notes = styled.div`
   display: flex;
-  margin-bottom: 0.5rem;
+  height:100%;
+  /* border-radius: 4rem; */
+  /* margin-bottom: 0.5rem; */
   & > * {
     margin-right: 0.5rem;
 

@@ -55,13 +55,13 @@ export default function TrackRow({ track, currentStep }) {
   const { updateTrack, options } = useSong();
 
   const changedNote = (note) => {
-    console.log("changed note", note);
+    // console.log("changed note", note);
 
     const updatedNotes = track.notes;
     updatedNotes[note.row][note.order].active =
       !updatedNotes[note.row][note.order].active;
-      
-    console.log("calling update track", updatedNotes);
+
+    // console.log("calling update track", updatedNotes);
     updateTrack(track.id, { ...track, notes: updatedNotes });
   };
 

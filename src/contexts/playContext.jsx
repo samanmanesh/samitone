@@ -25,15 +25,24 @@ export const PlayProvider = (props) => {
           i++;
           tracks.forEach((track) => {
             const instrument = getInstrument(track.instrument);
-            console.log(instrument.type)
+            // console.log(instrument.type,"instruments type")
             // console.log('callback:', instrument)
             const synth = instrument.sound.toDestination();
             //* Find the note for this track that is supposed
             //* to play at the current order
 
-            const note = track.notes.find(
+              console.log(track,"track is this")
+            //*the previous one
+              const note = track.notes.find(
               (note) => note.order === step && note.active === true
             );
+            
+            // const note = track.notes.map((row) => (row.find((note) => note.order === step && note.active === true
+            // )));
+            // const note = track.notes.map((row) => (row.map((note) => (note.find((note) => note===step)))));
+
+            console.log(note," note check")
+
             //* If we successfully found the note
             if (note) {
               if (

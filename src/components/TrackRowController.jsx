@@ -12,7 +12,8 @@ import useSong from "../helpers/useSong";
 const TrackController = styled.div`
   display: flex;
   align-items: center;
-  background: #854550;
+  background: #b16b10;
+  width: 25rem;
 
   & > img {
     margin: 1rem;

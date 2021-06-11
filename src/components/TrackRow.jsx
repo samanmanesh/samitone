@@ -20,7 +20,7 @@ const TrackRowWrapper = styled.div`
   .controller-notes-container {
     display: flex;
     justify-content: space-between;
-    /* background: #753781; */
+    background: #376b81;
     & > div {
       margin: 1rem;
     }

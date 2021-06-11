@@ -25,9 +25,8 @@ export const PlayProvider = (props) => {
       tracks.forEach((track) => {
         // track.notes
         const instrument = getInstrument(track.instrument);
-        // console.log(instrument.type,"instruments type")
-        // console.log('callback:', instrument)
         const synth = instrument.sound.toDestination();
+       
         //* Find the note for this track that is supposed
         //* to play at the current order
 
@@ -36,18 +35,16 @@ export const PlayProvider = (props) => {
         // let duration = 0;
         track.notes.forEach(row => {
           const currentNote = row[step];
-          console.log(currentNote,"currentNote")
+          // console.log(step,"look step")
+          // console.log(currentNote,"currentNote")
           if (currentNote.active) {
             synth.triggerAttackRelease(
               `${currentNote.pitch}${currentNote.octave}`,
               currentNote.duration
             );
-            // playNotes.push(currentNote);
-            // playNotes.push();
-            // duration = currentNote.duration;
           }
         })
-        // console.log('going to play', playNotes)
+        
         //*the previous one
         // if (playNotes.length > 0) {
           // play the chord/note

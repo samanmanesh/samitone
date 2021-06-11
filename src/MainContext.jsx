@@ -19,13 +19,13 @@ export const MainProvider = (props) => {
     
     //*adding the maxLength instead stepLength
     const maxLength = 64;
-    // const CMajorScale = ["C","D","E","F","G"]
+    const CMajorScale = ["C","D","E","F","G"]
     // if(instrumentName === "AM")
-    for(let j = 0; j < 7 ; j++){
+    for(let j = 0; j < 5 ; j++){
         const notes = [];    
         for (let i = 0; i < maxLength; i++) {
             const note = {
-              pitch: "C",
+              pitch: CMajorScale[j],
               octave: "2",
               duration: "8n",
               row: j,

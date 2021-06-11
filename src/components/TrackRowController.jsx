@@ -46,22 +46,24 @@ export default function TrackRowController({ track }) {
   const rowList = [1, 2, 3, 4, 5, 6, 7];
 
   const addRowHandler = (rowToDisplay) => {
-      updateTrack(track.id, {...track,  rowDisplay: rowToDisplay });
-      console.log(track.rowDisplay,"rowDisplay")
-  }
-  
+    updateTrack(track.id, { ...track, rowDisplay: rowToDisplay });
+    console.log(track.rowDisplay, "rowDisplay");
+  };
+
   return (
     <TrackController>
-      <div>
+      {track.instrument !== "Kick" && (
+        <div>
           ADD Row
-        <select name="" id=""  onChange={(e) => addRowHandler(e.target.value)}>
-          {rowList.map((e, i) => (
-            <option value={e} key={`instrument-selector__${i}`} >
-              {e}
-            </option>
-          ))}
-        </select>
-      </div>
+          <select name="" id="" onChange={(e) => addRowHandler(e.target.value)}>
+            {rowList.map((e, i) => (
+              <option value={e} key={`instrument-selector__${i}`}>
+                {e}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       <img src="" alt="instruments icons" />
       <button>Mute</button>

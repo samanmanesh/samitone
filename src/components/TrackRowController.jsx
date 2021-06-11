@@ -30,7 +30,7 @@ const TrackDetails = styled.div`
 `;
 
 export default function TrackRowController({ track }) {
-  const { updateTrack } = useSong();
+  const { updateTrack, options, setOptions } = useSong();
 
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
@@ -43,16 +43,26 @@ export default function TrackRowController({ track }) {
   const instruments = getInstrumentsByType(currentInstrumentType);
   const instrumentKeys = instruments.map((e) => e.name);
 
-  
-  
+  const rowList = [1, 2, 3, 4, 5, 6, 7];
 
+  const addRowHandler = (e) => {
+      console.log("it is read")
+    setOptions({...options, addRow: e})
+
+  }
+  console.log(options.addRow,"addrow")
   return (
     <TrackController>
-    
-        <select name="" id="">
-            <option value=""></option>
-
+      <div>
+          ADD Row
+        <select name="" id=""  onChange={(e) => addRowHandler(e.target.value)}>
+          {rowList.map((e, i) => (
+            <option value={e} key={`instrument-selector__${i}`} >
+              {e}
+            </option>
+          ))}
         </select>
+      </div>
 
       <img src="" alt="instruments icons" />
       <button>Mute</button>

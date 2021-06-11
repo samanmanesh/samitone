@@ -52,7 +52,7 @@ const Notes = styled.div`
 `;
 
 export default function TrackRow({ track, currentStep }) {
-  const { updateTrack, options } = useSong();
+  const { updateTrack, options} = useSong();
 
   const changedNote = (note) => {
     // console.log("changed note", note);
@@ -66,11 +66,13 @@ export default function TrackRow({ track, currentStep }) {
   };
 
   const colors = getInstrument(track.instrument).colors;
-  const rowBeDisplayed = 4;
+
+ 
   return (
     <TrackRowWrapper>
       <section className="controller-notes-container">
         <TrackRowController track={track} />
+        
         <NotesWrapper>
           {(track.instrument === "AM" ||
             track.instrument === "FM" ||
@@ -79,7 +81,11 @@ export default function TrackRow({ track, currentStep }) {
             track.notes.map((row) => (
               <Notes barLength={4}>
                 {row
-                  .filter((note) => note.order < options.stepLength && note.row < rowBeDisplayed)
+                  .filter(
+                    (note) =>
+                      note.order < options.stepLength &&
+                      note.row < options.addRow
+                  )
                   .map((note) => (
                     <Note
                       note={note}
@@ -89,15 +95,17 @@ export default function TrackRow({ track, currentStep }) {
                       colors={colors}
                     />
                   ))}
+                
               </Notes>
             ))}
-            
-            {track.instrument === "Kick" 
-             &&
+
+          {track.instrument === "Kick" &&
             track.notes.map((row) => (
               <Notes barLength={4}>
                 {row
-                  .filter((note) => note.order < options.stepLength && note.row < 1)
+                  .filter(
+                    (note) => note.order < options.stepLength && note.row < 1
+                  )
                   .map((note) => (
                     <Note
                       note={note}

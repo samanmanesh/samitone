@@ -7,6 +7,7 @@ export const MainProvider = (props) => {
   const [options, setOptions] = useState({
       bps: 0.5,
       stepLength: 16,
+      addRow: 1,
   })
 
   const addTrack = (instrumentName) => {
@@ -18,9 +19,9 @@ export const MainProvider = (props) => {
     
     //*adding the maxLength instead stepLength
     const maxLength = 64;
-    const CMajorScale = ["C","D","E","F","G"]
+    const CMajorScale = ["C","D","E","F","G","A","B"]
     // if(instrumentName === "AM")
-    for(let j = 0; j < 5 ; j++){
+    for(let j = 0; j < 7 ; j++){
         const notes = [];    
         for (let i = 0; i < maxLength; i++) {
             const note = {

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState,useRef,useEffect} from "react";
 import * as Tone from "tone";
 import { getInstrument } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
@@ -6,40 +6,110 @@ import useSong from "../helpers/useSong";
 export const PlayContext = createContext();
 
 export const PlayProvider = (props) => {
-  const { tracks, options,currentFilter } = useSong();
+  const { tracks, options, currentFilter } = useSong();
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   
+ 
+  function usePrevious(value) {
+    // The ref object is a generic container whose current property is mutable ...
+    // ... and can hold any value, similar to an instance property on a class
+    const ref = useRef();
+    // Store current value in ref
+    useEffect(() => {
+      ref.current = value;
+    }, [value]); // Only re-run if value changes
+    // Return previous value (happens before update in useEffect above)
+    return ref.current;
+  }
+ 
+ 
+ 
   
-  
+  const prevFilter = usePrevious(currentFilter);
+  // console.log(prevFilter,"prevFilter");
+
   const play = async () => {
     await Tone.start();
     console.log("hit play");
 
     if (loop) loop.stop(0);
     // Loop
-    
     let i = 0;
+    
+    //I had to put here to prevent from looping and reassigning
+    const filter = new Tone.Filter(
+      currentFilter,
+      "lowpass"
+    ).toDestination();
+    console.log(filter,"filter")  
+
+    const feedbackDelay = new Tone.FeedbackDelay(
+      0.125,
+      0.5
+    ).toDestination();
+
+
     const callback = (time) => {
       const step = i % options.stepLength;
       setCurrentStep(step);
       i++;
+      
+
       tracks.forEach((track) => {
         // track.notes
         const instrument = getInstrument(track.instrument);
         const synth = instrument.sound.toDestination();
+        // let filter = new Tone.Filter(
+        //   currentFilter,
+        //   "lowpass"
+        // ).toDestination();
+         
+       
+        if ( currentFilter !== prevFilter){
 
-        const filter = new Tone.Filter(currentFilter, 'lowpass').toDestination();
-        const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination()
+          console.log("Filter is run........");
+       
+          //  const filter = new Tone.Filter(
+          //   currentFilter,
+          //   "lowpass"
+          // ).toDestination();
+          // console.log(filter,"filter")  
+
+        }
+        
+       
+       
+        // const feedbackDelay = new Tone.FeedbackDelay(
+        //   0.125,
+        //   0.5
+        // ).toDestination();
         synth.connect(feedbackDelay);
-        synth.connect(filter);
+          
+        synth.connect(filter);                                
+        // console.log(synth.connect(filter),"synth.connect.filter")
+
+        
+
+          // if ( currentFilter !== prevFilter){
+
+          //   console.log("Filter is run........");
+          //   const filter = new Tone.Filter(
+          //     currentFilter,
+          //     "lowpass"
+          //   ).toDestination();
+          //   console.log(filter,"filter")  
+
+          // }
+        
+       
         //* Find the note for this track that is supposed
         //* to play at the current order
 
-        console.log(track, "track is this");
+        // console.log(track, "track is this");
         // const playNotes = [];
         // let duration = 0;
-        track.notes.forEach(row => {
+        track.notes.forEach((row) => {
           const currentNote = row[step];
           // console.log(step,"look step")
           // console.log(currentNote,"currentNote")
@@ -49,7 +119,7 @@ export const PlayProvider = (props) => {
               currentNote.duration
             );
           }
-        })
+        });
 
         /// the way it must be works form tune.js
         // const player = new Tone.Player({
@@ -58,48 +128,10 @@ export const PlayProvider = (props) => {
         // });
         // const filter = new Tone.Filter(400, 'lowpass').toDestination();
         // const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination();
-        
+
         // connect the player to the feedback delay and filter in parallel
         // player.connect(filter);
         // player.connect(feedbackDelay);
-        
-        //*the previous one
-        // if (playNotes.length > 0) {
-          // play the chord/note
-        // }
-
-        // const note = track.notes.find(
-        //   (note) => note.order === step && note.active === true
-        // );
-
-        // const note = track.notes.map((row) => (row.find((note) => note.order === step && note.active === true
-        // )));
-        // const note = track.notes.map((row) => (row.map((note) => (note.find((note) => note===step)))));
-
-        // console.log(note," note check")
-
-        //* If we successfully found the note
-        // if (note) {
-        //   if (
-        //     track.instrument === "Kick" ||
-        //     track.instrument === "AM" ||
-        //     track.instrument === "FM" ||
-        //     track.instrument === "Duo"
-        //   ) {
-        //     synth.triggerAttackRelease(
-        //       `${note.pitch}${note.octave}`,
-        //       note.duration
-        //     );
-
-        //   }
-
-        //   if (track.instrument === "Sample") {
-            // synth.triggerAttackRelease(
-            //   `${note.pitch}${note.octave}`,
-            //   note.duration
-            // );
-        //   }
-        // }
       });
     };
 

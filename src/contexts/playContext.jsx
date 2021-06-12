@@ -27,12 +27,12 @@ export const PlayProvider = (props) => {
  
   
   const prevFilter = usePrevious(currentFilter);
+
+  const getCurrentFilter = () => currentFilter;
   // console.log(prevFilter,"prevFilter");
 
   const play = async () => {
     await Tone.start();
-    console.log("hit play");
-
     if (loop) loop.stop(0);
     // Loop
     let i = 0;
@@ -45,7 +45,7 @@ export const PlayProvider = (props) => {
     console.log(filter,"filter")  
 
     const feedbackDelay = new Tone.FeedbackDelay(
-      0.125,
+      0.4,
       0.5
     ).toDestination();
 
@@ -60,12 +60,7 @@ export const PlayProvider = (props) => {
         // track.notes
         const instrument = getInstrument(track.instrument);
         const synth = instrument.sound.toDestination();
-        // let filter = new Tone.Filter(
-        //   currentFilter,
-        //   "lowpass"
-        // ).toDestination();
-         
-       
+        
         if ( currentFilter !== prevFilter){
 
           console.log("Filter is run........");
@@ -84,8 +79,9 @@ export const PlayProvider = (props) => {
         //   0.125,
         //   0.5
         // ).toDestination();
-        synth.connect(feedbackDelay);
-          
+        // synth.connect(feedbackDelay);
+        filter.frequency.rampTo(currentFilter, 0, time);
+        console.log('current filter', currentFilter, getCurrentFilter())
         synth.connect(filter);                                
         // console.log(synth.connect(filter),"synth.connect.filter")
 

@@ -5,10 +5,12 @@ export const MainContext = createContext();
 export const MainProvider = (props) => {
   const [tracks, setTracks] = useState([]);
   const [options, setOptions] = useState({
-      bps: 0.5,
-      stepLength: 16,
-      addRow: 1,
-  })
+    bps: 0.5,
+    stepLength: 16,
+    addRow: 1,
+  });
+  //for testing filter if works move to options
+  const [currentFilter, setCurrentFilter] = useState(400);
 
   const addTrack = (instrumentName) => {
     const newTrack = {
@@ -16,28 +18,28 @@ export const MainProvider = (props) => {
       instrument: instrumentName,
       rowDisplay: 1,
     };
-    const rows =[];
-    
+    const rows = [];
+
     //*adding the maxLength instead stepLength
     const maxLength = 64;
-    const CMajorScale = ["C","D","E","F","G","A","B"]
+    const CMajorScale = ["C", "D", "E", "F", "G", "A", "B"];
     // if(instrumentName === "AM")
-    for(let j = 0; j < 7 ; j++){
-        const notes = [];    
-        for (let i = 0; i < maxLength; i++) {
-            const note = {
-              pitch: CMajorScale[j],
-              octave: "2",
-              duration: "8n",
-              row: j,
-              order: i,
-              active: false,
-            };
-            notes.push(note);
-          }
-          rows.push(notes);
-    } 
-    
+    for (let j = 0; j < 7; j++) {
+      const notes = [];
+      for (let i = 0; i < maxLength; i++) {
+        const note = {
+          pitch: CMajorScale[j],
+          octave: "2",
+          duration: "8n",
+          row: j,
+          order: i,
+          active: false,
+        };
+        notes.push(note);
+      }
+      rows.push(notes);
+    }
+
     newTrack.notes = rows;
     setTracks((prev) => [...prev, newTrack]);
     console.log(tracks);
@@ -51,13 +53,15 @@ export const MainProvider = (props) => {
   };
 
   const contextValue = {
-      tracks,
-      setTracks,
-      addTrack,
-      updateTrack,
-      options,
-      setOptions
-  }
+    tracks,
+    setTracks,
+    addTrack,
+    updateTrack,
+    options,
+    setOptions,
+    currentFilter,
+    setCurrentFilter,
+  };
   return (
     <MainContext.Provider value={contextValue}>
       {props.children}

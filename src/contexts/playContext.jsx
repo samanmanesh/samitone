@@ -6,10 +6,12 @@ import useSong from "../helpers/useSong";
 export const PlayContext = createContext();
 
 export const PlayProvider = (props) => {
-  const { tracks, options } = useSong();
+  const { tracks, options,currentFilter } = useSong();
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
-
+  
+  
+  
   const play = async () => {
     await Tone.start();
     console.log("hit play");
@@ -26,7 +28,11 @@ export const PlayProvider = (props) => {
         // track.notes
         const instrument = getInstrument(track.instrument);
         const synth = instrument.sound.toDestination();
-       
+
+        const filter = new Tone.Filter(currentFilter, 'lowpass').toDestination();
+        const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination()
+        synth.connect(feedbackDelay);
+        synth.connect(filter);
         //* Find the note for this track that is supposed
         //* to play at the current order
 
@@ -46,16 +52,16 @@ export const PlayProvider = (props) => {
         })
 
         /// the way it must be works form tune.js
-        const player = new Tone.Player({
-          url: "https://tonejs.github.io/audio/drum-samples/loops/ominous.mp3",
-          autostart: true,
-        });
-        const filter = new Tone.Filter(400, 'lowpass').toDestination();
-        const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination();
+        // const player = new Tone.Player({
+        //   url: "https://tonejs.github.io/audio/drum-samples/loops/ominous.mp3",
+        //   autostart: true,
+        // });
+        // const filter = new Tone.Filter(400, 'lowpass').toDestination();
+        // const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination();
         
         // connect the player to the feedback delay and filter in parallel
-        player.connect(filter);
-        player.connect(feedbackDelay);
+        // player.connect(filter);
+        // player.connect(feedbackDelay);
         
         //*the previous one
         // if (playNotes.length > 0) {

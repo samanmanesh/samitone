@@ -13,12 +13,20 @@ const TrackController = styled.div`
   /* display: flex; */
   /* align-items: center; */
   background: #b16b10;
-  /* width: 25rem; */
+  width: 25rem;
+  min-height: 3.5rem;
   .minibar-control {
     /* background: #74961d; */
 
     .add-row-selector {
-      /* background: #273070; */
+        height:5%;
+      background: #273070;
+      font-size: 1.5ch;
+      & > select{
+          /* height:1rem;
+          width:2rem; */
+      }
+
       /* margin-right: 1rem; */
       /* position: relative; */
       /* align-self: top; */
@@ -32,14 +40,19 @@ const TrackController = styled.div`
     .change-instrument {
       /* position: absolute; */
       /* background: #000; */
-      padding:0 .1rem;
+      padding:0 .2rem;
+      /* max-width: 1rem; */
+      & > select{
+          max-width: 3rem;
+      }
+
     }
 
     & > button {
         all: unset;
         background: #893535;
-        width:2rem;
-        height:2rem;
+        width:1.5rem;
+        height:1.5rem;
         margin:.2rem;
         font-size:.5em;
         border-radius: .4rem;

@@ -6,7 +6,7 @@ const NoteWrapper = styled.span`
   border: 1px solid ${(props) => (props.onStep ? "yellow" : "transparent")};
   width: 100%;
   border-radius:.7rem;
-  /* height: 100%; */
+  height: 100%;
   cursor: pointer;
   /* color: #6d5050; */
 `;

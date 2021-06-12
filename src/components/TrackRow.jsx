@@ -10,6 +10,12 @@ import useSong from "../helpers/useSong";
 const NotesWrapper = styled.div`
   width: 100%;
   background: #1E1E1E;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* justify-content:center; */
+  /* height:100%; */
+  /* flex-grow:10; */
 `;
 const TrackRowWrapper = styled.div`
   border: 1px solid white;
@@ -36,8 +42,15 @@ const TrackRowWrapper = styled.div`
 `;
 
 const Notes = styled.div`
+  background: blue;
   display: flex;
-  height:100%;
+   /* justify-content: space-evenly; */
+  align-content: space-between; 
+  /* height:100%; */
+  /* min-height:.5rem; */
+  /* padding: 1rem; */
+  
+  
   /* border-radius: 4rem; */
   /* margin-bottom: 0.5rem; */
   & > * {

@@ -60,7 +60,6 @@ const DisplayPanelWrapper = styled.div`
 export default function DisplayPanel() {
   const {options, setOptions} = useSong();
 
-  console.log(options)
   const changeTempo = increment => {
     let newTempo = options.bps;
     newTempo += increment;

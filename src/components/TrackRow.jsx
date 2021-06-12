@@ -67,7 +67,7 @@ const Notes = styled.div`
 `;
 
 export default function TrackRow({ track, currentStep }) {
-  const { updateTrack, options,currentFilter,setCurrentFilter} = useSong();
+  const { updateTrack, options } = useSong();
 
   const changedNote = (note) => {
     // console.log("changed note", note);
@@ -82,10 +82,10 @@ export default function TrackRow({ track, currentStep }) {
 
   const colors = getInstrument(track.instrument).colors;
 
-//* testing for changing the filter
-  
-  const filterHandler = (e) => {
-    setCurrentFilter(e);
+  const filterHandler = e => {
+    const newOptions = track.options;
+    newOptions.filter = e.target.value;
+    updateTrack(track.id, { ...track, options: newOptions });
   }
  
   return (
@@ -142,7 +142,7 @@ export default function TrackRow({ track, currentStep }) {
 
       <section className="effects-volume-container">
         <div>effect
-          <input type="number" value={currentFilter} onChange={(e) => filterHandler(e.target.value)} />
+          <input type="number" value={track.options.filter} onChange={filterHandler} />
         </div>
         <div>volume section</div>
       </section>

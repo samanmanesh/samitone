@@ -17,6 +17,10 @@ export const MainProvider = (props) => {
       id: uuidv4(),
       instrument: instrumentName,
       rowDisplay: 1,
+      options: {
+        filter: 400,
+        delay: 0.5
+      }
     };
     const rows = [];
 

@@ -1,5 +1,4 @@
 import * as Tone from "tone";
-import { Instrument } from "tone/build/esm/instrument/Instrument";
 import colors from "../styles";
 
 export const InstrumentType = {

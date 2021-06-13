@@ -9,7 +9,6 @@ export const PlayProvider = (props) => {
   const { tracks, options } = useSong();
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
-  // const [filter, setFilter] = useState(null);
   const [songEffects, setSongEffects] = useState([]);
 
   const playCallback = (time) => {
@@ -21,8 +20,8 @@ export const PlayProvider = (props) => {
       const instrument = getInstrument(track.instrument);
       const synth = instrument.sound.toDestination();
 
-      // newFilter.toDestination();
       if (synth && songEffects[i]) {
+      
         // filter.frequency.rampTo(track.options.filter, 0);
         if (track.options.filter) {
           songEffects[i].filter.frequency.rampTo(track.options.filter, 0);
@@ -45,7 +44,8 @@ export const PlayProvider = (props) => {
 
   //* Updates the callback when values change
   useEffect(() => {
-    if (loop) {
+    if (loop) {  
+
       // generateSongEffects();
       loop.callback = playCallback;
     }

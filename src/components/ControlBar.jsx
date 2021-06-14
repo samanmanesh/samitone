@@ -15,27 +15,21 @@ import usePlay from "../helpers/usePlay";
 const Header = styled.div`
   grid-area: playBar;
   display: flex;
-   justify-content:space-between ;
   align-items: center;
   padding: 0.5rem;
 
-  .menu{
-
+  .menu {
   }
-  .speed-bar-container{
-    margin-left: 25rem;
-    color:rgb(101, 96, 255);
+  .speed-bar-container {
+    color: rgb(101, 96, 255);
+    margin-right: 5rem;
   }
-
-
-
-
 `;
 
 const ControlPanel = styled.div`
-
   display: flex;
-  margin-left: 35rem;
+  margin-left:auto;
+  margin-right:auto;
   & > button {
     all: unset;
     /* margin: 0.1rem; */
@@ -44,39 +38,36 @@ const ControlPanel = styled.div`
       /* width: 1.7rem;
       height: 1.7rem; */
     }
-    
   }
-  & > span{
+  & > span {
     /* background: #622424; */
-    padding-top:.7rem ;
-    margin-left: .5rem;
-}
-
+    padding-top: 0.7rem;
+    margin-left: 0.5rem;
+  }
 `;
 
 const AddTrack = styled.div`
   /* display: flex; */
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
   & > div {
     display: flex;
     justify-content: center;
     background: ${colors.button.secondary};
     border-radius: 0.4rem;
-    margin: .1rem 0 0.1rem 1rem;
+    margin: 0.1rem 0 0.1rem 1rem;
     width: 4rem;
     height: 2rem;
     & > button {
       all: unset;
       cursor: pointer;
     }
-   
   }
-  & > h5{
-      /* background:pink; */
-      margin: 0rem 0 0 1rem;
-      padding: 0;
-    }
+  & > h5 {
+    /* background:pink; */
+    margin: 0rem 0 0 1rem;
+    padding: 0;
+  }
 `;
 // export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
@@ -106,7 +97,7 @@ export default function ControlBar() {
       {/* <section>
         <DisplayPanel />
       </section> */}
-      
+
       <AddTrack>
         <div>
           <button onClick={() => setShowModal(InstrumentType.Beat)}>
@@ -141,22 +132,18 @@ export default function ControlBar() {
         </Modal>
       )}
 
-      <section>
-        <ControlPanel>
-          <button onClick={() => playHandler()}>
-            <img src="icons/play.svg" alt="play" /> 
-          </button>
-          <span>00:00</span>
-        </ControlPanel>
-      </section>
-       
+      <ControlPanel>
+        <button onClick={() => playHandler()}>
+          <img src="icons/play.svg" alt="play" />
+        </button>
+        <span>00:00</span>
+      </ControlPanel>
+
       <div className="speed-bar-container">
-        
         <img src="icons/metronome-on.svg" alt="" />
         <img src="icons/metronome-off.svg" alt="" />
-        <span>120 BMP | 4 BARS</span> 
-        </div>
-
+        <span>120 BMP | 4 BARS</span>
+      </div>
 
       <div className="menu">
         <img src="icons/menu.svg" alt="menu" />

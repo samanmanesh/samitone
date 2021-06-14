@@ -75,12 +75,14 @@ export default function ControlBar() {
   const { play, pause } = usePlay();
 
   const [showModal, setShowModal] = useState(false);
-  const stepOptions = [4, 8, 16, 24, 32, 64];
+  // const stepOptions = [4, 8, 16, 24, 32, 64];
   const [isPlay, setIsPlay] = useState(false);
-  const handleAddTrack = (instrumentName) => {
-    addTrack(instrumentName);
-    setShowModal(false);
-  };
+  
+  
+  // const handleAddTrack = (instrumentName) => {
+  //   addTrack(instrumentName);
+  //   setShowModal(false);
+  // };
 
   const playHandler = () => {
     setIsPlay(!isPlay);
@@ -119,16 +121,18 @@ export default function ControlBar() {
       </AddTrack>
 
       {showModal && (
-        <Modal handleClose={() => setShowModal(false)}>
-          <h3>Select Instrument</h3>
-          {getInstrumentsByType(showModal).map((instrument) => (
+        <Modal  showModal={showModal} setShowModal={setShowModal}>
+          {/* <h3>Select Instrument</h3> */}
+            
+
+          {/* {getInstrumentsByType(showModal).map((instrument) => (
             <div
               onClick={() => handleAddTrack(instrument.name)}
               key={instrument.name}
             >
               {instrument.name}
             </div>
-          ))}
+          ))} */}
         </Modal>
       )}
 

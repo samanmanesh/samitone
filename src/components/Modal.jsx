@@ -23,6 +23,17 @@ const ModalContainer = styled.div`
   background: ${colors.background.primaryDark};
   color: white;
   border-radius: 0.5rem;
+
+
+  .beat-container{
+    background: #673535;
+  }
+
+  .synth-container{
+    background: #19575b;
+  }
+
+
 `;
 
 export default function Modal({ showModal, setShowModal }) {
@@ -57,9 +68,21 @@ export default function Modal({ showModal, setShowModal }) {
             Synth
           </button>
         </div> */}
-        
-        {instruments.map((instrument) => (
+        <div className="beat-container">
+
+        {getInstrumentsByType(InstrumentType.Beat).map((instrument) => (
           <div
+          
+            onClick={() => handleAddTrack(instrument.name)}
+            key={instrument.name}
+          >
+            {instrument.name}
+          </div>
+        ))}
+        </div>
+        {getInstrumentsByType(InstrumentType.Synth).map((instrument) => (
+          <div
+            className="synth-container"
             onClick={() => handleAddTrack(instrument.name)}
             key={instrument.name}
           >
@@ -68,14 +91,14 @@ export default function Modal({ showModal, setShowModal }) {
         ))}
 
 
-        {getInstrumentsByType(showModal).map((instrument) => (
+        {/* {getInstrumentsByType(showModal).map((instrument) => (
           <div
             onClick={() => handleAddTrack(instrument.name)}
             key={instrument.name}
           >
             {instrument.name}
           </div>
-        ))}
+        ))} */}
         {/* {children} */}
       </ModalContainer>
     </ModalWrapper>

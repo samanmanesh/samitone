@@ -16,12 +16,12 @@ const AppWrapper = styled.div`
   height: 100vh;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: ${sizes.headerHeight} ${sizes.assistantHeight}  auto;
+  grid-template-rows: ${sizes.headerHeight} auto;
   grid-template-areas:
     "playBar playBar playBar playBar"
     /* "helper helper helper helper" */
-    "body body body body"
-    "effect effect effect effect";
+    "body body body body";
+    /* "effect effect effect effect"; */
 `;
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
           <ControlBar />
           {/* <AssistantBar /> */}
           <TrackPlayer />
-          <Effect />
+          {/* <Effect /> */}
         </PlayProvider>
       </MainProvider>
     </AppWrapper>

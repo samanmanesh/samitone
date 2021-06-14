@@ -3,9 +3,10 @@ import TrackRow from "./TrackRow";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import usePlay from "../helpers/usePlay"
+import colors from "../styles";
 
 const TrackPlayerContainer = styled.div`
-  background: #381c1c;
+  background: ${colors.background.secondary};
   grid-area: body;
 `;
 

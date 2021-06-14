@@ -46,6 +46,8 @@ const AddTrack = styled.div`
     padding: 0;
     margin: 0;
   & > div {
+    display: flex;
+    justify-content: center;
     background: ${colors.button.secondary};
     border-radius: 0.4rem;
     margin: .1rem 0 0.1rem 1rem;
@@ -129,8 +131,8 @@ export default function ControlBar() {
       <section>
         <ControlPanel>
           <button onClick={() => playHandler()}>
-            {/* <button > */}
             <img src="icons/play.svg" alt="play" />
+            
           </button>
         </ControlPanel>
       </section>

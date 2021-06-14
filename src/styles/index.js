@@ -24,7 +24,7 @@ const colors = {
 export default colors;
 
 export const sizes = {
-  headerHeight: "5rem",
+  headerHeight: "4rem",
   assistantHeight: "2rem",
   sidebarWidth: "30ch",
 };

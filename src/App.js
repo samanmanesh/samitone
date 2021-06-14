@@ -19,7 +19,7 @@ const AppWrapper = styled.div`
   grid-template-rows: ${sizes.headerHeight} ${sizes.assistantHeight}  auto;
   grid-template-areas:
     "playBar playBar playBar playBar"
-    "helper helper helper helper"
+    /* "helper helper helper helper" */
     "body body body body"
     "effect effect effect effect";
 `;

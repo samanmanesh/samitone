@@ -15,14 +15,17 @@ import usePlay from "../helpers/usePlay";
 const Header = styled.div`
   grid-area: playBar;
   display: flex;
-  justify-content: space-between;
+   justify-content:space-between ;
   align-items: center;
   padding: 0.5rem;
 
   .menu{
 
   }
-
+  .speed-bar-container{
+    margin-left: 25rem;
+    color:rgb(101, 96, 255);
+  }
 
 
 
@@ -30,15 +33,25 @@ const Header = styled.div`
 `;
 
 const ControlPanel = styled.div`
-  button {
+
+  display: flex;
+  margin-left: 35rem;
+  & > button {
     all: unset;
     /* margin: 0.1rem; */
-    /* padding: 0.5rem; */
-    img {
+    padding: 0.5rem;
+    & > img {
       /* width: 1.7rem;
       height: 1.7rem; */
     }
+    
   }
+  & > span{
+    /* background: #622424; */
+    padding-top:.7rem ;
+    margin-left: .5rem;
+}
+
 `;
 
 const AddTrack = styled.div`
@@ -93,7 +106,7 @@ export default function ControlBar() {
       {/* <section>
         <DisplayPanel />
       </section> */}
-
+      
       <AddTrack>
         <div>
           <button onClick={() => setShowModal(InstrumentType.Beat)}>
@@ -131,11 +144,19 @@ export default function ControlBar() {
       <section>
         <ControlPanel>
           <button onClick={() => playHandler()}>
-            <img src="icons/play.svg" alt="play" />
-            
+            <img src="icons/play.svg" alt="play" /> 
           </button>
+          <span>00:00</span>
         </ControlPanel>
       </section>
+       
+      <div className="speed-bar-container">
+        
+        <img src="icons/metronome-on.svg" alt="" />
+        <img src="icons/metronome-off.svg" alt="" />
+        <span>120 BMP | 4 BARS</span> 
+        </div>
+
 
       <div className="menu">
         <img src="icons/menu.svg" alt="menu" />

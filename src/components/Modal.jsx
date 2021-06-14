@@ -18,6 +18,7 @@ const ModalContainer = styled.div`
   color: white;
 `;
 
+ 
 
 export default function Modal({handleClose, children}) {
 

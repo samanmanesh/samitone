@@ -1,13 +1,13 @@
 const colors = {
   background: {
-    primary: "rgb(72,72,72)",
-    secondary: "rgb(55,55,55)",
+    primaryDark: "rgb(17, 17, 17)",
+    secondary: "rgba(28, 28, 28, 0.65)",
     panel: "rgb(157, 157, 157)",
     panelDarker: "rgb(36, 34, 34)",
   },
   button: {
-    primary: "rgb(0,0,0)",
-    secondary: "rgb(30, 88, 43)",
+    primary: "rgb(153, 153, 153)",
+    secondary: "rgba(153, 153, 153, 0.41)",
     optional: "rgb(148,41,41)"
 
   },

@@ -23,8 +23,9 @@ const ControlPanel = styled.div`
     margin: 0.1rem;
     padding: 0.5rem;
     img {
-      width: 1.7rem;
-      height: 1.7rem;
+      
+      /* width: 1.7rem;
+      height: 1.7rem; */
     }
   }
 `;
@@ -33,7 +34,7 @@ const AddTrack = styled.div`
   display: flex;
 
   div {
-    background: ${colors.background.secondary};
+    background: ${colors.button.secondary};
     border-radius: 0.4rem;
     margin-right: 2rem;
     border-radius: 0.4rem;
@@ -52,37 +53,37 @@ export default function ControlBar() {
 
   const [showModal, setShowModal] = useState(false);
   const stepOptions = [4, 8, 16, 24, 32, 64];
-
+  const [isPlay, setIsPlay] = useState(false);
   const handleAddTrack = instrumentName => {
     addTrack(instrumentName);
     setShowModal(false);
   };
 
+  const playHandler = () =>{
+    setIsPlay(!isPlay);
+    
+    if (isPlay === true){
+      play();
+    }
+    else if(isPlay === false){
+      pause();
+    }
+  }
+
   return (
     <Header>
-      <section>
+      {/* <section>
         <DisplayPanel />
-      </section>
+      </section> */}
 
-      <section>
-        <ControlPanel>
-          <button onClick={play}>
-            {/* <button > */}
-            <img src="icons/play.svg" alt="play" />
-          </button>
-          <button onClick={pause}>
-            {/* <button > */}
-            <img src="icons/stop.svg" alt="stop" />
-          </button>
-          <button>
-            <img src="icons/record-black.svg" alt="record-black" />
-          </button>
-        </ControlPanel>
-      </section>
+      
 
       <AddTrack>
         <div>
-          <button onClick={() => setShowModal(InstrumentType.Beat)}>
+        
+
+
+          {/* <button onClick={() => setShowModal(InstrumentType.Beat)}>
             <img src="icons/plus.svg" alt="plus" />
             Instrument Drum
           </button>
@@ -91,7 +92,7 @@ export default function ControlBar() {
           <button onClick={() => setShowModal(InstrumentType.Synth)}>
             <img src="icons/plus.svg" alt="plus" />
             Instrument Melody
-          </button>
+          </button> */}
         </div>
       </AddTrack>
 
@@ -103,13 +104,34 @@ export default function ControlBar() {
           }
         </Modal>
       )}
-      <input
+      
+      <section>
+        <ControlPanel>
+          <button onClick={()=>playHandler()}>
+            {/* <button > */}
+            <img src="icons/play.svg" alt="play" />
+          </button>
+          
+        </ControlPanel>
+      </section>
+
+        
+
+
+
+
+
+      <div>
+        <img src="icons/menu.svg" alt="menu" />
+      </div>
+
+      {/* <input
         type="number"
         // value={bps}
         value={options.bps}
         // onChange={(e) => setBps(e.target.value)}
         onChange={(e) => setOptions({ ...options, bps: e.target.value })}
-      />
+      /> */}
       
     </Header>
   );

@@ -67,23 +67,7 @@ export default function DisplayPanel() {
   }
   return (
     <DisplayPanelWrapper>
-      <div>
-        <p>001</p> <p>Bar</p>
-      </div>
-      <div>
-        <p>1</p> <p>Beat</p>
-      </div>
-      <div className="duration">
-        <span>
-          <p>01</p> <p>HR</p>
-        </span>
-        <span>
-          <p>00</p> <p>MIN</p>
-        </span>
-        <span>
-          <p>001</p> <p>SEC</p>
-        </span>
-      </div>
+      
       <div className="tempo">
         <div>Tempo</div> <div>{options.bps} bps</div>
         <div>

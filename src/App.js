@@ -10,7 +10,7 @@ import { sizes } from "./styles";
 
 const AppWrapper = styled.div`
   color: white;
-  background: ${colors.background.primary};
+  background: ${colors.background.primaryDark};
   display: grid;
   width: 100vw;
   height: 100vh;
@@ -29,7 +29,7 @@ function App() {
       <MainProvider>
         <PlayProvider>
           <ControlBar />
-          <AssistantBar />
+          {/* <AssistantBar /> */}
           <TrackPlayer />
           <Effect />
         </PlayProvider>

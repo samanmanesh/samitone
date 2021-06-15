@@ -38,7 +38,7 @@ export const instruments = [
     sound: new Tone.MembraneSynth(),
     octave: 2,
     type: InstrumentType.Beat,
-    colors: colors.orange,
+    colors: colors.blue,
   },
   {
     name: "Duo",
@@ -58,6 +58,6 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Synth,
-    colors: colors.orange,
+    colors: colors.teal,
   },
 ];

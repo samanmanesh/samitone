@@ -6,7 +6,7 @@ export const MainProvider = (props) => {
   const [tracks, setTracks] = useState([]);
   const [options, setOptions] = useState({
     bps: 0.5,
-    stepLength: 4,
+    stepLength: 8,
     addRow: 1,
   });
   //for testing filter if works move to options

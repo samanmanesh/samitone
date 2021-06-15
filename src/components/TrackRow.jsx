@@ -9,7 +9,7 @@ import useSong from "../helpers/useSong";
 
 const NotesWrapper = styled.div`
   width: 100%;
-  background: #624848;
+  /* background: #624848; */
   display:flex;
   flex-direction: column;
   /* justify-content: space-evenly; */
@@ -23,7 +23,7 @@ const TrackRowWrapper = styled.div`
   /* padding: 1rem; */
   margin-bottom: 0.5rem;
   position: relative;
-  z-index: 10;
+  z-index: 2;
   
   .controller-notes-container {
     display: flex;
@@ -44,10 +44,14 @@ const TrackRowWrapper = styled.div`
 `;
 
 const Notes = styled.div`
-  background: blue;
+  background:${colors.background.row};
+  position: relative;
+  z-index: 0;
   display: flex;
+  padding: 0 0 0 1rem;
+  /* flex-direction: column; */
    /* justify-content: space-evenly; */
-  align-content: space-between; 
+  /* align-content: space-between;  */
   /* height:100%; */
   /* min-height:.5rem; */
   /* padding: 1rem; */
@@ -105,10 +109,12 @@ export default function TrackRow({ track, currentStep }) {
                 {row
                   .filter(
                     (note) =>
-                      note.order < options.stepLength &&
-                      note.row < track.rowDisplay
+                    // note.order < options.stepLength &&
+                    // note.row < track.rowDisplay
+                      note.order < options.stepLength
                   )
                   .map((note) => (
+                    
                     <Note
                       note={note}
                       toggleNote={() => changedNote(note)}
@@ -116,9 +122,9 @@ export default function TrackRow({ track, currentStep }) {
                       key={uuidv4()}
                       colors={colors}
                     />
+                    
                   ))}
-                
-              </Notes>
+                  </Notes>
             ))}
 
           {track.instrument === "Kick" &&

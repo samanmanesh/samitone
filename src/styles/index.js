@@ -1,9 +1,10 @@
 const colors = {
   background: {
     primaryDark: "rgb(17, 17, 17)",
-    secondary: "rgba(28, 28, 28, 0.65)",
+    secondary: "rgb(31, 31, 31)",
     panel: "rgb(157, 157, 157)",
     panelDarker: "rgb(36, 34, 34)",
+    row:"rgb(26, 25, 25)"
   },
   button: {
     primary: "rgb(153, 153, 153)",

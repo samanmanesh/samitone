@@ -11,10 +11,12 @@ import useSong from "../helpers/useSong";
 
 const TrackController = styled.div`
   display: flex;
-  align-items: center;
+  align-items: start;
+  padding: 1rem 0 0 0;
+  margin-bottom: 0;
   /* background: #b16b10; */
   width: 17.2rem;
-  min-height: 3.5rem;
+  min-height: 2rem;
  
   .minibar-control {
     /* background: #74961d; */
@@ -37,7 +39,7 @@ const TrackController = styled.div`
   .main-control {
     background: #63127e;
     display:flex;
-    align-items: center;
+    align-items: chanter;
 
     .change-instrument {
       /* position: absolute; */

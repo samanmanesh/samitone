@@ -8,7 +8,7 @@ const colors = {
   button: {
     primary: "rgb(153, 153, 153)",
     secondary: "rgba(153, 153, 153, 0.41)",
-    optional: "rgb(148,41,41)"
+    optional: "rgb(73, 73, 73)"
 
   },
   orange: {

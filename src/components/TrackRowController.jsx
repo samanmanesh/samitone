@@ -10,17 +10,18 @@ import {
 import useSong from "../helpers/useSong";
 
 const TrackController = styled.div`
-  /* display: flex; */
-  /* align-items: center; */
-  background: #b16b10;
-  width: 25rem;
+  display: flex;
+  align-items: center;
+  /* background: #b16b10; */
+  width: 17.2rem;
   min-height: 3.5rem;
+ 
   .minibar-control {
     /* background: #74961d; */
 
     .add-row-selector {
         height:5%;
-      background: #273070;
+      /* background: #273070; */
       font-size: 1.5ch;
       & > select{
           /* height:1rem;
@@ -34,9 +35,10 @@ const TrackController = styled.div`
   }
 
   .main-control {
-    /* background: #63127e; */
+    background: #63127e;
     display:flex;
     align-items: center;
+
     .change-instrument {
       /* position: absolute; */
       /* background: #000; */
@@ -47,16 +49,26 @@ const TrackController = styled.div`
       }
 
     }
+  }
 
-    & > button {
+
+  & > button {
         all: unset;
-        background: #893535;
-        width:1.5rem;
-        height:1.5rem;
+        background:${colors.button.optional};
+        width:2rem;
+        height:1rem;
         margin:.2rem;
         font-size:.5em;
-        border-radius: .4rem;
-
+        border-radius: .1rem;
+        text-align:center;
+    }
+    .mute{
+      margin-left:auto;
+    }
+        
+    .more{
+      margin-right: .5rem;
+      margin-left:.5rem;
     }
 
     & > span{
@@ -66,7 +78,7 @@ const TrackController = styled.div`
 
 
 
-  }
+
 `;
 
 const TrackDetails = styled.div`
@@ -96,7 +108,7 @@ export default function TrackRowController({ track }) {
 
   return (
     <TrackController>
-      {track.instrument !== "Kick" && (
+      {/* {track.instrument !== "Kick" && (
         <section className=" minibar-control">
           <div className="add-row-selector">
             +
@@ -113,11 +125,12 @@ export default function TrackRowController({ track }) {
             </select>
           </div>
         </section>
-      )}
+      )} */}
 
-      <section className="main-control">
+      
+
         <div className="change-instrument">
-          <img src="" alt="icons" />
+          {/* <img src="" alt="icons" /> */}
           <select
             value={track.instrument}
             onChange={(e) => changedInstrument(e.target.value)}
@@ -131,16 +144,15 @@ export default function TrackRowController({ track }) {
           </select>
         </div>
 
-        <button>Mute</button>
-        <button>Solo</button>
+        
 
         <span>{track.instrument}</span>
-
-        
-          <span>Velocity</span>
-          
-          <button>0</button>
-      </section>
+            
+        <button className="mute">Mute</button>
+        <button className="solo">Solo</button>   
+        <div className="more"><img src="icons/more.svg" alt="" /></div>
+        {/* <div>^</div>   */}
+      
     </TrackController>
   );
 }

@@ -20,7 +20,7 @@ const NotesWrapper = styled.div`
 const TrackRowWrapper = styled.div`
   /* border: 1px solid white; */
   border-radius: 0.25rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 10;
@@ -28,19 +28,19 @@ const TrackRowWrapper = styled.div`
   .controller-notes-container {
     display: flex;
     justify-content: space-between;
-    background: #376b81;
+    /* background: #376b81; */
     & > div {
-      margin: 1rem;
+      /* margin: 1rem; */
     }
   }
-  .effects-volume-container {
+  /* .effects-volume-container {
     display: flex;
     justify-content: space-between;
     background: #357e56;
     & > div {
       margin: 1rem;
     }
-  }
+  } */
 `;
 
 const Notes = styled.div`
@@ -142,12 +142,12 @@ export default function TrackRow({ track, currentStep }) {
         </NotesWrapper>
       </section>
 
-      <section className="effects-volume-container">
+      {/* <section className="effects-volume-container">
         <div>effect
           <input type="number" value={track.options.filter} onChange={filterHandler} />
         </div>
         <div>volume section</div>
-      </section>
+      </section> */}
     </TrackRowWrapper>
   );
 }

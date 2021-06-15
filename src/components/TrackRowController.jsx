@@ -48,13 +48,21 @@ const TrackController = styled.div`
     }
   }
   .collapse-button {
-    background: ${colors.button.optional};
+    /* background: ${colors.button.optional}; */
     margin-top: auto;
     margin-left: auto;
     margin-bottom: 1rem;
-    margin-right: 1rem;
+    margin-right: .3rem;
     width: 2rem;
     height: 1rem;
+    border-radius: 0.1rem;
+    
+    & > img{
+      width:1rem;
+      height:1rem;
+      margin-left:.5rem;
+    }
+
   }
 
   .minibar-control {
@@ -169,7 +177,13 @@ export default function TrackRowController({ track }) {
 
       {track.instrument !== "Kick" && (
         <div className="collapse-button" onClick={() => collapseHandler()}>
-          ^
+          {isCollapsed=== true &&
+          <img src="icons/arrow-up.svg" alt=""  />
+          }
+          {isCollapsed=== false &&
+          <img src="icons/arrow-down.svg" alt=""  />
+          }
+          
         </div>
       )}
     </TrackController>

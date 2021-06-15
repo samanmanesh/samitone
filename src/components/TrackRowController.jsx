@@ -11,22 +11,61 @@ import useSong from "../helpers/useSong";
 
 const TrackController = styled.div`
   display: flex;
-  align-items: start;
-  padding: 1rem 0 0 0;
+  flex-direction: column;
+  /* align-items: start; */
+  padding: 1.5rem 0 0 0;
   margin-bottom: 0;
-  /* background: #b16b10; */
+  background: #b16b10;
   width: 17.2rem;
   min-height: 2rem;
- 
+
+  .synth-container {
+    display: flex;
+    background: #610707;
+    align-items: center;
+    & > button {
+      all: unset;
+      background: ${colors.button.optional};
+      width: 2rem;
+      height: 1rem;
+      margin: 0.2rem;
+      font-size: 0.5em;
+      border-radius: 0.1rem;
+      text-align: center;
+    }
+    .mute {
+      margin-left: auto;
+    }
+
+    .more {
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+    }
+
+    & > span {
+      margin: 0.2rem;
+      font-size: 0.8em;
+    }
+  }
+  .collapse-button {
+    background: ${colors.button.optional};
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 2rem;
+    height: 1rem;
+  }
+
   .minibar-control {
     /* background: #74961d; */
 
     .add-row-selector {
-        height:5%;
+      height: 5%;
       /* background: #273070; */
       font-size: 1.5ch;
-      & > select{
-          /* height:1rem;
+      & > select {
+        /* height:1rem;
           width:2rem; */
       }
 
@@ -38,53 +77,19 @@ const TrackController = styled.div`
 
   .main-control {
     background: #63127e;
-    display:flex;
+    display: flex;
     align-items: chanter;
 
     .change-instrument {
       /* position: absolute; */
       /* background: #000; */
-      padding:0 .2rem;
+      padding: 0 0.2rem;
       /* max-width: 1rem; */
-      & > select{
-          max-width: 3rem;
+      & > select {
+        max-width: 3rem;
       }
-
     }
   }
-
-
-  & > button {
-        all: unset;
-        background:${colors.button.optional};
-        width:2rem;
-        height:1rem;
-        margin:.2rem;
-        font-size:.5em;
-        border-radius: .1rem;
-        text-align:center;
-    }
-    .mute{
-      margin-left:auto;
-    }
-        
-    .more{
-      margin-right: .5rem;
-      margin-left:.5rem;
-    }
-
-    & > span{
-        margin:.2rem;
-        font-size: .8em;
-    }
-
-
-
-
-`;
-
-const TrackDetails = styled.div`
-  /* display: flex; */
 `;
 
 export default function TrackRowController({ track }) {
@@ -128,9 +133,7 @@ export default function TrackRowController({ track }) {
           </div>
         </section>
       )} */}
-
-      
-
+      <div className="synth-container">
         <div className="change-instrument">
           {/* <img src="" alt="icons" /> */}
           <select
@@ -146,15 +149,16 @@ export default function TrackRowController({ track }) {
           </select>
         </div>
 
-        
-
         <span>{track.instrument}</span>
-            
+
         <button className="mute">Mute</button>
-        <button className="solo">Solo</button>   
-        <div className="more"><img src="icons/more.svg" alt="" /></div>
-        {/* <div>^</div>   */}
-      
+        <button className="solo">Solo</button>
+        <div className="more">
+          <img src="icons/more.svg" alt="" />
+        </div>
+      </div>
+
+      {track.instrument !== "Kick" && <div className="collapse-button">^</div>}
     </TrackController>
   );
 }

@@ -109,9 +109,9 @@ export default function TrackRow({ track, currentStep }) {
                 {row
                   .filter(
                     (note) =>
-                    // note.order < options.stepLength &&
-                    // note.row < track.rowDisplay
-                      note.order < options.stepLength
+                    note.order < options.stepLength &&
+                    note.row < track.rowDisplay
+                      // note.order < options.stepLength
                   )
                   .map((note) => (
                     

@@ -15,13 +15,13 @@ const TrackController = styled.div`
   /* align-items: start; */
   padding: 1.5rem 0 0 0;
   margin-bottom: 0;
-  background: #b16b10;
+  /* background: #b16b10; */
   width: 17.2rem;
   min-height: 2rem;
 
   .synth-container {
     display: flex;
-    background: #610707;
+    /* background: #610707; */
     align-items: center;
     & > button {
       all: unset;
@@ -94,7 +94,7 @@ const TrackController = styled.div`
 
 export default function TrackRowController({ track }) {
   const { updateTrack, options, setOptions } = useSong();
-
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
   };
@@ -106,11 +106,20 @@ export default function TrackRowController({ track }) {
   const instruments = getInstrumentsByType(currentInstrumentType);
   const instrumentKeys = instruments.map((e) => e.name);
 
-  const rowList = [1, 2, 3, 4, 5, 6, 7];
+  // const rowList = [1, 2, 3, 4, 5, 6, 7];
 
-  const addRowHandler = (rowToDisplay) => {
-    updateTrack(track.id, { ...track, rowDisplay: rowToDisplay });
-    console.log(track.rowDisplay, "rowDisplay");
+  // const addRowHandler = (rowToDisplay) => {
+  //   updateTrack(track.id, { ...track, rowDisplay: rowToDisplay });
+  //   console.log(track.rowDisplay, "rowDisplay");
+  // };
+
+  const collapseHandler = () => {
+    setIsCollapsed(!isCollapsed);
+    if (isCollapsed === true) {
+      updateTrack(track.id, { ...track, rowDisplay: 1 });
+    } else if(isCollapsed === false) {
+      updateTrack(track.id, { ...track, rowDisplay: 7 });
+    }
   };
 
   return (
@@ -158,7 +167,11 @@ export default function TrackRowController({ track }) {
         </div>
       </div>
 
-      {track.instrument !== "Kick" && <div className="collapse-button">^</div>}
+      {track.instrument !== "Kick" && (
+        <div className="collapse-button" onClick={() => collapseHandler()}>
+          ^
+        </div>
+      )}
     </TrackController>
   );
 }

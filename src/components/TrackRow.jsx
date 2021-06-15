@@ -9,10 +9,10 @@ import useSong from "../helpers/useSong";
 
 const NotesWrapper = styled.div`
   width: 100%;
-  background: #1E1E1E;
+  background: #624848;
   display:flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   /* justify-content:center; */
   /* height:100%; */
   /* flex-grow:10; */

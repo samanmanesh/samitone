@@ -18,12 +18,13 @@ const NotesWrapper = styled.div`
   /* flex-grow:10; */
 `;
 const TrackRowWrapper = styled.div`
-  border: 1px solid white;
+  /* border: 1px solid white; */
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 10;
+  
   .controller-notes-container {
     display: flex;
     justify-content: space-between;

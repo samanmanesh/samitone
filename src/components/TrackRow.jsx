@@ -103,7 +103,7 @@ export default function TrackRow({ track, currentStep }) {
           {(track.instrument === "AM" ||
             track.instrument === "FM" ||
             track.instrument === "Duo" ||
-            track.instrument === "Sample") &&
+            track.instrument === "Sample" || track.instrument === "Test"|| track.instrument === "Clap") &&
             track.notes.map((row, i) => (
               <Notes barLength={4} key={`note-row__${i}`}>
                 {row

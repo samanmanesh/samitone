@@ -16,7 +16,7 @@ const TrackController = styled.div`
   padding: 1.5rem 0 0 0;
   margin-bottom: 0;
   /* background: #b16b10; */
-  width: 17.2rem;
+  min-width: 15rem;
   min-height: 2rem;
 
   .synth-container {

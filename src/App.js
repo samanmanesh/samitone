@@ -7,6 +7,7 @@ import AssistantBar from "./components/AssistantBar";
 import styled from "styled-components";
 import colors from "./styles";
 import { sizes } from "./styles";
+import * as Tone from "tone";
 
 const AppWrapper = styled.div`
   color: white;
@@ -21,7 +22,7 @@ const AppWrapper = styled.div`
     "playBar playBar playBar playBar"
     /* "helper helper helper helper" */
     "body body body body";
-    /* "effect effect effect effect"; */
+  /* "effect effect effect effect"; */
 `;
 
 const FakeSidebar = styled.div`
@@ -32,9 +33,22 @@ const FakeSidebar = styled.div`
   left: 0;
   z-index: 0;
   background: ${colors.background.primaryDark};
-  
-`
+`;
 function App() {
+  // const testPlayer = () => {
+    
+  //   var sampler = new Tone.Sampler({
+  //     "Clap" : "../public/Media/Clap.mp3",
+      
+  //   }, function(){
+  //     //sampler will repitch the closest sample
+  //     sampler.triggerAttack("Clap")
+  //   })
+    
+
+
+  // };
+
   return (
     <AppWrapper>
       <MainProvider>
@@ -43,7 +57,13 @@ function App() {
           {/* <AssistantBar /> */}
           <TrackPlayer />
           {/* <Effect /> */}
-          <FakeSidebar/>
+
+          {/* <div>
+            {" "}
+            <button onClick={() => testPlayer()}>play test</button>
+          </div> */}
+
+          <FakeSidebar />
         </PlayProvider>
       </MainProvider>
     </AppWrapper>

@@ -60,4 +60,39 @@ export const instruments = [
     type: InstrumentType.Synth,
     colors: colors.teal,
   },
+  {
+    name: "Test",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Audio 2_1.wav",
+        
+      },
+      baseUrl: "../../public/Media/Audio 2_1.wav",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.teal,
+  },
+  {
+    name: "Clap",
+    sound: new Tone.Player( "../../public/Media/Clap.mp3"),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.teal,
+  },
 ];
+
+
+// var sampler = new Tone.Sampler({
+// 	"C3" : "path/to/C3.mp3",
+// 	"D#3" : "path/to/Dsharp3.mp3",
+// 	"F#3" : "path/to/Fsharp3.mp3",
+// 	"A3" : "path/to/A3.mp3",
+// }, function(){
+// 	//sampler will repitch the closest sample
+// 	sampler.triggerAttack("D3")
+// })
+
+// const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
+// // play as soon as the buffer is loaded
+// player.autostart = true;

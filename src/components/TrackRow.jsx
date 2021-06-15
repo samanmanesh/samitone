@@ -22,7 +22,8 @@ const TrackRowWrapper = styled.div`
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 0.5rem;
-
+  position: relative;
+  z-index: 10;
   .controller-notes-container {
     display: flex;
     justify-content: space-between;

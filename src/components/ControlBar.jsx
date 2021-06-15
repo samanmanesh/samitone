@@ -14,6 +14,8 @@ import usePlay from "../helpers/usePlay";
 
 const Header = styled.div`
   grid-area: playBar;
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   padding: 0.5rem;

@@ -23,6 +23,17 @@ const AppWrapper = styled.div`
     "body body body body";
     /* "effect effect effect effect"; */
 `;
+
+const FakeSidebar = styled.div`
+  width: 15rem;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: ${colors.background.primaryDark};
+  
+`
 function App() {
   return (
     <AppWrapper>
@@ -32,6 +43,7 @@ function App() {
           {/* <AssistantBar /> */}
           <TrackPlayer />
           {/* <Effect /> */}
+          <FakeSidebar/>
         </PlayProvider>
       </MainProvider>
     </AppWrapper>

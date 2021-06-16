@@ -77,7 +77,54 @@ export const instruments = [
     name: "Clap",
     sound: new Tone.Sampler({
       urls: {
-        A1: "Clap.mp3",
+        A1: "Clap_1.mp3",
+      },
+      baseUrl: "/Media/"
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Rim",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Rim_1.mp3",
+      },
+      baseUrl: "/Media/"
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Snap",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Snap_1.mp3",
+      },
+      baseUrl: "/Media/"
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Snare 1",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Snare1_1.mp3",
+      },
+      baseUrl: "/Media/"
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },{
+    name: "Snare 2",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Snare2_1.mp3",
       },
       baseUrl: "/Media/"
     }),

@@ -25,7 +25,7 @@ export const MainProvider = (props) => {
     const rows = [];
 
     //*adding the maxLength instead stepLength
-    const maxLength = 12;
+    const maxLength = 16;
     const CMajorScale = ["C", "D", "E", "F", "G", "A", "B"];
     // if(instrumentName === "AM")
     for (let j = 0; j < 7; j++) {

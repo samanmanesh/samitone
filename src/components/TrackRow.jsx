@@ -11,6 +11,7 @@ import {
 import TrackRowController from "./TrackRowController";
 import useSong from "../helpers/useSong";
 
+// #region - Styling -
 const NotesWrapper = styled.div`
   width: 100%;
   /* background: #624848; */
@@ -75,6 +76,8 @@ const Notes = styled.div`
   }
 `;
 
+// #endregion
+
 export default function TrackRow({ track, currentStep }) {
   const { updateTrack, options } = useSong();
 
@@ -112,15 +115,18 @@ export default function TrackRow({ track, currentStep }) {
             track.notes.map((row, i) => (
               <Notes barLength={4} key={`note-row__${i}`}>
                 {(!isCollapsed || (isCollapsed && i === 0)) &&
-                  row.map((note) => (
-                    <Note
-                      note={note}
-                      toggleNote={() => changedNote(note)}
-                      currentStep={currentStep}
-                      key={uuidv4()}
-                      colors={colors}
-                    />
-                  ))}
+                  row.map(
+                    (note, j) =>
+                      j < options.stepLength && (
+                        <Note
+                          note={note}
+                          toggleNote={() => changedNote(note)}
+                          currentStep={currentStep}
+                          key={uuidv4()}
+                          colors={colors}
+                        />
+                      )
+                  )}
                 {/* {row
                 .filter(
                   (note) =>

@@ -15,6 +15,7 @@ export const PlayProvider = (props) => {
     const step = i % options.stepLength;
     setCurrentStep(step);
     i++;
+    console.log('>>', options.stepLength)
 
     tracks.forEach((track, i) => {
       const instrument = getInstrument(track.instrument);
@@ -32,7 +33,7 @@ export const PlayProvider = (props) => {
       //* to play at the current order
       track.notes.forEach((row) => {
         const currentNote = row[step];
-        if (currentNote.active) {
+        if (currentNote && currentNote.active) {
           synth.triggerAttackRelease(
             `${currentNote.pitch}${currentNote.octave}`,
             currentNote.duration

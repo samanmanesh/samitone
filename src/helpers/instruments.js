@@ -132,6 +132,67 @@ export const instruments = [
     type: InstrumentType.Beat,
     colors: colors.teal,
   },
+  {
+    name: "Guitar 1",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Guitar-1_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.teal,
+  },{
+    name: "Guitar 2",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Guitar-2_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.teal,
+  },{
+    name: "Guitar 3",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Guitar-3_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.teal,
+  },{
+    name: "Guitar 4",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Guitar-4_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.teal,
+  },{
+    name: "Guitar 5",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Guitar-5_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.green,
+  },
 ];
 
 

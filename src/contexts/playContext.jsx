@@ -15,7 +15,6 @@ export const PlayProvider = (props) => {
     const step = i % options.stepLength;
     setCurrentStep(step);
     i++;
-    console.log('>>', options.stepLength)
 
     tracks.forEach((track, i) => {
       const instrument = getInstrument(track.instrument);

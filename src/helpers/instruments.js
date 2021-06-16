@@ -193,6 +193,147 @@ export const instruments = [
     type: InstrumentType.Synth,
     colors: colors.green,
   },
+  {
+    name: "Another One",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "ANOTHERONE_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
+    {
+    name: "EWEYEAH",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "EWEYEAH_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
+  {
+    name: "HA",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "HA_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },{
+    name: "HEY",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "HEY_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
+  {
+    name: "HOLDUP",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "HOLDUP_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.orange,
+  },
+  {
+    name: "HUH",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "HUH_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
+  {
+    name: "JYEA",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "JYEA_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
+  {
+    name: "UGH",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "UGH_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },{
+    name: "UGH 2",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "UGH_2.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
+  {
+    name: "YEAUH ",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "YEAUH_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 0,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
+  {
+    name: "GUN ",
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "GUN_1.mp3",
+        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 0,
+    type: InstrumentType.Beat,
+    colors: colors.green,
+  },
 ];
 
 

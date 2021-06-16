@@ -75,9 +75,14 @@ export const instruments = [
   },
   {
     name: "Clap",
-    sound: new Tone.Player( "../../public/Media/Clap.mp3"),
+    sound: new Tone.Sampler({
+      urls: {
+        A1: "Clap.mp3",
+      },
+      baseUrl: "/Media/"
+    }),
     octave: 5,
-    type: InstrumentType.Synth,
+    type: InstrumentType.Beat,
     colors: colors.teal,
   },
 ];

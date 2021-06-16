@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import colors from "../styles";
 import { v4 as uuidv4 } from "uuid";
 import Note from "./Note";
-import { getInstrument, instruments } from "../helpers/instruments";
+import {
+  getInstrument,
+  instruments,
+  InstrumentType,
+} from "../helpers/instruments";
 import TrackRowController from "./TrackRowController";
 import useSong from "../helpers/useSong";
 
 const NotesWrapper = styled.div`
   width: 100%;
   /* background: #624848; */
-  display:flex;
+  display: flex;
   flex-direction: column;
   /* justify-content: space-evenly; */
   /* justify-content:center; */
@@ -24,7 +28,7 @@ const TrackRowWrapper = styled.div`
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 2;
-  
+
   .controller-notes-container {
     display: flex;
     justify-content: space-between;
@@ -44,19 +48,18 @@ const TrackRowWrapper = styled.div`
 `;
 
 const Notes = styled.div`
-  background:${colors.background.row};
+  background: ${colors.background.row};
   position: relative;
   z-index: 0;
   display: flex;
   padding: 0 0 0 1rem;
   /* flex-direction: column; */
-   /* justify-content: space-evenly; */
+  /* justify-content: space-evenly; */
   /* align-content: space-between;  */
   /* height:100%; */
   /* min-height:.5rem; */
   /* padding: 1rem; */
-  
-  
+
   /* border-radius: 4rem; */
   /* margin-bottom: 0.5rem; */
   & > * {
@@ -75,6 +78,7 @@ const Notes = styled.div`
 export default function TrackRow({ track, currentStep }) {
   const { updateTrack, options } = useSong();
 
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const changedNote = (note) => {
     // console.log("changed note", note);
 
@@ -88,33 +92,33 @@ export default function TrackRow({ track, currentStep }) {
 
   const colors = getInstrument(track.instrument).colors;
 
-  const filterHandler = e => {
+  const filterHandler = (e) => {
     const newOptions = track.options;
     newOptions.filter = e.target.value;
     updateTrack(track.id, { ...track, options: newOptions });
-  }
- 
+  };
+
   return (
     <TrackRowWrapper>
       <section className="controller-notes-container">
-        <TrackRowController track={track} />
-        
+        <TrackRowController
+          track={track}
+          isCollapsed={isCollapsed}
+          setIsCollapsed={setIsCollapsed}
+        />
+
         <NotesWrapper>
-          {(track.instrument === "AM" ||
-            track.instrument === "FM" ||
-            track.instrument === "Duo" ||
-            track.instrument === "Sample" || track.instrument === "Test"|| track.instrument === "Clap") &&
+          {getInstrument(track.instrument).type === InstrumentType.Synth &&
             track.notes.map((row, i) => (
               <Notes barLength={4} key={`note-row__${i}`}>
-                {row
-                  .filter(
-                    (note) =>
+              {row
+                .filter(
+                  (note) =>
                     note.order < options.stepLength &&
                     note.row < track.rowDisplay
-                      // note.order < options.stepLength
+                  // note.order < options.stepLength
                   )
                   .map((note) => (
-                    
                     <Note
                       note={note}
                       toggleNote={() => changedNote(note)}
@@ -122,12 +126,11 @@ export default function TrackRow({ track, currentStep }) {
                       key={uuidv4()}
                       colors={colors}
                     />
-                    
                   ))}
-                  </Notes>
+              </Notes>
             ))}
 
-          {track.instrument === "Kick" &&
+          {getInstrument(track.instrument).type === InstrumentType.Beat &&
             track.notes.map((row) => (
               <Notes barLength={4}>
                 {row

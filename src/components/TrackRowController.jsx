@@ -6,6 +6,7 @@ import {
   getInstrument,
   getInstrumentsByType,
   instruments,
+  InstrumentType,
 } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
 
@@ -52,17 +53,16 @@ const TrackController = styled.div`
     margin-top: auto;
     margin-left: auto;
     margin-bottom: 1rem;
-    margin-right: .3rem;
+    margin-right: 0.3rem;
     width: 2rem;
     height: 1rem;
     border-radius: 0.1rem;
-    
-    & > img{
-      width:1rem;
-      height:1rem;
-      margin-left:.5rem;
-    }
 
+    & > img {
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.5rem;
+    }
   }
 
   .minibar-control {
@@ -100,9 +100,12 @@ const TrackController = styled.div`
   }
 `;
 
-export default function TrackRowController({ track }) {
+export default function TrackRowController({
+  track,
+  isCollapsed,
+  setIsCollapsed,
+}) {
   const { updateTrack, options, setOptions } = useSong();
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
   };
@@ -121,14 +124,14 @@ export default function TrackRowController({ track }) {
   //   console.log(track.rowDisplay, "rowDisplay");
   // };
 
-  const collapseHandler = () => {
-    setIsCollapsed(!isCollapsed);
-    if (isCollapsed === true) {
-      updateTrack(track.id, { ...track, rowDisplay: 1 });
-    } else if(isCollapsed === false) {
-      updateTrack(track.id, { ...track, rowDisplay: 7 });
-    }
-  };
+  // const collapseHandler = () => {
+  //   setIsCollapsed((prev) => !prev);
+  //   if (isCollapsed) {
+  //     updateTrack(track.id, { ...track, rowDisplay: 1 });
+  //   } else {
+  //     updateTrack(track.id, { ...track, rowDisplay: 7 });
+  //   }
+  // };
 
   return (
     <TrackController>
@@ -175,15 +178,15 @@ export default function TrackRowController({ track }) {
         </div>
       </div>
 
-      {track.instrument !== "Kick" && (
-        <div className="collapse-button" onClick={() => collapseHandler()}>
-          {isCollapsed=== true &&
-          <img src="icons/arrow-up.svg" alt=""  />
-          }
-          {isCollapsed=== false &&
-          <img src="icons/arrow-down.svg" alt=""  />
-          }
-          
+      {getInstrument(track.instrument).type === InstrumentType.Synth && (
+        <div
+          className="collapse-button"
+          onClick={() => setIsCollapsed((prev) => !prev)}
+        >
+          <img
+            src={isCollapsed ? "icons/arrow-up.svg" : "icons/arrow-down.svg"}
+            alt=""
+          />
         </div>
       )}
     </TrackController>

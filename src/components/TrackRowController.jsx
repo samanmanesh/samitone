@@ -49,7 +49,6 @@ const TrackController = styled.div`
     }
   }
   .collapse-button {
-    /* background: ${colors.button.optional}; */
     margin-top: auto;
     margin-left: auto;
     margin-bottom: 1rem;
@@ -57,7 +56,7 @@ const TrackController = styled.div`
     width: 2rem;
     height: 1rem;
     border-radius: 0.1rem;
-
+    cursor: pointer;
     & > img {
       width: 1rem;
       height: 1rem;
@@ -184,7 +183,7 @@ export default function TrackRowController({
           onClick={() => setIsCollapsed((prev) => !prev)}
         >
           <img
-            src={isCollapsed ? "icons/arrow-up.svg" : "icons/arrow-down.svg"}
+            src={isCollapsed ? "icons/arrow-down.svg" : "icons/arrow-up.svg"}
             alt=""
           />
         </div>

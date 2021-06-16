@@ -111,7 +111,17 @@ export default function TrackRow({ track, currentStep }) {
           {getInstrument(track.instrument).type === InstrumentType.Synth &&
             track.notes.map((row, i) => (
               <Notes barLength={4} key={`note-row__${i}`}>
-              {row
+                {(!isCollapsed || (isCollapsed && i === 0)) &&
+                  row.map((note) => (
+                    <Note
+                      note={note}
+                      toggleNote={() => changedNote(note)}
+                      currentStep={currentStep}
+                      key={uuidv4()}
+                      colors={colors}
+                    />
+                  ))}
+                {/* {row
                 .filter(
                   (note) =>
                     note.order < options.stepLength &&
@@ -126,7 +136,7 @@ export default function TrackRow({ track, currentStep }) {
                       key={uuidv4()}
                       colors={colors}
                     />
-                  ))}
+                  ))} */}
               </Notes>
             ))}
 

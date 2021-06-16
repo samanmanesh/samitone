@@ -8,6 +8,7 @@ import colors from "../styles";
 const TrackPlayerContainer = styled.div`
   background: ${colors.background.secondary};
   grid-area: body;
+  overflow: auto;
 `;
 
 export default function TrackPlayer() {

@@ -25,6 +25,8 @@ const Header = styled.div`
   .speed-bar-container {
     color: rgb(101, 96, 255);
     margin-right: 5rem;
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -148,7 +150,7 @@ export default function ControlBar() {
       <div className="speed-bar-container">
         <img src="icons/metronome-on.svg" alt="" />
         <img src="icons/metronome-off.svg" alt="" />
-        <span>120 BMP | 4 BARS</span>
+        <span>120 BPM | 4 BARS</span>
       </div>
 
       <div className="menu">

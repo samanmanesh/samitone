@@ -55,7 +55,7 @@ export const PlayProvider = (props) => {
     if (loop) loop.stop(0);
     // Loop
     setupSong();
-    setLoop(new Tone.Loop(playCallback, options.bps).start(0));
+    setLoop(new Tone.Loop(playCallback, "0.01").start(0));
     Tone.Transport.start();
   };
 

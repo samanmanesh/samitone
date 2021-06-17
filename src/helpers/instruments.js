@@ -14,9 +14,8 @@ export const InstrumentType = {
 export const getInstrument = (instrumentName) =>
   instruments.find((instrument) => instrument.name === instrumentName);
 
-export const getInstrumentsByType = (instrumentType) => 
+export const getInstrumentsByType = (instrumentType) =>
   instruments.filter((instrument) => instrument.type === instrumentType);
-
 
 export const instruments = [
   {
@@ -65,7 +64,6 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         A1: "Audio 2_1.wav",
-        
       },
       baseUrl: "../../public/Media/Audio 2_1.wav",
     }),
@@ -74,12 +72,84 @@ export const instruments = [
     colors: colors.teal,
   },
   {
-    name: "Clap",
+    name: "Kick",
     sound: new Tone.Sampler({
       urls: {
-        C2: "Clap_1.mp3",
+        C2: "Kick.mp3",
       },
-      baseUrl: "/Media/"
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Kick 2",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Kick2.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "808",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "808-1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "808 1",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "808-2.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "808 2",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "808-3.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "808 3",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "808-4.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "808 4",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "808-5.mp3",
+      },
+      baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -91,7 +161,139 @@ export const instruments = [
       urls: {
         C2: "Clap_1.mp3",
       },
-      baseUrl: "/Media/"
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Claves",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Claves_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Conga",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Conga_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Conga 2",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Conga 2_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Crash",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Crash_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Hat",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Hat_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Hat 2",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Hat 2_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Shaker",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Shaker_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Stick",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Stick_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Tom",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Tom_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Tom 2",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Tom 2_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Beat,
+    colors: colors.teal,
+  },
+  {
+    name: "Triangle",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Triangle_1.mp3",
+      },
+      baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -103,7 +305,7 @@ export const instruments = [
       urls: {
         C2: "Rim_1.mp3",
       },
-      baseUrl: "/Media/"
+      baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -115,7 +317,7 @@ export const instruments = [
       urls: {
         C2: "Snap_1.mp3",
       },
-      baseUrl: "/Media/"
+      baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -127,18 +329,19 @@ export const instruments = [
       urls: {
         C2: "Snare1_1.mp3",
       },
-      baseUrl: "/Media/"
+      baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
     colors: colors.teal,
-  },{
+  },
+  {
     name: "Snare 2",
     sound: new Tone.Sampler({
       urls: {
         C2: "Snare2_1.mp3",
       },
-      baseUrl: "/Media/"
+      baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -149,55 +352,126 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "Guitar-1_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Synth,
     colors: colors.teal,
-  },{
+  },
+  {
     name: "Guitar 2",
     sound: new Tone.Sampler({
       urls: {
         C2: "Guitar-2_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Synth,
     colors: colors.teal,
-  },{
+  },
+  {
     name: "Guitar 3",
     sound: new Tone.Sampler({
       urls: {
         C2: "Guitar-3_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Synth,
     colors: colors.teal,
-  },{
+  },
+  {
     name: "Guitar 4",
     sound: new Tone.Sampler({
       urls: {
         C2: "Guitar-4_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Synth,
     colors: colors.teal,
-  },{
+  },
+  {
     name: "Guitar 5",
     sound: new Tone.Sampler({
       urls: {
         C2: "Guitar-5_1.mp3",
-        
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.green,
+  },
+  {
+    name: "Key",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Key 1_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.green,
+  },
+  {
+    name: "Key 2",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Key 2_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.green,
+  },
+  {
+    name: "Key 3",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Key 3_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.green,
+  },
+  {
+    name: "Key 4",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Key 4_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.green,
+  },
+  {
+    name: "Key 5",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Key 5_1.mp3",
+      },
+      baseUrl: "/Media/",
+    }),
+    octave: 5,
+    type: InstrumentType.Synth,
+    colors: colors.green,
+  },
+  {
+    name: "Key 6",
+    sound: new Tone.Sampler({
+      urls: {
+        C2: "Key 6_1.mp3",
       },
       baseUrl: "/Media/",
     }),
@@ -210,7 +484,6 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "ANOTHERONE_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -218,12 +491,11 @@ export const instruments = [
     type: InstrumentType.Beat,
     colors: colors.green,
   },
-    {
+  {
     name: "EWEYEAH",
     sound: new Tone.Sampler({
       urls: {
         C2: "EWEYEAH_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -236,19 +508,18 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "HA_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
     colors: colors.green,
-  },{
+  },
+  {
     name: "HEY",
     sound: new Tone.Sampler({
       urls: {
         C2: "HEY_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -261,7 +532,6 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "HOLDUP_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -274,7 +544,6 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "HUH_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -287,7 +556,6 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "JYEA_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -300,19 +568,18 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "UGH.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
     octave: 5,
     type: InstrumentType.Beat,
     colors: colors.green,
-  },{
+  },
+  {
     name: "UGH 2",
     sound: new Tone.Sampler({
       urls: {
         C2: "UGH_2.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -325,7 +592,6 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "YEAUH_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -338,7 +604,6 @@ export const instruments = [
     sound: new Tone.Sampler({
       urls: {
         C2: "GUN_1.mp3",
-        
       },
       baseUrl: "/Media/",
     }),
@@ -347,7 +612,6 @@ export const instruments = [
     colors: colors.green,
   },
 ];
-
 
 // var sampler = new Tone.Sampler({
 // 	"C3" : "path/to/C3.mp3",

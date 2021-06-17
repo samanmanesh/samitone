@@ -34,7 +34,7 @@ export const MainProvider = (props) => {
         const note = {
           pitch: CMajorScale[j],
           octave: "2",
-          duration: ".5n",
+          duration: "5",
           row: j,
           order: i,
           active: false,

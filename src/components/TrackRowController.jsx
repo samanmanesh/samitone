@@ -134,24 +134,7 @@ export default function TrackRowController({
 
   return (
     <TrackController>
-      {/* {track.instrument !== "Kick" && (
-        <section className=" minibar-control">
-          <div className="add-row-selector">
-            +
-            <select
-              name=""
-              id=""
-              onChange={(e) => addRowHandler(e.target.value)}
-            >
-              {rowList.map((e, i) => (
-                <option value={e} key={`instrument-selector__${i}`}>
-                  {e}
-                </option>
-              ))}
-            </select>
-          </div>
-        </section>
-      )} */}
+      
       <div className="synth-container">
         <div className="change-instrument">
           {/* <img src="" alt="icons" /> */}

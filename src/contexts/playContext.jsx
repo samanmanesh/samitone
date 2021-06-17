@@ -21,7 +21,6 @@ export const PlayProvider = (props) => {
       const synth = instrument.sound.toDestination();
 
       if (synth && songEffects[i]) {
-      
         // filter.frequency.rampTo(track.options.filter, 0);
         if (track.options.filter) {
           songEffects[i].filter.frequency.rampTo(track.options.filter, 0);
@@ -30,6 +29,7 @@ export const PlayProvider = (props) => {
       }
       //* Find the note for this track that is supposed
       //* to play at the current order
+
       track.notes.forEach((row) => {
         const currentNote = row[step];
         if (currentNote && currentNote.active) {
@@ -44,8 +44,7 @@ export const PlayProvider = (props) => {
 
   //* Updates the callback when values change
   useEffect(() => {
-    if (loop) {  
-
+    if (loop) {
       // generateSongEffects();
       loop.callback = playCallback;
     }

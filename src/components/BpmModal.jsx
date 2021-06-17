@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
+
+
 const ModalWrapper = styled.div`
   position: fixed;
   top: 3rem;
@@ -34,23 +36,35 @@ const ModalWrapper = styled.div`
   }
 `;
 
+
 export default function BpmModal() {
   const { options, setOptions } = useSong();
 
+
+  const bpmConverter = (e) =>{
+
+    const bpm = e.target.value;
+    const hz = bpm / 60;
+    console.log(hz, "hz is ")
+
+  setOptions({ ...options, bps: hz })
+}
+
+console.log(options.bps * 60);
   return (
     <ModalWrapper>
       <section className="bpm">
         
-        
+        //* write a function to convert the e.target.value from 0.1 to 0.9 
         <input
         type="range"
-        min="60"
-        max="140"
+        min="70"
+        max="150"
         className="slider"
         // value={bps}
-        value={options.bps}
+        value={options.bps * 60 }
         // onChange={(e) => setBps(e.target.value)}
-        onChange={(e) => setOptions({ ...options, bps: e.target.value })}
+        onChange={(e) => bpmConverter(e) }
       />
         bpm
       </section>

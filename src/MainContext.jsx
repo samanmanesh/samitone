@@ -5,7 +5,7 @@ export const MainContext = createContext();
 export const MainProvider = (props) => {
   const [tracks, setTracks] = useState([]);
   const [options, setOptions] = useState({
-    bps: 0.5,
+    bps: 2,
     stepLength: 16,
     addRow: 1,
   });

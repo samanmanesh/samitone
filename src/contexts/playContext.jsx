@@ -61,7 +61,7 @@ export const PlayProvider = (props) => {
 
   const setupSong = () => {
     i = 0;
-    generateSongEffects();
+    // generateSongEffects();
   };
 
   const generateSongEffects = () => {

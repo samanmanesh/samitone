@@ -85,14 +85,7 @@ export default function ControlBar() {
   //   setShowModal(false);
   // };
 
-  const playHandler = () => {
-    console.log(isPlay,"before");
-    setIsPlay( prev => !prev) 
-    
-  };
-
   useEffect(() => {
-    console.log(isPlay,"after");
     if (isPlay) {
       play();
     } else{
@@ -100,7 +93,6 @@ export default function ControlBar() {
     }
   }, [isPlay])
 
-  console.log(isPlay)
 
   return (
     <Header>
@@ -145,7 +137,7 @@ export default function ControlBar() {
       )}
 
       <ControlPanel>
-        <button onClick={() => playHandler()}>
+        <button onClick={() => setIsPlay( prev => !prev) }>
           <img src={isPlay === true ? "icons/stop.svg" : "icons/play.svg"} alt="play" />
         </button>
         <span>00:00</span>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import colors from "../styles";
@@ -86,14 +86,21 @@ export default function ControlBar() {
   // };
 
   const playHandler = () => {
-    setIsPlay(!isPlay);
+    console.log(isPlay,"before");
+    setIsPlay( prev => !prev) 
+    
+  };
 
-    if (isPlay === true) {
+  useEffect(() => {
+    console.log(isPlay,"after");
+    if (isPlay) {
       play();
-    } else if (isPlay === false) {
+    } else{
       pause();
     }
-  };
+  }, [isPlay])
+
+  console.log(isPlay)
 
   return (
     <Header>
@@ -139,7 +146,7 @@ export default function ControlBar() {
 
       <ControlPanel>
         <button onClick={() => playHandler()}>
-          <img src="icons/play.svg" alt="play" />
+          <img src={isPlay === true ? "icons/stop.svg" : "icons/play.svg"} alt="play" />
         </button>
         <span>00:00</span>
       </ControlPanel>

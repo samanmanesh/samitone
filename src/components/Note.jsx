@@ -39,7 +39,7 @@ export default function Note({ note, toggleNote, currentStep, colors }) {
       colors={colors}
       className={note.active && "active"}
     >
-      {note.order}
+      {/* {note.order} */}
     </NoteWrapper>
   );
 }

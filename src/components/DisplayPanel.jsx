@@ -72,7 +72,7 @@ export default function DisplayPanel() {
         <div>Tempo</div> <div>{options.bps} bps</div>
         <div>
           <button onClick={() => changeTempo(1)}>
-            <img src="icons/arrow-up-red.svg" alt="arrow up" />
+            <img     src="icons/arrow-up-red.svg" alt="arrow up" />
           </button>
           <button onClick={() => changeTempo(-1)}>
             <img src="icons/arrow-down-red.svg" alt="arrow down" />

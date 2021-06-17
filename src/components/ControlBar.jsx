@@ -38,10 +38,7 @@ const ControlPanel = styled.div`
     all: unset;
     /* margin: 0.1rem; */
     padding: 0.5rem;
-    & > img {
-      /* width: 1.7rem;
-      height: 1.7rem; */
-    }
+   
   }
   & > span {
     /* background: #622424; */

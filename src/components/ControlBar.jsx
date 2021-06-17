@@ -12,6 +12,7 @@ import {
 } from "../helpers/instruments";
 import usePlay from "../helpers/usePlay";
 
+// #region - styling -
 const Header = styled.div`
   grid-area: playBar;
   position: relative;
@@ -21,10 +22,12 @@ const Header = styled.div`
   padding: 0.5rem;
 
   .menu {
+    margin-right: 1rem;
+    margin-left: 10rem ;
   }
   .speed-bar-container {
     color: rgb(101, 96, 255);
-    margin-right: 5rem;
+    /* padding-right: 10rem; */
     display: flex;
     align-items: center;
   }
@@ -33,6 +36,7 @@ const Header = styled.div`
 const ControlPanel = styled.div`
   display: flex;
   margin-left:auto;
+  /* margin-right: 30rem; */
   margin-right:auto;
   & > button {
     all: unset;
@@ -70,6 +74,8 @@ const AddTrack = styled.div`
     padding: 0;
   }
 `;
+// #endregion
+
 // export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
   const { options, setOptions, addTrack } = useSong();

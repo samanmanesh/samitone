@@ -39,27 +39,7 @@ function App() {
     console.log("loaded");
   });
 
-  // const buffer = new Tone.ToneAudioBuffer("../public/Media/Clap.mp3", () => {
-  //   console.log("loaded");
-  // });
-  // console.log(buffer);
-
-  // const buffer = new Tone.ToneAudioBuffer("https://github.com/samanmanesh/samitone/blob/main/public/Media/Clap.mp3?raw=true", () => {
-  // console.log("loaded");
-  // });
-  // const testPlayer = () => {
-  //   const sampler = new Tone.Sampler({
-  //     urls: {
-  //       A1: "Clap.mp3",
-  //     },
-  //     baseUrl: "/Media/",
-  //     onload: () => {
-  //       console.log("!");
-  //       sampler.triggerAttackRelease("A1", 0.5);
-  //     },
-  //   }).toDestination();
-  // };
-
+  
   return (
     <AppWrapper>
       <MainProvider>

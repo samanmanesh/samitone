@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const BarWrapper = styled.div`
-  .bar {
-    /* background: #1d2852; */
     width: 50%;
     .bar-buttons-container {
       background: rgb(55, 52, 52);
@@ -12,13 +10,13 @@ const BarWrapper = styled.div`
       margin: 0.2rem 0 0 auto;
       border-radius: 0.3rem;
       display: flex;
+      align-items: center;
 
       & > button {
         all: unset;
         text-align: center;
         width: 50%;
         height: 70%;
-        margin: 0.3rem 0rem 0rem 0rem;
         cursor: pointer;
       }
       .btn-1 {
@@ -29,6 +27,7 @@ const BarWrapper = styled.div`
       .btn-2 {
         margin-right: 0.1rem;
         border-radius: 0.2rem;
+        transition: ease 0.2s;
       }
     }
     & > p {
@@ -36,7 +35,7 @@ const BarWrapper = styled.div`
       width: 2.5rem;
       margin: 0.4rem 2rem 0 auto;
     }
-  }
+  
 `;
 
 export default function BarButtons() {
@@ -54,9 +53,9 @@ export default function BarButtons() {
     }
   };
 
-  
+
   return (
-    <BarWrapper className="bar">
+    <BarWrapper >
       <div className="bar-buttons-container">
         <button
           className="btn-1"

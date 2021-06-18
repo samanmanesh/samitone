@@ -3,6 +3,8 @@ import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
 import BarButtons from "./BarButtons";
+import SelectInput from "./SelectInput";
+import TimeSigButtons from "./TimeSigButtons";
 
 // #region - styling -
 
@@ -39,7 +41,7 @@ const ModalWrapper = styled.div`
       margin: 1.3rem 0 0 2.5rem;
       -webkit-appearance: none; //Override default CSS styles
       appearance: none;
-      width: 70%; /* Full-width */
+      width: 71%; /* Full-width */
       height: 0.3rem; /* Specified height */
       background: rgba(153, 199, 255, 0.79);
       outline: none; /* Remove outline */
@@ -68,48 +70,11 @@ const ModalWrapper = styled.div`
     }
   }
   .bar-sig-container {
-    /* background: #632d2d; */
+    background: #632d2d;
     height: 50%;
     display: flex;
-    .bar {
-      /* background: #1d2852; */
-      width: 50%;
-      .bar-buttons-container {
-        background: rgb(55, 52, 52);
-        width: 7rem;
-        height: 2.3rem;
-        margin: 0.2rem 0 0 auto;
-        border-radius: 0.3rem;
-        display: flex;
-
-        & > button {
-          all: unset;
-          text-align: center;
-          width: 50%;
-          height: 70%;
-          margin: 0.3rem 0rem 0rem 0rem;
-          cursor: pointer;
-        }
-        .btn-1 {
-          margin-left: 0.1rem;
-          border-radius: 0.2rem;
-          transition: ease 0.2s;
-        }
-        .btn-2 {
-          margin-right: 0.1rem;
-          border-radius: 0.2rem;
-        }
-      }
-      & > p {
-        /* background: #805353; */
-        width: 2.5rem;
-        margin: 0.4rem 2rem 0 auto;
-      }
-    }
-
-    .sig {
-      /* background: #511d52; */
-      width: 50%;
+    .bpm-select {
+        margin-left: 3rem;
     }
   }
 `;
@@ -118,9 +83,11 @@ const ModalWrapper = styled.div`
 
 export default function BpmModal() {
   const { options, setOptions } = useSong();
-//   const [bt1IsClick, setBt1IsClick] = useState(true);
-//   const [bt2IsClick, setBt2IsClick] = useState(false);
+  //   const [bt1IsClick, setBt1IsClick] = useState(true);
+  //   const [bt2IsClick, setBt2IsClick] = useState(false);
 
+  const [selectedBarsIndex, setSelectedBarsIndex] = useState(0);
+  const [selectedTimeSigIndex, setSelectedTimeSigIndex] = useState(0);
   const bpmConverter = (e) => {
     const bpm = e.target.value;
     const hz = bpm / 60;
@@ -129,20 +96,20 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
-//   const barsButtonsHandler = (e) => {
-//     if (e === bt1IsClick) {
-//       setBt1IsClick((prev) => !prev);
-//       setBt2IsClick((prev) => !prev);
-//     }
-//     if (e === bt2IsClick) {
-//       setBt2IsClick((prev) => !prev);
-//       setBt1IsClick((prev) => !prev);
-//     }
-//   };
+  //   const barsButtonsHandler = (e) => {
+  //     if (e === bt1IsClick) {
+  //       setBt1IsClick((prev) => !prev);
+  //       setBt2IsClick((prev) => !prev);
+  //     }
+  //     if (e === bt2IsClick) {
+  //       setBt2IsClick((prev) => !prev);
+  //       setBt1IsClick((prev) => !prev);
+  //     }
+  //   };
 
-//   console.log(options.bps * 60);
-//   console.log(bt1IsClick, "bt1IsClick");
-//   console.log(bt2IsClick, "bt2IsClick");
+  //   console.log(options.bps * 60);
+  //   console.log(bt1IsClick, "bt1IsClick");
+  //   console.log(bt2IsClick, "bt2IsClick");
   return (
     <ModalWrapper>
       <section className="bpm">
@@ -161,9 +128,15 @@ export default function BpmModal() {
           onChange={(e) => bpmConverter(e)}
         />
       </section>
-     
+
       <section className="bar-sig-container">
-        <BarButtons />
+        {/* <BarButtons /> */}
+        <SelectInput
+          options={["4/4", "8/4"]}
+          selectedIndex={selectedBarsIndex}
+          setSelectedIndex={setSelectedBarsIndex}
+          className="bpm-select"
+        />
 
         {/* <div className="bar">
           <div className="bar-buttons-container">
@@ -193,7 +166,8 @@ export default function BpmModal() {
           </div>
           <p>BARS</p>
         </div> */}
-        <div className="sig">
+        {/* <TimeSigButtons/> */}
+        {/* <div className="sig">
           <div className="sig-buttons-container">
 
               <button className="btn-3"></button>
@@ -201,7 +175,12 @@ export default function BpmModal() {
               <button className="btn-5"></button>
               <button className ="btn-6"></button>
           </div>
-        </div>
+        </div> */}
+        <SelectInput
+          options={["4", "8", "16", "24"]}
+          selectedIndex={selectedTimeSigIndex}
+          setSelectedIndex={setSelectedTimeSigIndex}
+        />
       </section>
 
       {/* <input

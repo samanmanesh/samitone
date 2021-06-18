@@ -26,7 +26,7 @@ const ModalWrapper = styled.div`
       width: 2rem;
       /* margin-left: auto;
         margin-right:9.5rem; */
-      margin: 0.2rem 9.5rem 0 auto;
+      margin: 0.5rem 9.5rem 0 auto;
       font-size: 1.5ch;
     }
     & > span {
@@ -74,9 +74,9 @@ const ModalWrapper = styled.div`
       /* background: #1d2852; */
       width: 50%;
       .bar-buttons-container {
-        /* background: rgb(55, 52, 52); */
+        background: rgb(55, 52, 52);
         width: 7rem;
-        height: 2.8rem;
+        height: 2.3rem;
         margin: 0.2rem 0 0 auto;
         border-radius: 0.3rem;
         display: flex;
@@ -86,16 +86,26 @@ const ModalWrapper = styled.div`
           text-align: center;
           width: 50%;
           height: 70%;
-          margin: 0.5rem 0rem 0.3rem 0rem;
+          margin: .3rem 0rem 0rem 0rem;
           cursor: pointer;
         }
         .btn-1 {
-          background: ${(value) =>
-            value  ? "rgb(101, 96, 255)"  : "rgb(55, 52, 52)"};
+            
           margin-left: 0.1rem;
-          /* background: #932828; */
+          border-radius: 0.2rem;
+          transition: ease .2s;  
+        }
+        .btn-2 {
+         
+          margin-right: 0.1rem;
+          border-radius: 0.2rem;
         }
       }
+      & > p{
+            /* background: #805353; */
+            width: 2.5rem;
+            margin: .4rem 2rem 0 auto;
+        }
     }
 
     .sig {
@@ -105,22 +115,11 @@ const ModalWrapper = styled.div`
   }
 `;
 
-// const bt1 = styled.button`
-//   all: unset;
-//   text-align: center;
-//   width: 50%;
-//   height: 70%;
-//   margin: 0.1rem 0rem 0.3rem 0rem;
-//   cursor: pointer;
-//   background: ${(props) =>
-//     props.test ? console.log("read") : console.log(props.test)};
-// `;
-
 // #endregion
 
 export default function BpmModal() {
   const { options, setOptions } = useSong();
-  const [bt1IsClick, setBt1IsClick] = useState(false);
+  const [bt1IsClick, setBt1IsClick] = useState(true);
   const [bt2IsClick, setBt2IsClick] = useState(false);
 
   const bpmConverter = (e) => {
@@ -131,13 +130,20 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
-  const barsButtonsHandler = () => {
-      
-  }
-
+  const barsButtonsHandler = (e) => {
+    if (e === bt1IsClick) {
+      setBt1IsClick((prev) => !prev);
+      setBt2IsClick((prev) => !prev);
+    }
+    if (e === bt2IsClick) {
+      setBt2IsClick((prev) => !prev);
+      setBt1IsClick((prev) => !prev);
+    }
+  };
 
   console.log(options.bps * 60);
   console.log(bt1IsClick, "bt1IsClick");
+  console.log(bt2IsClick, "bt2IsClick");
   return (
     <ModalWrapper>
       <section className="bpm">
@@ -159,11 +165,31 @@ export default function BpmModal() {
       <section className="bar-sig-container">
         <div className="bar">
           <div className="bar-buttons-container">
-            <button style={ bt1IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() => (setBt1IsClick(prev=> !prev) , setBt2IsClick(false))} value={bt1IsClick}>
+            <button
+                className="btn-1"
+              style={
+                bt1IsClick
+                  ? { background: "rgb(101, 96, 255)" }
+                  : { background: "rgb(55, 52, 52)" }
+              }
+              onClick={() => barsButtonsHandler(bt1IsClick)}
+              value={bt1IsClick}
+            >
               4/4
             </button>
-            <button style={ bt2IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() => (setBt2IsClick(prev=> !prev), setBt1IsClick(false))}>8/8</button>
+            <button
+            className="btn-2"
+              style={
+                bt2IsClick
+                  ? { background: "rgb(101, 96, 255)" }
+                  : { background: "rgb(55, 52, 52)" }
+              }
+              onClick={() => barsButtonsHandler(bt2IsClick)}
+            >
+              8/8
+            </button>
           </div>
+         <p>BARS</p> 
         </div>
         <div className="sig">sig</div>
       </section>

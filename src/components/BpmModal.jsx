@@ -131,16 +131,9 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
-//   const barsButtonsHandler = (b1IsClick, b2IsClick) => {
-//       console.log(b1IsClick, "b1Isclick is")
-//     if(b1IsClick === false){
-//         setBt1IsClick(true);
-//         setBt2IsClick(false);
-//     }else if(b2IsClick === true){
-//         setBt2IsClick(!bt1IsClick);
-//         setBt1IsClick(false);
-//     }
-//   }
+  const barsButtonsHandler = () => {
+      
+  }
 
 
   console.log(options.bps * 60);
@@ -166,10 +159,10 @@ export default function BpmModal() {
       <section className="bar-sig-container">
         <div className="bar">
           <div className="bar-buttons-container">
-            <button style={ bt1IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() =>  barsButtonsHandler(bt1IsClick)} value={bt1IsClick}>
+            <button style={ bt1IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() => (setBt1IsClick(prev=> !prev) , setBt2IsClick(false))} value={bt1IsClick}>
               4/4
             </button>
-            <button style={ bt1IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() =>  barsButtonsHandler(bt2IsClick)}>8/8</button>
+            <button style={ bt2IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() => (setBt2IsClick(prev=> !prev), setBt1IsClick(false))}>8/8</button>
           </div>
         </div>
         <div className="sig">sig</div>

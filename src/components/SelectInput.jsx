@@ -12,6 +12,7 @@ const SelectInputWrapper = styled.div`
 
 const selectorWidth = "4ch";
 const selectorHeight = "1.5rem";
+
 const SelectInputOption = styled.div`
   color: whitesmoke;
   height: ${selectorHeight};
@@ -19,6 +20,7 @@ const SelectInputOption = styled.div`
   display: grid;
   place-items: center;
   z-index: 2;
+  cursor: pointer;
 `;
 
 const Selector = styled.div`

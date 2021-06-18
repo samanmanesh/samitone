@@ -90,9 +90,10 @@ const ModalWrapper = styled.div`
           cursor: pointer;
         }
         .btn-1 {
-          background: ${(props) =>
-            props.isClick ? console.log("read") : console.log(props.test)};
+          background: ${(value) =>
+            value  ? "rgb(101, 96, 255)"  : "rgb(55, 52, 52)"};
           margin-left: 0.1rem;
+          /* background: #932828; */
         }
       }
     }
@@ -104,22 +105,23 @@ const ModalWrapper = styled.div`
   }
 `;
 
-const bt1 = styled.button`
-  all: unset;
-  text-align: center;
-  width: 50%;
-  height: 70%;
-  margin: 0.1rem 0rem 0.3rem 0rem;
-  cursor: pointer;
-  background: ${(props) =>
-    props.test ? console.log("read") : console.log(props.test)};
-`;
+// const bt1 = styled.button`
+//   all: unset;
+//   text-align: center;
+//   width: 50%;
+//   height: 70%;
+//   margin: 0.1rem 0rem 0.3rem 0rem;
+//   cursor: pointer;
+//   background: ${(props) =>
+//     props.test ? console.log("read") : console.log(props.test)};
+// `;
 
 // #endregion
 
 export default function BpmModal() {
   const { options, setOptions } = useSong();
-  const [isClick, setIsClick] = useState(false);
+  const [bt1IsClick, setBt1IsClick] = useState(false);
+  const [bt2IsClick, setBt2IsClick] = useState(false);
 
   const bpmConverter = (e) => {
     const bpm = e.target.value;
@@ -129,8 +131,17 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
+  const barsButtonsHandler = () => {
+    if( bt1IsClick){
+        setBt2IsClick(prev => !prev);
+    }else if(bt2IsClick){
+        setBt1IsClick(prev => !prev);
+    }
+  }
+
+
   console.log(options.bps * 60);
-  console.log(isClick, "isClick");
+  console.log(bt1IsClick, "bt1IsClick");
   return (
     <ModalWrapper>
       <section className="bpm">
@@ -152,10 +163,10 @@ export default function BpmModal() {
       <section className="bar-sig-container">
         <div className="bar">
           <div className="bar-buttons-container">
-            <bt1 onChange={(e) => setIsClick(e)} test={isClick}>
+            <button style={ bt1IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() => setBt1IsClick(prev => !prev)} value={bt1IsClick}>
               4/4
-            </bt1>
-            <button>8/8</button>
+            </button>
+            <button style={ bt1IsClick ? {background:"rgb(101, 96, 255)"} : {background: "rgb(55, 52, 52)"} }  onClick={() => setBt1IsClick(prev => !prev)}>8/8</button>
           </div>
         </div>
         <div className="sig">sig</div>

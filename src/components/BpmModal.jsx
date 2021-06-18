@@ -152,7 +152,7 @@ export default function BpmModal() {
       <section className="bar-sig-container">
         <div className="bar">
           <div className="bar-buttons-container">
-            <bt1 onClick={() => setIsClick((prev) => !prev)} test={isClick}>
+            <bt1 onChange={(e) => setIsClick(e)} test={isClick}>
               4/4
             </bt1>
             <button>8/8</button>

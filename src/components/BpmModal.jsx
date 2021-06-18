@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
+import BarButtons from "./BarButtons";
 
 // #region - styling -
 
@@ -117,8 +118,8 @@ const ModalWrapper = styled.div`
 
 export default function BpmModal() {
   const { options, setOptions } = useSong();
-  const [bt1IsClick, setBt1IsClick] = useState(true);
-  const [bt2IsClick, setBt2IsClick] = useState(false);
+//   const [bt1IsClick, setBt1IsClick] = useState(true);
+//   const [bt2IsClick, setBt2IsClick] = useState(false);
 
   const bpmConverter = (e) => {
     const bpm = e.target.value;
@@ -128,20 +129,20 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
-  const barsButtonsHandler = (e) => {
-    if (e === bt1IsClick) {
-      setBt1IsClick((prev) => !prev);
-      setBt2IsClick((prev) => !prev);
-    }
-    if (e === bt2IsClick) {
-      setBt2IsClick((prev) => !prev);
-      setBt1IsClick((prev) => !prev);
-    }
-  };
+//   const barsButtonsHandler = (e) => {
+//     if (e === bt1IsClick) {
+//       setBt1IsClick((prev) => !prev);
+//       setBt2IsClick((prev) => !prev);
+//     }
+//     if (e === bt2IsClick) {
+//       setBt2IsClick((prev) => !prev);
+//       setBt1IsClick((prev) => !prev);
+//     }
+//   };
 
-  console.log(options.bps * 60);
-  console.log(bt1IsClick, "bt1IsClick");
-  console.log(bt2IsClick, "bt2IsClick");
+//   console.log(options.bps * 60);
+//   console.log(bt1IsClick, "bt1IsClick");
+//   console.log(bt2IsClick, "bt2IsClick");
   return (
     <ModalWrapper>
       <section className="bpm">
@@ -162,7 +163,9 @@ export default function BpmModal() {
       </section>
      
       <section className="bar-sig-container">
-        <div className="bar">
+        <BarButtons />
+
+        {/* <div className="bar">
           <div className="bar-buttons-container">
             <button
               className="btn-1"
@@ -189,7 +192,7 @@ export default function BpmModal() {
             </button>
           </div>
           <p>BARS</p>
-        </div>
+        </div> */}
         <div className="sig">
           <div className="sig-buttons-container">
 

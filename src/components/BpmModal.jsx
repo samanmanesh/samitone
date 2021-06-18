@@ -86,26 +86,24 @@ const ModalWrapper = styled.div`
           text-align: center;
           width: 50%;
           height: 70%;
-          margin: .3rem 0rem 0rem 0rem;
+          margin: 0.3rem 0rem 0rem 0rem;
           cursor: pointer;
         }
         .btn-1 {
-            
           margin-left: 0.1rem;
           border-radius: 0.2rem;
-          transition: ease .2s;  
+          transition: ease 0.2s;
         }
         .btn-2 {
-         
           margin-right: 0.1rem;
           border-radius: 0.2rem;
         }
       }
-      & > p{
-            /* background: #805353; */
-            width: 2.5rem;
-            margin: .4rem 2rem 0 auto;
-        }
+      & > p {
+        /* background: #805353; */
+        width: 2.5rem;
+        margin: 0.4rem 2rem 0 auto;
+      }
     }
 
     .sig {
@@ -162,11 +160,12 @@ export default function BpmModal() {
           onChange={(e) => bpmConverter(e)}
         />
       </section>
+     
       <section className="bar-sig-container">
         <div className="bar">
           <div className="bar-buttons-container">
             <button
-                className="btn-1"
+              className="btn-1"
               style={
                 bt1IsClick
                   ? { background: "rgb(101, 96, 255)" }
@@ -178,7 +177,7 @@ export default function BpmModal() {
               4/4
             </button>
             <button
-            className="btn-2"
+              className="btn-2"
               style={
                 bt2IsClick
                   ? { background: "rgb(101, 96, 255)" }
@@ -189,9 +188,17 @@ export default function BpmModal() {
               8/8
             </button>
           </div>
-         <p>BARS</p> 
+          <p>BARS</p>
         </div>
-        <div className="sig">sig</div>
+        <div className="sig">
+          <div className="sig-buttons-container">
+
+              <button className="btn-3"></button>
+              <button className="btn-4"></button>
+              <button className="btn-5"></button>
+              <button className ="btn-6"></button>
+          </div>
+        </div>
       </section>
 
       {/* <input

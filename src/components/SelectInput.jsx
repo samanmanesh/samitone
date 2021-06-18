@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import colors from "../styles";
 
 const SelectInputWrapper = styled.div`
   background: rgb(55, 52, 52);
@@ -14,7 +15,7 @@ const selectorWidth = "4ch";
 const selectorHeight = "1.5rem";
 
 const SelectInputOption = styled.div`
-  color: whitesmoke;
+  color: ${colors.font.secondary};
   height: ${selectorHeight};
   width: ${selectorWidth};
   display: grid;

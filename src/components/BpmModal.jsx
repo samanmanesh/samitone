@@ -43,12 +43,12 @@ const ModalWrapper = styled.div`
     grid-area: main;
     justify-self: start;
     align-self: center;
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
     -webkit-appearance: none; //Override default CSS styles
     appearance: none;
     width: 85%; /* Full-width */
     height: 0.3rem; /* Specified height */
-    background: rgba(153, 199, 255, 0.79);
+    background: ${colors.background.bar};
     outline: none; /* Remove outline */
     opacity: 1; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: 50s; /* 0.2 seconds transition on hover */
@@ -61,12 +61,11 @@ const ModalWrapper = styled.div`
     grid-area: main;
     justify-self: start;
     align-self: center;
-    margin-left: 1rem;
     -webkit-appearance: none; /* Override default look */
     appearance: none;
     width: 1.5rem; /* Set a specific slider handle width */
     height: 1.5rem; /* Slider handle height */
-    background: rgba(69, 56, 214, 0.99);
+    background: ${colors.button.optional2};
     cursor: pointer; /* Cursor on hover */
     border-radius: 0.2rem;
   }
@@ -75,10 +74,9 @@ const ModalWrapper = styled.div`
     grid-area: main;
     justify-self: start;
     align-self: center;
-    margin-left: 1rem;
     width: 2rem; /* Set a specific slider handle width */
     height: 2rem; /* Slider handle height */
-    background: rgba(69, 56, 214, 0.99);
+    background:  ${colors.button.optional2};
     cursor: pointer; /* Cursor on hover */
   }
 

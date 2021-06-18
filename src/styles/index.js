@@ -5,11 +5,18 @@ const colors = {
     panel: "rgb(157, 157, 157)",
     panelDarker: "rgb(36, 34, 34)",
     row: "rgb(26, 25, 25)",
+    bar:"rgba(153, 199, 255, 0.79)"
   },
   button: {
     primary: "rgb(153, 153, 153)",
     secondary: "rgba(153, 153, 153, 0.41)",
     optional: "rgb(73, 73, 73)",
+    optional2:"rgb(77, 68, 238)"
+  },
+  font: {
+    primary: "rgb(255, 255, 255)",
+    secondary: "rgb(194, 194, 194)",
+    optional: "rgb(196, 194, 240)",
   },
   blue: {
     primary: "rgb(56, 139, 255)",

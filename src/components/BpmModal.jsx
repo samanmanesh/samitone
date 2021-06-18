@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
-import BarButtons from "./BarButtons";
 import SelectInput from "./SelectInput";
-import TimeSigButtons from "./TimeSigButtons";
 
 // #region - styling -
 

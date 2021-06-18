@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
 
-// #region - styling - 
+// #region - styling -
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -22,19 +22,19 @@ const ModalWrapper = styled.div`
   .bpm {
     /* background: #4b4b9b; */
     height: 50%;
-    & > div{
-        width:2rem;
-        /* margin-left: auto;
+    & > div {
+      width: 2rem;
+      /* margin-left: auto;
         margin-right:9.5rem; */
-        margin: .2rem 9.5rem 0 auto;
-        font-size: 1.5ch;
+      margin: 0.2rem 9.5rem 0 auto;
+      font-size: 1.5ch;
     }
     & > span {
       margin-left: 1rem;
     }
 
     .slider {
-        /* padding-bottom: .2rem; */
+      /* padding-bottom: .2rem; */
       margin: 1.3rem 0 0 2.5rem;
       -webkit-appearance: none; //Override default CSS styles
       appearance: none;
@@ -73,6 +73,28 @@ const ModalWrapper = styled.div`
     .bar {
       /* background: #1d2852; */
       width: 50%;
+      .bar-buttons-container {
+        /* background: rgb(55, 52, 52); */
+        width: 7rem;
+        height: 2.8rem;
+        margin: 0.2rem 0 0 auto;
+        border-radius: 0.3rem;
+        display: flex;
+
+        & > button {
+          all: unset;
+          text-align: center;
+          width: 50%;
+          height: 70%;
+          margin: 0.5rem 0rem 0.3rem 0rem;
+          cursor: pointer;
+        }
+        .btn-1 {
+          background: ${(props) =>
+            props.isClick ? console.log("read") : console.log(props.test)};
+          margin-left: 0.1rem;
+        }
+      }
     }
 
     .sig {
@@ -82,10 +104,22 @@ const ModalWrapper = styled.div`
   }
 `;
 
+const bt1 = styled.button`
+  all: unset;
+  text-align: center;
+  width: 50%;
+  height: 70%;
+  margin: 0.1rem 0rem 0.3rem 0rem;
+  cursor: pointer;
+  background: ${(props) =>
+    props.test ? console.log("read") : console.log(props.test)};
+`;
+
 // #endregion
 
 export default function BpmModal() {
   const { options, setOptions } = useSong();
+  const [isClick, setIsClick] = useState(false);
 
   const bpmConverter = (e) => {
     const bpm = e.target.value;
@@ -96,14 +130,14 @@ export default function BpmModal() {
   };
 
   console.log(options.bps * 60);
-
+  console.log(isClick, "isClick");
   return (
     <ModalWrapper>
       <section className="bpm">
         <div>{Math.round(options.bps * 60)}</div>
 
         <span>BPM</span>
-        
+
         <input
           type="range"
           min="70"
@@ -114,10 +148,16 @@ export default function BpmModal() {
           // onChange={(e) => setBps(e.target.value)}
           onChange={(e) => bpmConverter(e)}
         />
-        
       </section>
       <section className="bar-sig-container">
-        <div className="bar">bar</div>
+        <div className="bar">
+          <div className="bar-buttons-container">
+            <bt1 onClick={() => setIsClick((prev) => !prev)} test={isClick}>
+              4/4
+            </bt1>
+            <button>8/8</button>
+          </div>
+        </div>
         <div className="sig">sig</div>
       </section>
 

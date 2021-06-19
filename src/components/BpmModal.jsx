@@ -112,7 +112,7 @@ const ModalWrapper = styled.div`
 
 export default function BpmModal() {
   const { options, setOptions } = useSong();
-  const [selectedBarsIndex, setSelectedBarsIndex] = useState(0);
+  const [selectedBarsIndex, setSelectedBarsIndex] = useState( );
   const lengthOptions = ["4", "8", "16", "24"];
 //   const [selectedTimeSigIndex, setSelectedTimeSigIndex] = useState(0);
 
@@ -124,7 +124,15 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
+  console.log(options.stepLength,"stepL");
+ 
+  useEffect(() => {
+     
+    const index = lengthOptions.indexOf(`${options.stepLength}`);
+    console.log(index,"index")
+    setSelectedBarsIndex(index)
 
+  },[])
 
   useEffect(() => {
 
@@ -132,7 +140,7 @@ export default function BpmModal() {
     console.log(value," selectedBarsIndex")
     setOptions({...options, stepLength: value});
   },[selectedBarsIndex]);
-
+  
  
   return (
     <ModalWrapper onMouseDown={(e) => e.stopPropagation()}>

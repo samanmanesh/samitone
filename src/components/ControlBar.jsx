@@ -139,7 +139,7 @@ export default function ControlBar() {
       >
         <img src="icons/metronome-on.svg" alt="" />
         <img src="icons/metronome-off.svg" alt="" />
-        <span>120 BPM | 4 BARS</span>
+        <span>{Math.round(options.bps * 60)} BPM | {options.stepLength} BARS</span>
       </div>
       {showBpmModal && <BpmModal ></BpmModal>}
 

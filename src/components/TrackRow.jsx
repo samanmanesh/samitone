@@ -113,7 +113,7 @@ export default function TrackRow({ track, currentStep }) {
         <NotesWrapper>
           {getInstrument(track.instrument).type === InstrumentType.Synth &&
             track.notes.map((row, i) => (
-              <Notes barLength={2} key={`note-row__${i}`}>
+              <Notes barLength={4} key={`note-row__${i}`}>
                 {(!isCollapsed || (isCollapsed && i === 0)) &&
                   row.map(
                     (note, j) =>

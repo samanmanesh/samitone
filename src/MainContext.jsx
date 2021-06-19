@@ -8,6 +8,7 @@ export const MainProvider = (props) => {
     bps: 2,
     stepLength: 16,
     addRow: 1,
+    showBpmModal: false,
   });
   //for testing filter if works move to options
   const [currentFilter, setCurrentFilter] = useState(400);

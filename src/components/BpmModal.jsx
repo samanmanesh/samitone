@@ -104,7 +104,7 @@ const ModalWrapper = styled.div`
 
 // #endregion
 
-export default function BpmModal() {
+export default function BpmModal({showBpmModal, setShowBpmModal}) {
   const { options, setOptions } = useSong();
   const [selectedBarsIndex, setSelectedBarsIndex] = useState(0);
   const [selectedTimeSigIndex, setSelectedTimeSigIndex] = useState(0);
@@ -118,7 +118,7 @@ export default function BpmModal() {
   };
 
   return (
-    <ModalWrapper>
+    <ModalWrapper onMouseDown={(e) => e.stopPropagation()}>
       <div className="bpm-display">{Math.round(options.bps * 60)}</div>
 
       <span>BPM</span>
@@ -135,7 +135,7 @@ export default function BpmModal() {
       />
 
       <SelectInput
-        options={["4/4", "8/4"]}
+        options={["4/4", "8/8"]}
         selectedIndex={selectedBarsIndex}
         setSelectedIndex={setSelectedBarsIndex}
         className="bpm-select"

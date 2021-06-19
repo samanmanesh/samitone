@@ -29,7 +29,7 @@ const Header = styled.div`
   }
   .speed-bar-container {
     /* color:#C8C7EA; */
-    color:#C4C2F0;
+    color: #c4c2f0;
     /* padding-right: 10rem; */
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@ const Header = styled.div`
 const ControlPanel = styled.div`
   display: flex;
   margin-left: auto;
-  
+
   /* margin-right: 30rem; */
   margin-right: auto;
   & > button {
@@ -71,7 +71,6 @@ const AddTrack = styled.div`
     cursor: pointer;
     & > button {
       all: unset;
-      
     }
   }
   & > h5 {
@@ -88,7 +87,7 @@ export default function ControlBar() {
   const { play, pause } = usePlay();
   const [showModal, setShowModal] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
-  const [showBpmModal, setShowBpmModal] = useState(false);
+  // const [showBpmModal, setShowBpmModal] = useState(false);
 
   useEffect(() => {
     if (isPlay) {
@@ -99,7 +98,7 @@ export default function ControlBar() {
   }, [isPlay]);
 
   return (
-    <Header>
+    <Header  onClick={(prev) => setOptions({ ...options, showBpmModal: !options.showBpmModal })}>
       {/* <section>
         <DisplayPanel />
       </section> */}
@@ -127,13 +126,15 @@ export default function ControlBar() {
         <span>00:00</span>
       </ControlPanel>
 
-      <div className="speed-bar-container" onClick={()=> setShowBpmModal(prev=> !prev)}>
+      <div
+        className="speed-bar-container"
+        onClick={(prev) => setOptions({ ...options, showBpmModal: !options.showBpmModal })}
+      >
         <img src="icons/metronome-on.svg" alt="" />
         <img src="icons/metronome-off.svg" alt="" />
         <span>120 BPM | 4 BARS</span>
       </div>
-      {showBpmModal && <BpmModal>
-        </BpmModal>}
+      {options.showBpmModal && <BpmModal></BpmModal>}
 
       <div className="menu">
         <img src="icons/menu.svg" alt="menu" />

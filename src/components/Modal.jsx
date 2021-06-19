@@ -43,17 +43,17 @@ export default function Modal({ showModal, setShowModal }) {
 
   const handleAddTrack = (instrumentName) => {
     addTrack(instrumentName);
-    setShowModal(false);
+    // setShowModal(false);
   };
 
-  function handleKeyDown(e) {
-    document.removeEventListener("keydown", this);
-    // if (e.key === "Escape") handleClose();
-    if (e.key === "Escape") setShowModal(false);
-  }
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
-  }, []);
+  // function handleKeyDown(e) {
+  //   document.removeEventListener("keydown", this);
+  //   // if (e.key === "Escape") handleClose();
+  //   if (e.key === "Escape") setShowModal(false);
+  // }
+  // useEffect(() => {
+  //   document.addEventListener("keydown", handleKeyDown);
+  // }, []);
   return (
     // handleClose={() => setShowModal(false)}
     // <ModalWrapper onMouseDown={() => handleClose()}>

@@ -12,6 +12,7 @@ import {
 } from "../helpers/instruments";
 import usePlay from "../helpers/usePlay";
 import BpmModal from "./BpmModal";
+import useClickOutside from "../helpers/useClickOutside"
 
 // #region - styling -
 const Header = styled.div`
@@ -87,7 +88,7 @@ export default function ControlBar() {
   const { play, pause } = usePlay();
   const [showModal, setShowModal] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
-  // const [showBpmModal, setShowBpmModal] = useState(false);
+  const [showBpmModal, setShowBpmModal] = useState(false);
 
   useEffect(() => {
     if (isPlay) {
@@ -97,14 +98,19 @@ export default function ControlBar() {
     }
   }, [isPlay]);
 
+  let domNode = useClickOutside( () => {
+    setShowBpmModal(false);
+    setShowModal(false);
+  });
+
   return (
-    <Header  onClick={(prev) => setOptions({ ...options, showBpmModal: !options.showBpmModal })}>
+    <Header >
       {/* <section>
         <DisplayPanel />
       </section> */}
 
-      <AddTrack>
-        <div>
+      <AddTrack ref={domNode}>
+        <div> 
           <button onClick={() => setShowModal(InstrumentType.Beat)}>
             <img src="icons/plus.svg" alt="plus" />
           </button>
@@ -128,13 +134,14 @@ export default function ControlBar() {
 
       <div
         className="speed-bar-container"
-        onClick={(prev) => setOptions({ ...options, showBpmModal: !options.showBpmModal })}
+        onClick={ () => setShowBpmModal((prev) => !prev)}
+        ref={domNode}
       >
         <img src="icons/metronome-on.svg" alt="" />
         <img src="icons/metronome-off.svg" alt="" />
         <span>120 BPM | 4 BARS</span>
       </div>
-      {options.showBpmModal && <BpmModal></BpmModal>}
+      {showBpmModal && <BpmModal ></BpmModal>}
 
       <div className="menu">
         <img src="icons/menu.svg" alt="menu" />

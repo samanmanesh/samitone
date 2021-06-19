@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
@@ -19,12 +19,12 @@ const ModalWrapper = styled.div`
 
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 1rem 4rem 2rem 1rem;
+  grid-template-rows: 1rem 4rem auto ;
   grid-template-areas:
     "header header header header"
     "Left  main main  main "
-    "bar bar sig sig"
-    "nameBar nameBar nameSig nameSig";
+    "nameBar bar bar bar"
+    ;
 
   .bpm-display {
     grid-area: header;
@@ -82,32 +82,39 @@ const ModalWrapper = styled.div`
 
   .bpm-select {
     grid-area: bar;
-    justify-self: end;
+    align-self: center;
+    /* justify-self: center; */
+    /* justify-self: end; */
   }
 
-  .time-sig-select {
+  /* .time-sig-select {
     grid-area: sig;
     justify-self: center;
-  }
+  } */
 
-  .name-time-sig {
+  /* .name-time-sig {
     grid-area: nameSig;
     justify-self: center;
-  }
+  } */
 
   .name-bars {
     grid-area: nameBar;
-    justify-self: end;
-    margin-right: 1rem;
+    /* background: blue; */
+    justify-self: center;
+    margin-right:.2rem;
+    margin-left: .4rem;
+    /* justify-self: end; */
+    /* margin-right: 1rem; */
   }
 `;
 
 // #endregion
 
-export default function BpmModal({showBpmModal, setShowBpmModal}) {
+export default function BpmModal() {
   const { options, setOptions } = useSong();
   const [selectedBarsIndex, setSelectedBarsIndex] = useState(0);
-  const [selectedTimeSigIndex, setSelectedTimeSigIndex] = useState(0);
+  const lengthOptions = ["4", "8", "16", "24"];
+//   const [selectedTimeSigIndex, setSelectedTimeSigIndex] = useState(0);
 
   const bpmConverter = (e) => {
     const bpm = e.target.value;
@@ -117,6 +124,16 @@ export default function BpmModal({showBpmModal, setShowBpmModal}) {
     setOptions({ ...options, bps: hz });
   };
 
+
+
+  useEffect(() => {
+
+    let value = lengthOptions[selectedBarsIndex];
+    console.log(value," selectedBarsIndex")
+    setOptions({...options, stepLength: value});
+  },[selectedBarsIndex]);
+
+ 
   return (
     <ModalWrapper onMouseDown={(e) => e.stopPropagation()}>
       <div className="bpm-display">{Math.round(options.bps * 60)}</div>
@@ -135,12 +152,12 @@ export default function BpmModal({showBpmModal, setShowBpmModal}) {
       />
 
       <SelectInput
-        options={["4", "8", "16", "24"]}
+        options={lengthOptions}
         selectedIndex={selectedBarsIndex}
         setSelectedIndex={setSelectedBarsIndex}
         className="bpm-select"
       />
-      <p className="name-time-sig">BARS</p>
+      <span className="name-bars">BARS</span>
 
       {/* <SelectInput
         options={["4/4", "8/8"]}

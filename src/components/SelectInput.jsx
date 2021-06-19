@@ -6,13 +6,15 @@ const SelectInputWrapper = styled.div`
   background: rgb(55, 52, 52);
   display: flex;
   align-items: center;
-  height: 2.3rem;
+  height: 3rem;
+  width: 18rem;
   position: relative;
   border-radius: 0.3rem;
+  
 `;
 
-const selectorWidth = "4ch";
-const selectorHeight = "1.5rem";
+const selectorWidth = "7ch";
+const selectorHeight = "2.2rem";
 
 const SelectInputOption = styled.div`
   color: ${colors.font.secondary};

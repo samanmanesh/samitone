@@ -18,7 +18,7 @@ const NoteWrapper = styled.div`
   /* width: 100%; */
   border-radius: 0.4rem;
   min-height: 3.5rem;
-  min-width: 4rem;
+  /* min-width: 4rem; */
   width: 100%;
   margin: 0.4rem 0.3rem 0.2rem 0;
   cursor: pointer;

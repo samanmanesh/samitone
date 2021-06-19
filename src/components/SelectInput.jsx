@@ -41,8 +41,6 @@ export default function SelectInput({
   setSelectedIndex,
   className
 }) {
-    console.log(100 * (selectedIndex / options.length))
-
   return (
     <SelectInputWrapper className={className}>
       {options.map((option, index) => (

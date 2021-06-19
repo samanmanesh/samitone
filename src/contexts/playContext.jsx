@@ -50,6 +50,14 @@ export const PlayProvider = (props) => {
     }
   }, [tracks]);
 
+  useEffect(() => {
+    console.log('option changed')
+    if (loop) {
+      console.log('currently playing', loop)
+      loop.interval = `${options.bps}Hz`;
+    }
+  }, [options])
+
   const play = async () => {
     await Tone.start();
     if (loop) loop.stop(0);

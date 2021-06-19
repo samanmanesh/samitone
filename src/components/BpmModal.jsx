@@ -140,15 +140,15 @@ export default function BpmModal({showBpmModal, setShowBpmModal}) {
         setSelectedIndex={setSelectedBarsIndex}
         className="bpm-select"
       />
-      <p className="name-time-sig">TIME SIG</p>
+      <p className="name-time-sig">BARS</p>
 
-      <SelectInput
+      {/* <SelectInput
         options={["4/4", "8/8"]}
         selectedIndex={selectedTimeSigIndex}
         setSelectedIndex={setSelectedTimeSigIndex}
         className="time-sig-select"
       />
-      <p className="name-bars">BARS</p>
+      <p className="name-bars">BARS</p> */}
     </ModalWrapper>
   );
 }

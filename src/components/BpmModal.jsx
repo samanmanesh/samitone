@@ -48,7 +48,7 @@ const ModalWrapper = styled.div`
     appearance: none;
     width: 85%; /* Full-width */
     height: 0.3rem; /* Specified height */
-    background: ${colors.background.bar};
+    background: ${colors.button.bar};
     outline: none; /* Remove outline */
     opacity: 1; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: 50s; /* 0.2 seconds transition on hover */
@@ -76,7 +76,7 @@ const ModalWrapper = styled.div`
     align-self: center;
     width: 2rem; /* Set a specific slider handle width */
     height: 2rem; /* Slider handle height */
-    background:  ${colors.button.optional2};
+    background: ${colors.button.optional2};
     cursor: pointer; /* Cursor on hover */
   }
 

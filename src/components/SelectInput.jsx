@@ -28,7 +28,7 @@ const Selector = styled.div`
   position: absolute;
   height: ${selectorHeight};
   width: ${selectorWidth};
-  background: rgb(101, 96, 255);
+  background: ${colors.button.optional3};
   z-index: 1;
   left: ${props => props.offset}%;
   transition: ease 0.2s;

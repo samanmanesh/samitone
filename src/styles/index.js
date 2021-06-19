@@ -11,7 +11,9 @@ const colors = {
     primary: "rgb(153, 153, 153)",
     secondary: "rgba(153, 153, 153, 0.41)",
     optional: "rgb(73, 73, 73)",
-    optional2:"rgb(77, 68, 238)"
+    optional2:"rgb(77, 68, 238)",
+    optional3: "rgb(101, 96, 255)",
+    bar:"rgba(153, 199, 255, 0.79)"
   },
   font: {
     primary: "rgb(255, 255, 255)",

@@ -113,9 +113,10 @@ const ModalWrapper = styled.div`
 export default function BpmModal() {
   const { options, setOptions } = useSong();
   const [selectedBarsIndex, setSelectedBarsIndex] = useState( );
+  const [selectedBar, setSelectedBar] = useState(options.stepLength);
   const lengthOptions = ["4", "8", "16", "24"];
 //   const [selectedTimeSigIndex, setSelectedTimeSigIndex] = useState(0);
-
+    console.log(selectedBar, "selectedBar");
   const bpmConverter = (e) => {
     const bpm = e.target.value;
     const hz = bpm / 60;

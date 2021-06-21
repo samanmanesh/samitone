@@ -19,12 +19,11 @@ const ModalWrapper = styled.div`
 
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 1rem 4rem auto ;
+  grid-template-rows: 1rem 4rem auto;
   grid-template-areas:
     "header header header header"
     "Left  main main  main "
-    "nameBar bar bar bar"
-    ;
+    "nameBar bar bar bar";
 
   .bpm-display {
     grid-area: header;
@@ -101,8 +100,8 @@ const ModalWrapper = styled.div`
     grid-area: nameBar;
     /* background: blue; */
     justify-self: center;
-    margin-right:.2rem;
-    margin-left: .4rem;
+    margin-right: 0.2rem;
+    margin-left: 0.4rem;
     /* justify-self: end; */
     /* margin-right: 1rem; */
   }
@@ -111,12 +110,11 @@ const ModalWrapper = styled.div`
 // #endregion
 
 export default function BpmModal() {
-  const { options, setOptions } = useSong();
-  const [selectedBarsIndex, setSelectedBarsIndex] = useState( );
+    const { options, setOptions } = useSong();
+    const lengthOptions = ["4", "8", "16", "24"];
+  const [selectedBarsIndex, setSelectedBarsIndex] = useState(lengthOptions.indexOf(`${options.stepLength}`));
   const [selectedBar, setSelectedBar] = useState(options.stepLength);
-  const lengthOptions = ["4", "8", "16", "24"];
-//   const [selectedTimeSigIndex, setSelectedTimeSigIndex] = useState(0);
-    console.log(selectedBar, "selectedBar");
+  console.log(selectedBar, "selectedBar");
   const bpmConverter = (e) => {
     const bpm = e.target.value;
     const hz = bpm / 60;
@@ -125,24 +123,13 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
-  console.log(options.stepLength,"stepL");
- 
-  useEffect(() => {
-     
-    const index = lengthOptions.indexOf(`${options.stepLength}`);
-    console.log(index,"index")
-    setSelectedBarsIndex(index)
-
-  },[])
+  console.log(options.stepLength, "stepL");
+  console.log('>>', selectedBarsIndex);
 
   useEffect(() => {
+      setOptions({ ...options, stepLength: lengthOptions[selectedBarsIndex]});
+  }, [selectedBarsIndex])
 
-    let value = lengthOptions[selectedBarsIndex];
-    console.log(value," selectedBarsIndex")
-    setOptions({...options, stepLength: value});
-  },[selectedBarsIndex]);
-  
- 
   return (
     <ModalWrapper onMouseDown={(e) => e.stopPropagation()}>
       <div className="bpm-display">{Math.round(options.bps * 60)}</div>

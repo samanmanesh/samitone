@@ -43,6 +43,7 @@ export default function SelectInput({
   setSelectedIndex,
   className
 }) {
+  console.log(selectedIndex);
   return (
     <SelectInputWrapper className={className}>
       {options.map((option, index) => (

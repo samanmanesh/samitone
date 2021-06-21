@@ -131,7 +131,6 @@ export default function ControlBar() {
           />
         </button>
         <span>
-        
           
           00:00</span>
       </ControlPanel>

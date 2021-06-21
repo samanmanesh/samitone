@@ -10,8 +10,13 @@ export const PlayProvider = (props) => {
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [songEffects, setSongEffects] = useState([]);
+  
 
   const playCallback = (time) => {
+    
+    
+    
+
     const step = i % options.stepLength;
     setCurrentStep(step);
     i++;
@@ -65,6 +70,8 @@ export const PlayProvider = (props) => {
     setupSong();
     setLoop(new Tone.Loop(playCallback, `${options.bps}Hz`).start(0));
     Tone.Transport.start();
+   
+   
     
   };
 

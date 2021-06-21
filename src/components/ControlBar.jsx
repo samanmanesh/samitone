@@ -130,9 +130,7 @@ export default function ControlBar() {
             alt="play"
           />
         </button>
-        <span>
-          
-          00:00</span>
+       
       </ControlPanel>
 
       <div
@@ -142,6 +140,7 @@ export default function ControlBar() {
       >
         <img src="icons/metronome-on.svg" alt="" />
         <img src="icons/metronome-off.svg" alt="" />
+        
         <span>{Math.round(options.bps * 60)} BPM | {options.stepLength} BARS</span>
       </div>
       {showBpmModal && <BpmModal ></BpmModal>}

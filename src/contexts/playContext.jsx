@@ -15,7 +15,6 @@ export const PlayProvider = (props) => {
     const step = i % options.stepLength;
     setCurrentStep(step);
     i++;
-
     tracks.forEach((track, i) => {
       const instrument = getInstrument(track.instrument);
       const synth = instrument.sound.toDestination();
@@ -39,6 +38,7 @@ export const PlayProvider = (props) => {
           );
         }
       });
+      
     });
   };
 
@@ -65,6 +65,7 @@ export const PlayProvider = (props) => {
     setupSong();
     setLoop(new Tone.Loop(playCallback, `${options.bps}Hz`).start(0));
     Tone.Transport.start();
+    
   };
 
   const setupSong = () => {

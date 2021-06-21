@@ -13,6 +13,7 @@ import {
 import usePlay from "../helpers/usePlay";
 import BpmModal from "./BpmModal";
 import useClickOutside from "../helpers/useClickOutside"
+import * as Tone from "tone";
 
 // #region - styling -
 const Header = styled.div`
@@ -129,7 +130,10 @@ export default function ControlBar() {
             alt="play"
           />
         </button>
-        <span>00:00</span>
+        <span>
+        
+          
+          00:00</span>
       </ControlPanel>
 
       <div

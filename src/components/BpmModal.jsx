@@ -113,8 +113,7 @@ export default function BpmModal() {
     const { options, setOptions } = useSong();
     const lengthOptions = ["4", "8", "16", "24"];
   const [selectedBarsIndex, setSelectedBarsIndex] = useState(lengthOptions.indexOf(`${options.stepLength}`));
-  const [selectedBar, setSelectedBar] = useState(options.stepLength);
-  console.log(selectedBar, "selectedBar");
+  
   const bpmConverter = (e) => {
     const bpm = e.target.value;
     const hz = bpm / 60;
@@ -123,8 +122,6 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
-  console.log(options.stepLength, "stepL");
-  console.log('>>', selectedBarsIndex);
 
   useEffect(() => {
       setOptions({ ...options, stepLength: lengthOptions[selectedBarsIndex]});

@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import colors from "../styles";
-import DisplayPanel from "./DisplayPanel";
 import useSong from "../helpers/useSong";
 import Modal from "./Modal";
 import {
@@ -12,8 +11,7 @@ import {
 } from "../helpers/instruments";
 import usePlay from "../helpers/usePlay";
 import BpmModal from "./BpmModal";
-import useClickOutside from "../helpers/useClickOutside"
-import * as Tone from "tone";
+import useClickOutside from "../helpers/useClickOutside";
 
 // #region - styling -
 const Header = styled.div`
@@ -36,6 +34,12 @@ const Header = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    & > img {
+      :nth-child(2) {
+        margin-right: 1rem;
+      }
+    }
   }
 `;
 
@@ -90,28 +94,49 @@ export default function ControlBar() {
   const [showModal, setShowModal] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [showBpmModal, setShowBpmModal] = useState(false);
+  const [metronomeIsOn, setMetronomeIsOn] = useState(false);
 
   useEffect(() => {
     if (isPlay) {
       play();
+      setMetronomeIsOn(true);
     } else {
       pause();
     }
   }, [isPlay]);
 
-  let domNode = useClickOutside( () => {
+  let domNode = useClickOutside(() => {
     setShowBpmModal(false);
     setShowModal(false);
   });
 
+  let metronomeA = "icons/metronome-on.svg";
+  let metronomeB = "icons/metronome-off.svg";
+  useEffect(() => {
+    let i = 0;
+    if (i % 2) {
+      console.log("hit");
+      metronomeA = "icons/metronome-on.svg";
+    } else {
+      console.log("hit2");
+      metronomeA = "icons/metronome-off.svg";
+    }
+
+    // } else {
+    //   return "icons/metronome-on.svg";
+    // }
+    i++;
+  }, [metronomeIsOn]);
+
+  console.log(metronomeA, "metronomeA");
   return (
-    <Header >
+    <Header>
       {/* <section>
         <DisplayPanel />
       </section> */}
 
       <AddTrack ref={domNode}>
-        <div> 
+        <div>
           <button onClick={() => setShowModal(InstrumentType.Beat)}>
             <img src="icons/plus.svg" alt="plus" />
           </button>
@@ -130,20 +155,21 @@ export default function ControlBar() {
             alt="play"
           />
         </button>
-       
       </ControlPanel>
 
       <div
         className="speed-bar-container"
-        onClick={ () => setShowBpmModal((prev) => !prev)}
+        onClick={() => setShowBpmModal((prev) => !prev)}
         ref={domNode}
       >
-        <img src="icons/metronome-on.svg" alt="" />
+        <img src={metronomeA} alt="" />
         <img src="icons/metronome-off.svg" alt="" />
-        
-        <span>{Math.round(options.bps * 60)} BPM | {options.stepLength} BARS</span>
+
+        <span>
+          {Math.round(options.bps * 60)} BPM | {options.stepLength} BARS
+        </span>
       </div>
-      {showBpmModal && <BpmModal ></BpmModal>}
+      {showBpmModal && <BpmModal />}
 
       <div className="menu">
         <img src="icons/menu.svg" alt="menu" />

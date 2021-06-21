@@ -5,18 +5,15 @@ import useSong from "../helpers/useSong";
 
 export const PlayContext = createContext();
 let i = 0;
+let on = 0;
+let off = 0;
 export const PlayProvider = (props) => {
   const { tracks, options } = useSong();
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [songEffects, setSongEffects] = useState([]);
-  
 
   const playCallback = (time) => {
-    
-    
-    
-
     const step = i % options.stepLength;
     setCurrentStep(step);
     i++;
@@ -43,8 +40,13 @@ export const PlayProvider = (props) => {
           );
         }
       });
-      
     });
+    //condition for metronome display
+    if (i % 2) {
+      on = 0;
+    } else {
+      on = 1;
+    }
   };
 
   //* Updates the callback when values change
@@ -56,12 +58,12 @@ export const PlayProvider = (props) => {
   }, [tracks]);
 
   useEffect(() => {
-    console.log('option changed')
+    console.log("option changed");
     if (loop) {
-      console.log('currently playing', loop)
+      console.log("currently playing", loop);
       loop.interval = `${options.bps}Hz`;
     }
-  }, [options])
+  }, [options]);
 
   const play = async () => {
     await Tone.start();
@@ -70,9 +72,6 @@ export const PlayProvider = (props) => {
     setupSong();
     setLoop(new Tone.Loop(playCallback, `${options.bps}Hz`).start(0));
     Tone.Transport.start();
-   
-   
-    
   };
 
   const setupSong = () => {
@@ -104,6 +103,7 @@ export const PlayProvider = (props) => {
     setCurrentStep,
     play,
     pause,
+    on,
   };
 
   return (

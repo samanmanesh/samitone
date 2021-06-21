@@ -35,12 +35,30 @@ const Header = styled.div`
     align-items: center;
     cursor: pointer;
 
-    & > img {
+    & > div {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 100%;
+      border: 2px solid ${colors.button.metronomeBorder};
       :nth-child(2) {
         margin-right: 1rem;
+        margin-left: 0.2rem;
       }
     }
   }
+`;
+const On = styled.div`
+  background: ${(props) =>
+    props.check === 0
+      ? colors.button.metronome
+      : colors.background.primaryDark};
+`;
+
+const Off = styled.div`
+  background: ${(props) =>
+    props.check === 1
+      ? colors.button.metronome
+      : colors.background.primaryDark};
 `;
 
 const ControlPanel = styled.div`
@@ -90,16 +108,14 @@ const AddTrack = styled.div`
 // export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
   const { options, setOptions, addTrack } = useSong();
-  const { play, pause } = usePlay();
+  const { play, pause, on } = usePlay();
   const [showModal, setShowModal] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [showBpmModal, setShowBpmModal] = useState(false);
-  const [metronomeIsOn, setMetronomeIsOn] = useState(false);
 
   useEffect(() => {
     if (isPlay) {
       play();
-      setMetronomeIsOn(true);
     } else {
       pause();
     }
@@ -110,25 +126,6 @@ export default function ControlBar() {
     setShowModal(false);
   });
 
-  let metronomeA = "icons/metronome-on.svg";
-  let metronomeB = "icons/metronome-off.svg";
-  useEffect(() => {
-    let i = 0;
-    if (i % 2) {
-      console.log("hit");
-      metronomeA = "icons/metronome-on.svg";
-    } else {
-      console.log("hit2");
-      metronomeA = "icons/metronome-off.svg";
-    }
-
-    // } else {
-    //   return "icons/metronome-on.svg";
-    // }
-    i++;
-  }, [metronomeIsOn]);
-
-  console.log(metronomeA, "metronomeA");
   return (
     <Header>
       {/* <section>
@@ -162,8 +159,8 @@ export default function ControlBar() {
         onClick={() => setShowBpmModal((prev) => !prev)}
         ref={domNode}
       >
-        <img src={metronomeA} alt="" />
-        <img src="icons/metronome-off.svg" alt="" />
+        <On check={on}></On>
+        <Off check={on}></Off>
 
         <span>
           {Math.round(options.bps * 60)} BPM | {options.stepLength} BARS

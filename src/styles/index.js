@@ -13,7 +13,9 @@ const colors = {
     optional: "rgb(73, 73, 73)",
     optional2:"rgb(77, 68, 238)",
     optional3: "rgb(101, 96, 255)",
-    bar:"rgba(153, 199, 255, 0.79)"
+    bar:"rgba(153, 199, 255, 0.79)",
+    metronome: "rgb(107, 118, 239)",
+    metronomeBorder:"rgb(54, 60, 129)"
   },
   font: {
     primary: "rgb(255, 255, 255)",

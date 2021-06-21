@@ -12,6 +12,7 @@ import {
 import usePlay from "../helpers/usePlay";
 import BpmModal from "./BpmModal";
 import useClickOutside from "../helpers/useClickOutside";
+import InfoModal from "./InfoModal";
 
 // #region - styling -
 const Header = styled.div`
@@ -22,15 +23,13 @@ const Header = styled.div`
   align-items: center;
   padding: 0.5rem;
 
-  .menu {
+  .info {
     margin-right: 1rem;
     margin-left: 10rem;
     cursor: pointer;
   }
   .speed-bar-container {
-    /* color:#C8C7EA; */
     color: #c4c2f0;
-    /* padding-right: 10rem; */
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -45,6 +44,11 @@ const Header = styled.div`
         margin-left: 0.2rem;
       }
     }
+  }
+  & > p {
+    /* background:pink; */
+    margin-left:1.2rem;
+    font-size: 1.5ch;
   }
 `;
 const On = styled.div`
@@ -90,18 +94,14 @@ const AddTrack = styled.div`
     background: ${colors.button.secondary};
     border-radius: 0.4rem;
     margin: 0.1rem 0 0.1rem 1rem;
-    width: 4rem;
+    width: 3rem;
     height: 2rem;
     cursor: pointer;
     & > button {
       all: unset;
     }
   }
-  & > h5 {
-    /* background:pink; */
-    margin: 0rem 0 0 1rem;
-    padding: 0;
-  }
+ 
 `;
 // #endregion
 
@@ -112,6 +112,7 @@ export default function ControlBar() {
   const [showModal, setShowModal] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [showBpmModal, setShowBpmModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   useEffect(() => {
     if (isPlay) {
@@ -124,6 +125,7 @@ export default function ControlBar() {
   let domNode = useClickOutside(() => {
     setShowBpmModal(false);
     setShowModal(false);
+    setShowInfoModal(false);
   });
 
   return (
@@ -138,9 +140,9 @@ export default function ControlBar() {
             <img src="icons/plus.svg" alt="plus" />
           </button>
         </div>
-        <h5>New Track</h5>
+        
       </AddTrack>
-
+      <p>New Track</p>
       {showModal && (
         <Modal showModal={showModal} setShowModal={setShowModal}></Modal>
       )}
@@ -156,7 +158,7 @@ export default function ControlBar() {
 
       <div
         className="speed-bar-container"
-        onClick={() => setShowBpmModal((prev) => !prev)}
+        onClick={() => (setShowBpmModal((prev) => !prev), setShowInfoModal(false))}
         ref={domNode}
       >
         <On check={on}></On>
@@ -168,9 +170,10 @@ export default function ControlBar() {
       </div>
       {showBpmModal && <BpmModal />}
 
-      <div className="menu">
-        <img src="icons/menu.svg" alt="menu" />
+      <div className="info" onClick={() => setShowInfoModal((prev) => !prev)}>
+        <img src="icons/info.svg" alt="info" />
       </div>
+      {showInfoModal && <InfoModal />}
     </Header>
   );
 }

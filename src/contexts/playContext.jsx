@@ -41,7 +41,8 @@ export const PlayProvider = (props) => {
         }
       });
     });
-    //condition for metronome display
+
+    // condition for metronome display 
     if (i % 2) {
       on = 0;
     } else {

@@ -61,7 +61,6 @@ export const MainProvider = (props) => {
   const removeTracks = ( trackId ) => {
     const removeTrack= tracks.filter((track)=> track.id != trackId )
     setTracks(removeTrack);
-    
   }
 
   const contextValue = {

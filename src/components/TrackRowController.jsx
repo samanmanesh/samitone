@@ -103,7 +103,6 @@ export default function TrackRowController({
   track,
   isCollapsed,
   setIsCollapsed,
-  removeTracksHandler
 }) {
   const { updateTrack, removeTracks } = useSong();
   const changedInstrument = (instrument) => {
@@ -117,7 +116,9 @@ export default function TrackRowController({
   const instruments = getInstrumentsByType(currentInstrumentType);
   const instrumentKeys = instruments.map((e) => e.name);
 
-  
+  const removeTracksHandler = (trackId) =>{
+    removeTracks(trackId);
+  }
 
   return (
     <TrackController>

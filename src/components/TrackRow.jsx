@@ -78,7 +78,7 @@ const Notes = styled.div`
 
 // #endregion
 
-export default function TrackRow({ track, currentStep ,removeTracksHandler={removeTracksHandler} }) {
+export default function TrackRow({ track, currentStep }) {
   const { updateTrack, options } = useSong();
 
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -95,15 +95,11 @@ export default function TrackRow({ track, currentStep ,removeTracksHandler={remo
 
   const colors = getInstrument(track.instrument).colors;
 
-  const filterHandler = (e) => {
-    const newOptions = track.options;
-    newOptions.filter = e.target.value;
-    updateTrack(track.id, { ...track, options: newOptions });
-  };
-
-  // const removeTracksHandler = (trackId) =>{
-  //   removeTracks(trackId);
-  // }
+  // const filterHandler = (e) => {
+  //   const newOptions = track.options;
+  //   newOptions.filter = e.target.value;
+  //   updateTrack(track.id, { ...track, options: newOptions });
+  // };
 
   return (
     <TrackRowWrapper>
@@ -112,7 +108,6 @@ export default function TrackRow({ track, currentStep ,removeTracksHandler={remo
           track={track}
           isCollapsed={isCollapsed}
           setIsCollapsed={setIsCollapsed}
-          removeTracksHandler={removeTracksHandler}
         />
 
         <NotesWrapper>

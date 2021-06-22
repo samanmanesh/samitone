@@ -25,19 +25,63 @@ const ModalContainer = styled.div`
   background: ${colors.background.primaryDark};
   color: white;
   border-radius: 0.5rem;
-
-
-  .beat-container{
-    background: #673535;
+  & > p {
+    color: ${colors.font.secondary};
+    font-size: 2ch;
+    font-weight: bolder;
+    margin-left: 45%;
+    
   }
 
-  .synth-container{
-    background: #19575b;
+  .beat-container {
+    display: flex;
+    align-content: center;
+    /* justify-content: space-between; */
+    align-items: stretch;
+    flex-wrap: wrap;
+    border-bottom: 4px solid ${colors.background.secondary};
+    border-top: 4px solid ${colors.background.secondary};
+    & > div {
+      width: 4.5rem;
+      height: 3rem;
+      font-size: 1.4ch;
+      margin: 1rem 2rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      border-radius: 0.3rem;
+      
+
+    }
   }
 
+  .synth-container {
+    display: flex;
+    align-content: center;
+    /* justify-content: space-between; */
+    align-items: stretch;
+    flex-wrap: wrap;
 
+    & > div {
+      width: 4.5rem;
+      height: 3rem;
+      font-size: 1.4ch;
+      margin: 1rem 2rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      border-radius: 0.3rem;
+    }
+  }
 `;
-
+const InstrumentWrapper = styled.div`
+  /* background: blue; */
+  background: ${(props) => props.instrumentColor.secondary};
+  :hover{
+        background: ${(props) => props.instrumentColor.primary};
+        transition: all 0.5s ease;
+      }
+`;
 export default function Modal({ showModal, setShowModal }) {
   const { options, setOptions, addTrack } = useSong();
 
@@ -46,37 +90,33 @@ export default function Modal({ showModal, setShowModal }) {
     // setShowModal(false);
   };
 
- 
   return (
-   
     <ModalWrapper onMouseDown={() => setShowModal(false)}>
       <ModalContainer onMouseDown={(e) => e.stopPropagation()}>
-        <h3>Select Instrument</h3>
-       
+        <p>Select Instrument</p>
+
         <div className="beat-container">
-
-        {getInstrumentsByType(InstrumentType.Beat).map((instrument) => (
-          <div
-          
-            onClick={() => handleAddTrack(instrument.name)}
-            key={instrument.name}
-          >
-            {instrument.name}
-          </div>
-        ))}
+          {getInstrumentsByType(InstrumentType.Beat).map((instrument) => (
+            <InstrumentWrapper
+              onClick={() => handleAddTrack(instrument.name)}
+              key={instrument.name}
+              instrumentColor={instrument.colors}
+            >
+              {instrument.name}
+            </InstrumentWrapper>
+          ))}
         </div>
-        {getInstrumentsByType(InstrumentType.Synth).map((instrument) => (
-          <div
-            className="synth-container"
-            onClick={() => handleAddTrack(instrument.name)}
-            key={instrument.name}
-          >
-            {instrument.name}
-          </div>
-        ))}
-
-
-      
+        <div className="synth-container">
+          {getInstrumentsByType(InstrumentType.Synth).map((instrument) => (
+            <InstrumentWrapper
+              onClick={() => handleAddTrack(instrument.name)}
+              key={instrument.name}
+              instrumentColor={instrument.colors}
+            >
+              {instrument.name}
+            </InstrumentWrapper>
+          ))}
+        </div>
       </ModalContainer>
     </ModalWrapper>
   );

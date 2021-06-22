@@ -127,6 +127,7 @@ export default function TrackRow({ track, currentStep }) {
                         />
                       )
                   )}
+                  
                 {/* {row
                 .filter(
                   (note) =>

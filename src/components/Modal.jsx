@@ -46,30 +46,13 @@ export default function Modal({ showModal, setShowModal }) {
     // setShowModal(false);
   };
 
-  // function handleKeyDown(e) {
-  //   document.removeEventListener("keydown", this);
-  //   // if (e.key === "Escape") handleClose();
-  //   if (e.key === "Escape") setShowModal(false);
-  // }
-  // useEffect(() => {
-  //   document.addEventListener("keydown", handleKeyDown);
-  // }, []);
+ 
   return (
-    // handleClose={() => setShowModal(false)}
-    // <ModalWrapper onMouseDown={() => handleClose()}>
+   
     <ModalWrapper onMouseDown={() => setShowModal(false)}>
       <ModalContainer onMouseDown={(e) => e.stopPropagation()}>
         <h3>Select Instrument</h3>
-        {/* <div>
-          <button onClick={() => setShowModal(InstrumentType.Beat)}>
-            Beat
-          </button>
-        </div>
-        <div>
-          <button onClick={() => setShowModal(InstrumentType.Synth)}>
-            Synth
-          </button>
-        </div> */}
+       
         <div className="beat-container">
 
         {getInstrumentsByType(InstrumentType.Beat).map((instrument) => (
@@ -93,15 +76,7 @@ export default function Modal({ showModal, setShowModal }) {
         ))}
 
 
-        {/* {getInstrumentsByType(showModal).map((instrument) => (
-          <div
-            onClick={() => handleAddTrack(instrument.name)}
-            key={instrument.name}
-          >
-            {instrument.name}
-          </div>
-        ))} */}
-        {/* {children} */}
+      
       </ModalContainer>
     </ModalWrapper>
   );

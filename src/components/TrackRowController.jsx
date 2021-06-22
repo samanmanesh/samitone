@@ -25,14 +25,14 @@ const TrackController = styled.div`
   min-height: 2rem;
   position: relative;
   z-index: 0;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border-bottom: 1px solid ${(props) => props.trackColor.primary};
 
   .synth-container {
     display: flex;
     /* background: #610707; */
     align-items: center;
-    
+
     & > button {
       all: unset;
       background: ${colors.button.optional};
@@ -45,11 +45,10 @@ const TrackController = styled.div`
     }
 
     .change-instrument {
-      margin-left:.5rem;
+      margin-left: 0.5rem;
       background: #7b1a1a;
       padding: 0 0.2rem;
       & > select {
-        
         all: unset;
         /* display: none; */
         max-width: 2rem;
@@ -73,7 +72,6 @@ const TrackController = styled.div`
     }
   }
 
-
   .collapse-button {
     margin-top: auto;
     margin-left: auto;
@@ -90,42 +88,7 @@ const TrackController = styled.div`
     }
   }
 
-  .minibar-control {
-    /* background: #74961d; */
 
-    .add-row-selector {
-      height: 5%;
-      /* background: #273070; */
-      font-size: 1.5ch;
-      & > select {
-        /* height:1rem;
-          width:2rem; */
-      }
-
-      /* margin-right: 1rem; */
-      /* position: relative; */
-      /* align-self: top; */
-    }
-  }
-
-  .main-control {
-    /* background: #63127e; */
-    display: flex;
-    align-items: chanter;
-
-    .change-instrument {
-      
-      /* position: absolute; */
-      background: #7b1a1a;
-      padding: 0 0.2rem;
-      /* max-width: 1rem; */
-      & > select {
-        all: unset;
-        width:.4rem;
-        height: .4rem;
-      }
-    }
-  }
 `;
 
 // #endregion
@@ -153,25 +116,22 @@ export default function TrackRowController({
 
   let domNode = useClickOutside(() => {
     setShowTrackModal(false);
-    ;
   });
-
 
   return (
     <TrackController trackColor={getInstrument(track.instrument).colors}>
       <div className="synth-container">
-        
         <div className="change-instrument">
           {/* <img src="" alt="icons" /> */}
-          
+
           <select
             // value={track.instrument}
-            
+
             onChange={(e) => changedInstrument(e.target.value)}
             key="instrument-selector"
           >
             {instrumentKeys.map((e, i) => (
-              <option  value={e} key={`instrument-selector__${i}`}>
+              <option value={e} key={`instrument-selector__${i}`}>
                 {e}
               </option>
             ))}
@@ -188,19 +148,16 @@ export default function TrackRowController({
           ref={domNode}
         >
           <img src="icons/more.svg" alt="" />
-          
         </div>
         {showTrackModal && (
-            <TrackModal removeTracksHandler={removeTracksHandler} track={track}  />
-          )}
-        
+          <TrackModal removeTracksHandler={removeTracksHandler} track={track} />
+        )}
       </div>
 
       {getInstrument(track.instrument).type === InstrumentType.Synth && (
         <div
           className="collapse-button"
           onClick={() => setIsCollapsed((prev) => !prev)}
-          
         >
           <img
             src={isCollapsed ? "icons/arrow-down.svg" : "icons/arrow-up.svg"}

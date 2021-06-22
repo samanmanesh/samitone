@@ -88,6 +88,7 @@ const AddTrack = styled.div`
   /* display: flex; */
   padding: 0;
   margin: 0;
+  cursor: pointer;
   & > div {
     display: flex;
     justify-content: center;
@@ -96,7 +97,7 @@ const AddTrack = styled.div`
     margin: 0.1rem 0 0.1rem 1rem;
     width: 3rem;
     height: 2rem;
-    cursor: pointer;
+    
     & > button {
       all: unset;
     }
@@ -135,8 +136,8 @@ export default function ControlBar() {
       </section> */}
 
       <AddTrack ref={domNode}>
-        <div>
-          <button onClick={() => setShowModal(InstrumentType.Beat)}>
+        <div onClick={() => setShowModal(InstrumentType.Beat)}>
+          <button >
             <img src="icons/plus.svg" alt="plus" />
           </button>
         </div>

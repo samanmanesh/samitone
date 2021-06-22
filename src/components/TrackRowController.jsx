@@ -9,6 +9,9 @@ import {
   InstrumentType,
 } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
+import TrackModal from "./TrackModal";
+
+//#region - styling -
 
 const TrackController = styled.div`
   display: flex;
@@ -19,7 +22,8 @@ const TrackController = styled.div`
   /* background: #b16b10; */
   min-width: 15rem;
   min-height: 2rem;
-
+  position: relative;
+  
   .synth-container {
     display: flex;
     /* background: #610707; */
@@ -41,6 +45,8 @@ const TrackController = styled.div`
     .more {
       margin-right: 0.5rem;
       margin-left: 0.5rem;
+      /* position: relative; */
+      cursor: pointer;
     }
 
     & > span {
@@ -99,6 +105,8 @@ const TrackController = styled.div`
   }
 `;
 
+// #endregion
+
 export default function TrackRowController({
   track,
   isCollapsed,
@@ -108,7 +116,7 @@ export default function TrackRowController({
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
   };
-
+  const [showTrackModal, setShowTrackModal] = useState(false);
   // Get what this track type is
   const currentInstrumentType = getInstrument(track.instrument).type;
 
@@ -116,13 +124,12 @@ export default function TrackRowController({
   const instruments = getInstrumentsByType(currentInstrumentType);
   const instrumentKeys = instruments.map((e) => e.name);
 
-  const removeTracksHandler = (trackId) =>{
+  const removeTracksHandler = (trackId) => {
     removeTracks(trackId);
-  }
+  };
 
   return (
     <TrackController>
-      
       <div className="synth-container">
         <div className="change-instrument">
           {/* <img src="" alt="icons" /> */}
@@ -143,10 +150,17 @@ export default function TrackRowController({
 
         <button className="mute">Mute</button>
         <button className="solo">Solo</button>
-        <div className="more">
+        <div
+          className="more"
+          onClick={() => setShowTrackModal((prev) => !prev)}
+        >
           <img src="icons/more.svg" alt="" />
+          
         </div>
-        <button onClick={() =>removeTracksHandler(track.id)}>x</button>
+        {showTrackModal && (
+            <TrackModal removeTracksHandler={removeTracksHandler} track={track}  />
+          )}
+        
       </div>
 
       {getInstrument(track.instrument).type === InstrumentType.Synth && (

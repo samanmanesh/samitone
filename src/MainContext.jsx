@@ -59,13 +59,10 @@ export const MainProvider = (props) => {
 
 
   const removeTracks = ( trackId ) => {
-    const removeTrackIndex = tracks.findIndex((track)=> track.id === trackId )
-    console.log(removeTrackIndex,"removeTrack works")
-    const updatedTracks = [...tracks];
-    updatedTracks[removeTrackIndex] = [];
-    setTracks({...updatedTracks});
+    const removeTrack= tracks.filter((track)=> track.id != trackId )
+    setTracks(removeTrack);
+    
   }
-
 
   const contextValue = {
     tracks,

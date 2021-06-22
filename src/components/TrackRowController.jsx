@@ -11,6 +11,7 @@ import {
 import useSong from "../helpers/useSong";
 import TrackModal from "./TrackModal";
 import useClickOutside from "../helpers/useClickOutside";
+import InstrumentChangeModal from "./InstrumentChangeModal";
 
 //#region - styling -
 
@@ -87,8 +88,6 @@ const TrackController = styled.div`
       margin-left: 0.5rem;
     }
   }
-
-
 `;
 
 // #endregion
@@ -99,10 +98,14 @@ export default function TrackRowController({
   setIsCollapsed,
 }) {
   const { updateTrack, removeTracks } = useSong();
-  const changedInstrument = (instrument) => {
-    updateTrack(track.id, { ...track, instrument: instrument });
-  };
   const [showTrackModal, setShowTrackModal] = useState(false);
+  const [showInstrumentsModal, setShowInstrumentsModal] = useState(false);
+
+  // const changedInstrument = (instrument) => {
+  //   console.log(instrument,"read the changeInst")
+  //   updateTrack(track.id, { ...track, instrument: instrument });
+  // };
+
   // Get what this track type is
   const currentInstrumentType = getInstrument(track.instrument).type;
 
@@ -121,10 +124,12 @@ export default function TrackRowController({
   return (
     <TrackController trackColor={getInstrument(track.instrument).colors}>
       <div className="synth-container">
-        <div className="change-instrument">
-          {/* <img src="" alt="icons" /> */}
-
-          <select
+        <div
+          onClick={() => setShowInstrumentsModal((prev) => !prev)}
+          className="change-instrument"
+        >
+          change
+          {/* <select
             // value={track.instrument}
 
             onChange={(e) => changedInstrument(e.target.value)}
@@ -135,8 +140,16 @@ export default function TrackRowController({
                 {e}
               </option>
             ))}
-          </select>
+          </select> */}
         </div>
+
+        {showInstrumentsModal && (
+          <InstrumentChangeModal
+          // changedInstrument={changedInstrument}
+            setShowInstrumentsModal={setShowInstrumentsModal}
+            track={track}
+          />
+        )}
 
         <span>{track.instrument}</span>
 

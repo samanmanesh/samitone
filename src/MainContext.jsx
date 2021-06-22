@@ -50,7 +50,10 @@ export const MainProvider = (props) => {
     console.log(tracks);
   };
 
+  
   const updateTrack = (trackID, updatedTrack) => {
+    console.log(updatedTrack);
+    
     const updateTrackIndex = tracks.findIndex((track) => track.id === trackID);
     const updatedTracks = [...tracks];
     updatedTracks[updateTrackIndex] = updatedTrack;

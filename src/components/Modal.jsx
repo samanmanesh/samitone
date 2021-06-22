@@ -20,7 +20,7 @@ const ModalWrapper = styled.div`
   z-index: 15;
 `;
 const ModalContainer = styled.div`
-  width: 40rem;
+  width: 60rem;
   min-height: 35rem;
   background: ${colors.background.primaryDark};
   color: white;

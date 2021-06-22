@@ -12,16 +12,7 @@ import TrackRowController from "./TrackRowController";
 import useSong from "../helpers/useSong";
 
 // #region - Styling -
-const NotesWrapper = styled.div`
-  width: 100%;
-  /* background: #624848; */
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-evenly; */
-  /* justify-content:center; */
-  /* height:100%; */
-  /* flex-grow:10; */
-`;
+
 const TrackRowWrapper = styled.div`
   /* border: 1px solid white; */
   border-radius: 0.25rem;
@@ -47,6 +38,18 @@ const TrackRowWrapper = styled.div`
     }
   } */
 `;
+
+const NotesWrapper = styled.div`
+  width: 100%;
+  /* background: #624848; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* justify-content:center; */
+  /* height:100%; */
+  /* flex-grow:10; */
+`;
+
 
 const Notes = styled.div`
   background: ${colors.background.row};

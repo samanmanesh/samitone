@@ -23,7 +23,9 @@ const TrackController = styled.div`
   min-width: 15rem;
   min-height: 2rem;
   position: relative;
-  
+  border-radius: .5rem;
+  border-bottom: 1px solid ${(props) => props.trackColor.primary};
+
   .synth-container {
     display: flex;
     /* background: #610707; */
@@ -129,7 +131,7 @@ export default function TrackRowController({
   };
 
   return (
-    <TrackController>
+    <TrackController trackColor={getInstrument(track.instrument).colors}>
       <div className="synth-container">
         <div className="change-instrument">
           {/* <img src="" alt="icons" /> */}

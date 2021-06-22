@@ -12,13 +12,17 @@ const TrackPlayerContainer = styled.div`
 `;
 
 export default function TrackPlayer() {
-  const { tracks } = useSong();
+  const { tracks ,removeTracks } = useSong();
   const { currentStep } = usePlay();
+  
+  const removeTracksHandler = (trackId) =>{
+    removeTracks(trackId);
+  }
 
   return (
     <TrackPlayerContainer>
-      {tracks.map((track) => (
-        <TrackRow track={track} key={track.id} currentStep={currentStep} />
+      {tracks && tracks.map((track) => (
+        <TrackRow track={track} key={track.id} currentStep={currentStep} removeTracksHandler={removeTracksHandler} />
       ))}
     </TrackPlayerContainer>
   );

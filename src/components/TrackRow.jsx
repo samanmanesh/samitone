@@ -78,7 +78,7 @@ const Notes = styled.div`
 
 // #endregion
 
-export default function TrackRow({ track, currentStep }) {
+export default function TrackRow({ track, currentStep ,removeTracksHandler={removeTracksHandler} }) {
   const { updateTrack, options } = useSong();
 
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -101,6 +101,10 @@ export default function TrackRow({ track, currentStep }) {
     updateTrack(track.id, { ...track, options: newOptions });
   };
 
+  // const removeTracksHandler = (trackId) =>{
+  //   removeTracks(trackId);
+  // }
+
   return (
     <TrackRowWrapper>
       <section className="controller-notes-container">
@@ -108,6 +112,7 @@ export default function TrackRow({ track, currentStep }) {
           track={track}
           isCollapsed={isCollapsed}
           setIsCollapsed={setIsCollapsed}
+          removeTracksHandler={removeTracksHandler}
         />
 
         <NotesWrapper>

@@ -103,6 +103,7 @@ export default function TrackRowController({
   track,
   isCollapsed,
   setIsCollapsed,
+  removeTracksHandler
 }) {
   const { updateTrack, removeTracks } = useSong();
   const changedInstrument = (instrument) => {
@@ -116,21 +117,7 @@ export default function TrackRowController({
   const instruments = getInstrumentsByType(currentInstrumentType);
   const instrumentKeys = instruments.map((e) => e.name);
 
-  // const rowList = [1, 2, 3, 4, 5, 6, 7];
-
-  // const addRowHandler = (rowToDisplay) => {
-  //   updateTrack(track.id, { ...track, rowDisplay: rowToDisplay });
-  //   console.log(track.rowDisplay, "rowDisplay");
-  // };
-
-  // const collapseHandler = () => {
-  //   setIsCollapsed((prev) => !prev);
-  //   if (isCollapsed) {
-  //     updateTrack(track.id, { ...track, rowDisplay: 1 });
-  //   } else {
-  //     updateTrack(track.id, { ...track, rowDisplay: 7 });
-  //   }
-  // };
+  
 
   return (
     <TrackController>
@@ -158,7 +145,7 @@ export default function TrackRowController({
         <div className="more">
           <img src="icons/more.svg" alt="" />
         </div>
-        <button onClick={() =>removeTracks(track.id)}>x</button>
+        <button onClick={() =>removeTracksHandler(track.id)}>x</button>
       </div>
 
       {getInstrument(track.instrument).type === InstrumentType.Synth && (

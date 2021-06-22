@@ -10,6 +10,7 @@ import {
 } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
 import TrackModal from "./TrackModal";
+import useClickOutside from "../helpers/useClickOutside";
 
 //#region - styling -
 
@@ -23,6 +24,7 @@ const TrackController = styled.div`
   min-width: 15rem;
   min-height: 2rem;
   position: relative;
+  z-index: 0;
   border-radius: .5rem;
   border-bottom: 1px solid ${(props) => props.trackColor.primary};
 
@@ -30,6 +32,7 @@ const TrackController = styled.div`
     display: flex;
     /* background: #610707; */
     align-items: center;
+    
     & > button {
       all: unset;
       background: ${colors.button.optional};
@@ -148,6 +151,12 @@ export default function TrackRowController({
     removeTracks(trackId);
   };
 
+  let domNode = useClickOutside(() => {
+    setShowTrackModal(false);
+    ;
+  });
+
+
   return (
     <TrackController trackColor={getInstrument(track.instrument).colors}>
       <div className="synth-container">
@@ -176,6 +185,7 @@ export default function TrackRowController({
         <div
           className="more"
           onClick={() => setShowTrackModal((prev) => !prev)}
+          ref={domNode}
         >
           <img src="icons/more.svg" alt="" />
           
@@ -190,6 +200,7 @@ export default function TrackRowController({
         <div
           className="collapse-button"
           onClick={() => setIsCollapsed((prev) => !prev)}
+          
         >
           <img
             src={isCollapsed ? "icons/arrow-down.svg" : "icons/arrow-up.svg"}

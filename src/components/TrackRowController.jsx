@@ -104,7 +104,7 @@ export default function TrackRowController({
   isCollapsed,
   setIsCollapsed,
 }) {
-  const { updateTrack, options, setOptions } = useSong();
+  const { updateTrack, removeTracks } = useSong();
   const changedInstrument = (instrument) => {
     updateTrack(track.id, { ...track, instrument: instrument });
   };
@@ -158,6 +158,7 @@ export default function TrackRowController({
         <div className="more">
           <img src="icons/more.svg" alt="" />
         </div>
+        <button onClick={() =>removeTracks(track.id)}>x</button>
       </div>
 
       {getInstrument(track.instrument).type === InstrumentType.Synth && (

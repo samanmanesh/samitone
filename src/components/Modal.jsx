@@ -7,6 +7,9 @@ import {
   instruments,
   InstrumentType,
 } from "../helpers/instruments";
+
+
+// #region - styling -
 const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -82,6 +85,8 @@ const InstrumentWrapper = styled.div`
         transition: all 0.5s ease;
       }
 `;
+
+// #endregion
 export default function Modal({ showModal, setShowModal }) {
   const { options, setOptions, addTrack } = useSong();
 

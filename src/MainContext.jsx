@@ -57,6 +57,15 @@ export const MainProvider = (props) => {
     setTracks([...updatedTracks]);
   };
 
+
+  const removeTracks = ( trackId ) => {
+    const removeTrackIndex = tracks.findIndex((track)=> track.id === trackId )
+    const updatedTracks = [...tracks];
+    updatedTracks[removeTrackIndex] = [];
+    setTracks({...updatedTracks});
+  }
+
+
   const contextValue = {
     tracks,
     setTracks,
@@ -66,6 +75,7 @@ export const MainProvider = (props) => {
     setOptions,
     currentFilter,
     setCurrentFilter,
+    removeTracks
   };
   return (
     <MainContext.Provider value={contextValue}>

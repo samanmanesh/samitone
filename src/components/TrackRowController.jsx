@@ -40,6 +40,19 @@ const TrackController = styled.div`
       border-radius: 0.1rem;
       text-align: center;
     }
+
+    .change-instrument {
+      margin-left:.5rem;
+      background: #7b1a1a;
+      padding: 0 0.2rem;
+      & > select {
+        
+        all: unset;
+        /* display: none; */
+        max-width: 2rem;
+      }
+    }
+
     .mute {
       margin-left: auto;
     }
@@ -56,6 +69,8 @@ const TrackController = styled.div`
       font-size: 0.8em;
     }
   }
+
+
   .collapse-button {
     margin-top: auto;
     margin-left: auto;
@@ -91,17 +106,20 @@ const TrackController = styled.div`
   }
 
   .main-control {
-    background: #63127e;
+    /* background: #63127e; */
     display: flex;
     align-items: chanter;
 
     .change-instrument {
+      
       /* position: absolute; */
-      /* background: #000; */
+      background: #7b1a1a;
       padding: 0 0.2rem;
       /* max-width: 1rem; */
       & > select {
-        max-width: 3rem;
+        all: unset;
+        width:.4rem;
+        height: .4rem;
       }
     }
   }
@@ -133,15 +151,18 @@ export default function TrackRowController({
   return (
     <TrackController trackColor={getInstrument(track.instrument).colors}>
       <div className="synth-container">
+        
         <div className="change-instrument">
           {/* <img src="" alt="icons" /> */}
+          
           <select
-            value={track.instrument}
+            // value={track.instrument}
+            
             onChange={(e) => changedInstrument(e.target.value)}
             key="instrument-selector"
           >
             {instrumentKeys.map((e, i) => (
-              <option value={e} key={`instrument-selector__${i}`}>
+              <option  value={e} key={`instrument-selector__${i}`}>
                 {e}
               </option>
             ))}

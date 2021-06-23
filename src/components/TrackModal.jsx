@@ -108,7 +108,7 @@ export default function TrackModal({ removeTracksHandler, track }) {
           // onChange={(e) => bpmConverter(e)}
         />
         
-        <input type="number" value={volume} onChange={(e) => setVolume(e.target.value)} />
+        {/* <input type="number" value={volume} onChange={(e) => setVolume(e.target.value)} /> */}
 
 
       </div>

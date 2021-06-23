@@ -47,13 +47,18 @@ const TrackController = styled.div`
 
     .change-instrument {
       margin-left: 0.5rem;
-      background: #7b1a1a;
+      /* background: #7b1a1a; */
       padding: 0 0.2rem;
       & > select {
         all: unset;
         /* display: none; */
         max-width: 2rem;
       }
+      & img{
+       width: 2.5rem;
+       height: 2.5rem;
+      }
+
     }
 
     .mute {
@@ -129,7 +134,7 @@ export default function TrackRowController({
           onClick={() => setShowInstrumentsModal((prev) => !prev)}
           className="change-instrument"
         >
-          change
+          <img src={ getInstrument(track.instrument).type === "beat" ?   "icons/drum-machine.svg" : "icons/sound.svg"} />
           {/* <select
             // value={track.instrument}
 

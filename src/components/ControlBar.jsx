@@ -27,6 +27,7 @@ const Header = styled.div`
     margin-right: 1rem;
     margin-left: 10rem;
     cursor: pointer;
+    position: relative;
   }
   .speed-bar-container {
     color: #c4c2f0;
@@ -173,8 +174,9 @@ export default function ControlBar() {
 
       <div className="info" onClick={() => setShowInfoModal((prev) => !prev)}>
         <img src="icons/info.svg" alt="info" />
+        {showInfoModal && <InfoModal />}
       </div>
-      {showInfoModal && <InfoModal />}
+      
     </Header>
   );
 }

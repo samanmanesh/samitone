@@ -6,16 +6,17 @@ const ModalWrapper = styled.div`
   background: ${colors.background.primaryDark};
   width: 8rem;
   height: 20rem;
-  position: fixed;
-  left: 92%;
-  top: 4rem;
+  position: absolute;
+  /* left: 1rem; */
+  right: 1rem;
+  top: 2rem;
   border: 1px solid rgb(37, 37, 37);
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
+    margin: 0;
   & > div {
     background: ${colors.button.secondary};
     width: 4rem;

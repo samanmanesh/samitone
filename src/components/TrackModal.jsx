@@ -22,6 +22,10 @@ const TrackModalWrapper = styled.div`
     border-radius: 0.5rem;
     border-right: 1px solid ${colors.blue.primary};
     cursor: pointer;
+    & > img{
+        width:1rem;
+        height:1rem;
+    }
   }
 
   .volume-container {
@@ -30,8 +34,8 @@ const TrackModalWrapper = styled.div`
     & > img {
       margin: 0 0.5rem 0 1rem;
 
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 1rem;
+      height: 1rem;
     }
 
     .slider {

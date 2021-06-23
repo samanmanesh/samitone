@@ -20,13 +20,16 @@ export const PlayProvider = (props) => {
   // const vol = new Tone.Volume(volume).toDestination();
 
   // //* if volume changed updates the callback
-  useEffect(() => {
-    if (loop) {
-      console.log("works useEffect");
-      // generateSongEffects();
-      loop.callback = playCallback;
-    }
-  }, [volume]);
+  // useEffect(() => {
+  //   if (loop) {
+  //     console.log("works useEffect");
+  //     // generateSongEffects();
+  //     loop.callback = playCallback;
+  //   }
+  // }, [volume]);
+  
+  // const vol = new Tone.Volume(-12).toDestination();
+  // vol.volume.value = -60;
 
   const playCallback = (time) => {
     const step = i % options.stepLength;
@@ -34,9 +37,16 @@ export const PlayProvider = (props) => {
     i++;
     tracks.forEach((track, i) => {
       const instrument = getInstrument(track.instrument);
+      
+      // const synth = instrument.sound.connect(vol);
+      
+      //* volume changing but it doesn't' make toDestination sound 
+
       console.log(vNode.volume.value);
-      vNode.volume.value *= 2;
+      
+      // vNode.volume.value *= 2;
       const synth = instrument.sound.connect(vNode).toDestination();
+      
       // vNode.set({
       //   volume: -50
       // });
@@ -97,12 +107,17 @@ export const PlayProvider = (props) => {
 
   const setupSong = () => {
     i = 0;
+    // Tone.getDestination().volume.;
+    // getDefault() 
+    // console.log(getDefaults(),"check1")
+    
     const vol = new Tone.Volume(-15).toDestination();
     vol.name = "haha"
     console.log(vol)
-    // setVolumeNode(vol);
+    setVolumeNode(vol);
     vNode = vol;
     
+    vNode.volume.value = -25;
     // Go through each instrument
     tracks.forEach((track) => {
       const { sound } = getInstrument(track.instrument);

@@ -7,11 +7,26 @@ export const PlayContext = createContext();
 let i = 0;
 let on = 0;
 let off = 0;
+let vNode;
 export const PlayProvider = (props) => {
   const { tracks, options } = useSong();
   const [loop, setLoop] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [songEffects, setSongEffects] = useState([]);
+  const [volume, setVolume] = useState(-12);
+  const [volumeNode, setVolumeNode] = useState();
+
+  ///testing the volume
+  // const vol = new Tone.Volume(volume).toDestination();
+
+  // //* if volume changed updates the callback
+  useEffect(() => {
+    if (loop) {
+      console.log("works useEffect");
+      // generateSongEffects();
+      loop.callback = playCallback;
+    }
+  }, [volume]);
 
   const playCallback = (time) => {
     const step = i % options.stepLength;
@@ -19,16 +34,22 @@ export const PlayProvider = (props) => {
     i++;
     tracks.forEach((track, i) => {
       const instrument = getInstrument(track.instrument);
-      const synth = instrument.sound.toDestination();
-      const vol = new Tone.Volume(-12).toDestination();
-      
-      if (synth && songEffects[i]) {
-        // filter.frequency.rampTo(track.options.filter, 0);
-        if (track.options.filter) {
-          songEffects[i].filter.frequency.rampTo(track.options.filter, 0);
-          synth.connect(songEffects[i].filter);
-        }
-      }
+      console.log(vNode.volume.value);
+      vNode.volume.value *= 2;
+      const synth = instrument.sound.connect(vNode).toDestination();
+      // vNode.set({
+      //   volume: -50
+      // });
+      // console.log(vol,"vol is");
+      // const synth = instrument.sound.connect(vol);
+
+      // if (synth && songEffects[i]) {
+      //   // filter.frequency.rampTo(track.options.filter, 0);
+      //   if (track.options.filter) {
+      //     songEffects[i].filter.frequency.rampTo(track.options.filter, 0);
+      //     synth.connect(songEffects[i].filter);
+      //   }
+      // }
       //* Find the note for this track that is supposed
       //* to play at the current order
 
@@ -43,7 +64,7 @@ export const PlayProvider = (props) => {
       });
     });
 
-    // condition for metronome display 
+    // condition for metronome display
     if (i % 2) {
       on = 0;
     } else {
@@ -60,9 +81,7 @@ export const PlayProvider = (props) => {
   }, [tracks]);
 
   useEffect(() => {
-    console.log("option changed");
     if (loop) {
-      console.log("currently playing", loop);
       loop.interval = `${options.bps}Hz`;
     }
   }, [options]);
@@ -78,20 +97,18 @@ export const PlayProvider = (props) => {
 
   const setupSong = () => {
     i = 0;
-    // generateSongEffects();
-  };
-
-  const generateSongEffects = () => {
-    const newSongEffects = [];
+    const vol = new Tone.Volume(-15).toDestination();
+    vol.name = "haha"
+    console.log(vol)
+    // setVolumeNode(vol);
+    vNode = vol;
+    
+    // Go through each instrument
     tracks.forEach((track) => {
-      const filter = new Tone.Filter(track.options.filter, "lowpass");
-      filter.toDestination();
-      const trackEffects = {
-        filter,
-      };
-      newSongEffects.push(trackEffects);
+      const { sound } = getInstrument(track.instrument);
+      sound.connect(vol);
     });
-    setSongEffects(newSongEffects);
+    // bind the volume to it
   };
 
   const pause = () => {
@@ -106,6 +123,8 @@ export const PlayProvider = (props) => {
     play,
     pause,
     on,
+    setVolume,
+    volume,
   };
 
   return (

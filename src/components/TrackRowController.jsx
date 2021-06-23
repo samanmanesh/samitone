@@ -97,6 +97,7 @@ export default function TrackRowController({
   isCollapsed,
   setIsCollapsed,
 }) {
+  
   const { updateTrack, removeTracks } = useSong();
   const [showTrackModal, setShowTrackModal] = useState(false);
   const [showInstrumentsModal, setShowInstrumentsModal] = useState(false);

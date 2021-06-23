@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import usePlay from "../helpers/usePlay";
 import colors from "../styles";
 
 // #region -styling-
@@ -84,6 +85,8 @@ const TrackModalWrapper = styled.div`
 // #endregion
 
 export default function TrackModal({ removeTracksHandler, track }) {
+
+    const {setVolume, volume}=usePlay()
   return (
     <TrackModalWrapper onMouseDown={(e) => e.stopPropagation()}>
       <div
@@ -104,6 +107,10 @@ export default function TrackModal({ removeTracksHandler, track }) {
           // onChange={(e) => setBps(e.target.value)}
           // onChange={(e) => bpmConverter(e)}
         />
+        
+        <input type="number" value={volume} onChange={(e) => setVolume(e.target.value)} />
+
+
       </div>
     </TrackModalWrapper>
   );

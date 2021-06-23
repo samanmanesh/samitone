@@ -16,7 +16,7 @@ const NoteWrapper = styled.div`
   /* 1px 4px 20px ${(props) => props.colors.primary} , 2px 2px 0px ${(props) =>
     props.colors.secondary}; */
   /* width: 100%; */
-  border-radius: 0.4rem;
+  border-radius: 0.7rem;
   min-height: 3.5rem;
   /* min-width: 4rem; */
   width: 100%;

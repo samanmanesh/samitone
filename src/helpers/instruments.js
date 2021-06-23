@@ -146,7 +146,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.purple,
   },
   {
     name: "Claves",
@@ -158,7 +158,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Conga",
@@ -170,7 +170,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.blue,
   },
   {
     name: "Conga 2",

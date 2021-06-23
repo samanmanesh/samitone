@@ -20,7 +20,8 @@ export const PlayProvider = (props) => {
     tracks.forEach((track, i) => {
       const instrument = getInstrument(track.instrument);
       const synth = instrument.sound.toDestination();
-
+      const vol = new Tone.Volume(-12).toDestination();
+      
       if (synth && songEffects[i]) {
         // filter.frequency.rampTo(track.options.filter, 0);
         if (track.options.filter) {

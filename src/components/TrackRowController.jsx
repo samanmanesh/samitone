@@ -26,7 +26,7 @@ const TrackController = styled.div`
   min-height: 2rem;
   position: relative;
   z-index: 0;
-  border-radius: 0.5rem;
+  border-radius: 0 0.8rem ;
   border-bottom: 1px solid ${(props) => props.trackColor.primary};
 
   .synth-container {
@@ -41,7 +41,7 @@ const TrackController = styled.div`
       height: 1rem;
       margin: 0.2rem;
       font-size: 0.5em;
-      border-radius: 0.1rem;
+      border-radius: 0.2rem;
       text-align: center;
     }
 

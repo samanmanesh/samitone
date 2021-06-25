@@ -8,6 +8,7 @@ let i = 0;
 let on = 0;
 let off = 0;
 let vNode;
+
 export const PlayProvider = (props) => {
   const { tracks, options } = useSong();
   const [loop, setLoop] = useState(null);
@@ -31,21 +32,54 @@ export const PlayProvider = (props) => {
   // const vol = new Tone.Volume(-12).toDestination();
   // vol.volume.value = -60;
 
+  // let vol = new Tone.Volume(-10);
+  
+  
+  let synth;
+ 
+  const vol = new Tone.Volume(-10).toDestination();    
+ 
+  console.log(vol.get(),"check1");
+
+  // if(synth){
+
+  //   synth.connect(vol);
+  //     console.log(vol.get(),"check3")
+  // }
+
+
   const playCallback = (time) => {
     const step = i % options.stepLength;
     setCurrentStep(step);
     i++;
     tracks.forEach((track, i) => {
       const instrument = getInstrument(track.instrument);
+      synth = instrument.sound.connect(vol);     
+ 
+      // vol.mute = true;
+      console.log(vol.get(),"check2");
+      //  vol = new Tone.Volume(-30);
+
+   
+        const { sound } = getInstrument(track.instrument);
+        // sound.connect = -30;
+        // vNode.volume.value = -40;
+        
+        
+        // console.log(vNode.volume.value," value of volume");
+        // console.log(vNode.output._unmutedVolume," umutedvalue of volume");
+        // sound._unmutedVolume = -40;
+        // console.l/og(sound, 'sound');
       
-      // const synth = instrument.sound.connect(vol);
+
+
       
       //* volume changing but it doesn't' make toDestination sound 
 
-      console.log(vNode.volume.value);
+      // console.log(vNode.volume.value);
       
       // vNode.volume.value *= 2;
-      const synth = instrument.sound.connect(vNode).toDestination();
+      // const synth = instrument.sound.connect(vNode).toDestination();
       
       // vNode.set({
       //   volume: -50
@@ -74,6 +108,8 @@ export const PlayProvider = (props) => {
       });
     });
 
+    
+
     // condition for metronome display
     if (i % 2) {
       on = 0;
@@ -82,6 +118,8 @@ export const PlayProvider = (props) => {
     }
   };
 
+  
+    
   //* Updates the callback when values change
   useEffect(() => {
     if (loop) {
@@ -107,22 +145,27 @@ export const PlayProvider = (props) => {
 
   const setupSong = () => {
     i = 0;
+    // vol.mute = false;
+    // vol.toDestination();
     // Tone.getDestination().volume.;
     // getDefault() 
     // console.log(getDefaults(),"check1")
     
-    const vol = new Tone.Volume(-15).toDestination();
-    vol.name = "haha"
-    console.log(vol)
-    setVolumeNode(vol);
-    vNode = vol;
-    
-    vNode.volume.value = -25;
+    // const vol = new Tone.Volume(-30).toDestination();
+    // vol.name = "haha"
+    // console.log(vol)
+    // setVolumeNode(vol);
+    // vNode = vol;
+    // vNode.volume.value = 3;
+    // vol.mute = true;
     // Go through each instrument
-    tracks.forEach((track) => {
-      const { sound } = getInstrument(track.instrument);
-      sound.connect(vol);
-    });
+    // tracks.forEach((track) => {
+    //   const { sound } = getInstrument(track.instrument);
+    //   sound.connect(vol);
+    
+    //   // sound._unmutedVolume = -40;
+    //   console.log(sound, 'sound');
+    // });
     // bind the volume to it
   };
 

@@ -32,7 +32,7 @@ const ModalContainer = styled.div`
     color: ${colors.font.secondary};
     font-size: 2ch;
     font-weight: bolder;
-    margin-left: 45%;
+    margin-left: 42%;
     
   }
 

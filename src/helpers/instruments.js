@@ -18,40 +18,40 @@ export const getInstrumentsByType = (instrumentType) =>
   instruments.filter((instrument) => instrument.type === instrumentType);
 
 export const instruments = [
-  {
-    name: "FM",
-    sound: new Tone.FMSynth(),
-    octave: 5,
-    type: InstrumentType.Synth,
-    colors: colors.pink,
-  },
-  {
-    name: "AM",
-    sound: new Tone.AMSynth(),
-    octave: 3,
-    type: InstrumentType.Synth,
-    colors: colors.orange,
-  },
-  {
-    name: "Duo",
-    sound: new Tone.DuoSynth(),
-    octave: 4,
-    type: InstrumentType.Synth,
-    colors: colors.orange,
-  },
-  {
-    name: "Sample",
-    sound: new Tone.Sampler({
-      urls: {
-        A1: "A1.mp3",
-        A2: "A2.mp3",
-      },
-      baseUrl: "https://tonejs.github.io/audio/casio/",
-    }),
-    octave: 5,
-    type: InstrumentType.Synth,
-    colors: colors.teal,
-  },
+  // {
+  //   name: "FM",
+  //   sound: new Tone.FMSynth(),
+  //   octave: 5,
+  //   type: InstrumentType.Synth,
+  //   colors: colors.pink,
+  // },
+  // {
+  //   name: "AM",
+  //   sound: new Tone.AMSynth(),
+  //   octave: 3,
+  //   type: InstrumentType.Synth,
+  //   colors: colors.orange,
+  // },
+  // {
+  //   name: "Duo",
+  //   sound: new Tone.DuoSynth(),
+  //   octave: 4,
+  //   type: InstrumentType.Synth,
+  //   colors: colors.orange,
+  // },
+  // {
+  //   name: "Sample",
+  //   sound: new Tone.Sampler({
+  //     urls: {
+  //       A1: "A1.mp3",
+  //       A2: "A2.mp3",
+  //     },
+  //     baseUrl: "https://tonejs.github.io/audio/casio/",
+  //   }),
+  //   octave: 5,
+  //   type: InstrumentType.Synth,
+  //   colors: colors.teal,
+  // },
   {
     name: "Kick",
     sound: new Tone.Sampler({
@@ -62,7 +62,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.blue,
   },
   {
     name: "Kick 2",
@@ -74,7 +74,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.blue,
   },
   {
     name: "808",
@@ -86,7 +86,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.purple,
   },
   {
     name: "808 1",
@@ -98,7 +98,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.purple,
   },
   {
     name: "808 2",
@@ -110,7 +110,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.purple,
   },
   {
     name: "808 3",
@@ -122,7 +122,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.purple,
   },
   {
     name: "808 4",
@@ -134,7 +134,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.purple,
   },
   {
     name: "Clap",
@@ -146,7 +146,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.purple,
+    colors: colors.orange,
   },
   {
     name: "Claves",
@@ -158,7 +158,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.red,
+    colors: colors.orange,
   },
   {
     name: "Conga",
@@ -170,7 +170,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.blue,
+    colors: colors.orange,
   },
   {
     name: "Conga 2",
@@ -182,7 +182,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.orange,
   },
   {
     name: "Crash",
@@ -194,7 +194,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.orange,
   },
   {
     name: "Hat",
@@ -206,7 +206,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Hat 2",
@@ -218,7 +218,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Shaker",
@@ -230,7 +230,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.orange,
   },
   {
     name: "Stick",
@@ -242,7 +242,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.orange,
   },
   {
     name: "Tom",
@@ -254,7 +254,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Tom 2",
@@ -266,7 +266,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Triangle",
@@ -278,7 +278,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.orange,
   },
   {
     name: "Rim",
@@ -290,7 +290,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.orange,
   },
   {
     name: "Snap",
@@ -302,7 +302,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Snare 1",
@@ -314,7 +314,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Snare 2",
@@ -326,7 +326,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.teal,
+    colors: colors.red,
   },
   {
     name: "Guitar 1",
@@ -386,7 +386,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Synth,
-    colors: colors.green,
+    colors: colors.teal,
   },
   {
     name: "Key",
@@ -470,7 +470,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "EWEYEAH",
@@ -482,7 +482,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "HA",
@@ -494,7 +494,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "HEY",
@@ -506,7 +506,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "HOLDUP",
@@ -518,7 +518,7 @@ export const instruments = [
     }),
     octave: 0,
     type: InstrumentType.Beat,
-    colors: colors.orange,
+    colors: colors.pink,
   },
   {
     name: "HUH",
@@ -530,7 +530,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "JYEA",
@@ -542,7 +542,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "UGH",
@@ -554,7 +554,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "UGH 2",
@@ -566,7 +566,7 @@ export const instruments = [
     }),
     octave: 5,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "YEAUH ",
@@ -578,7 +578,7 @@ export const instruments = [
     }),
     octave: 0,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
   {
     name: "GUN ",
@@ -590,7 +590,7 @@ export const instruments = [
     }),
     octave: 0,
     type: InstrumentType.Beat,
-    colors: colors.green,
+    colors: colors.pink,
   },
 ];
 

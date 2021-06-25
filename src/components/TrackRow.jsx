@@ -17,7 +17,7 @@ const TrackRowWrapper = styled.div`
   border-radius: 0.25rem;
   margin-bottom: 0.5rem;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 
   .controller-notes-container {
     display: flex;
@@ -37,11 +37,11 @@ const NotesWrapper = styled.div`
 
 const Notes = styled.div`
   background: ${colors.background.row};
-  position: relative;
+  /* position: relative; */
   z-index: 0;
   display: flex;
   padding: 0 0 0 1rem;
-
+  
   & > * {
     margin-right: 0.5rem;
 

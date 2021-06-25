@@ -25,7 +25,7 @@ const TrackController = styled.div`
   min-width: 15rem;
   min-height: 2rem;
   position: relative;
-  z-index: 0;
+  /* z-index: 100; */
   border-radius: 0 0.8rem ;
   border-bottom: 1px solid ${(props) => props.trackColor.primary};
 
@@ -46,6 +46,7 @@ const TrackController = styled.div`
     }
 
     .change-instrument {
+      /* position: relative; */
       margin-left: 0.5rem;
       /* background: #7b1a1a; */
       padding: 0 0.2rem;
@@ -147,16 +148,17 @@ export default function TrackRowController({
               </option>
             ))}
           </select> */}
+        
         </div>
 
-        {showInstrumentsModal && (
+          {showInstrumentsModal && (
           <InstrumentChangeModal
           // changedInstrument={changedInstrument}
             setShowInstrumentsModal={setShowInstrumentsModal}
             track={track}
           />
         )}
-
+        
         <span>{track.instrument}</span>
 
         <button className="mute">Mute</button>

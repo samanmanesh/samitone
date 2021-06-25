@@ -26,14 +26,17 @@ const TrackController = styled.div`
   min-height: 2rem;
   position: relative;
   /* z-index: 100; */
-  border-radius: 0 0.8rem ;
+  border-radius: 0 .9rem;
   border-bottom: 1px solid ${(props) => props.trackColor.primary};
-
+  
+  /* justify-content:space-between; */
+  
+  
   .synth-container {
     display: flex;
     /* background: #610707; */
     align-items: center;
-
+    justify-content: space-between;
     & > button {
       all: unset;
       background: ${colors.button.optional};
@@ -55,11 +58,10 @@ const TrackController = styled.div`
         /* display: none; */
         max-width: 2rem;
       }
-      & img{
-       width: 2.5rem;
-       height: 2.5rem;
+      & img {
+        width: 2.5rem;
+        height: 2.5rem;
       }
-
     }
 
     .mute {
@@ -103,7 +105,6 @@ export default function TrackRowController({
   isCollapsed,
   setIsCollapsed,
 }) {
-  
   const { updateTrack, removeTracks } = useSong();
   const [showTrackModal, setShowTrackModal] = useState(false);
   const [showInstrumentsModal, setShowInstrumentsModal] = useState(false);
@@ -135,7 +136,13 @@ export default function TrackRowController({
           onClick={() => setShowInstrumentsModal((prev) => !prev)}
           className="change-instrument"
         >
-          <img src={ getInstrument(track.instrument).type === "beat" ?   "icons/drum-machine.svg" : "icons/sound.svg"} />
+          <img
+            src={
+              getInstrument(track.instrument).type === "beat"
+                ? "icons/drum-machine.svg"
+                : "icons/sound.svg"
+            }
+          />
           {/* <select
             // value={track.instrument}
 
@@ -148,21 +155,20 @@ export default function TrackRowController({
               </option>
             ))}
           </select> */}
-        
         </div>
 
-          {showInstrumentsModal && (
+        {showInstrumentsModal && (
           <InstrumentChangeModal
-          // changedInstrument={changedInstrument}
+            // changedInstrument={changedInstrument}
             setShowInstrumentsModal={setShowInstrumentsModal}
             track={track}
           />
         )}
-        
+
         <span>{track.instrument}</span>
 
-        <button className="mute">Mute</button>
-        <button className="solo">Solo</button>
+        {/* <button className="mute">Mute</button>
+        <button className="solo">Solo</button> */}
         <div
           className="more"
           onClick={() => setShowTrackModal((prev) => !prev)}

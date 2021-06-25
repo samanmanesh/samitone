@@ -89,6 +89,8 @@ const InstrumentWrapper = styled.div`
 // #endregion
 export default function Modal({ showModal, setShowModal }) {
   const { options, setOptions, addTrack } = useSong();
+  
+  
 
   const handleAddTrack = (instrumentName) => {
     addTrack(instrumentName);

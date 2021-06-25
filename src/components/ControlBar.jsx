@@ -174,9 +174,8 @@ export default function ControlBar() {
 
       <div className="info" onClick={() => setShowInfoModal((prev) => !prev)}>
         <img src="icons/info.svg" alt="info" />
-        {showInfoModal && <InfoModal />}
+      {showInfoModal && <InfoModal />}
       </div>
-      
     </Header>
   );
 }

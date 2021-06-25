@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { getInstrument } from "../helpers/instruments";
 import usePlay from "../helpers/usePlay";
 import colors from "../styles";
 
 // #region -styling-
 const TrackModalWrapper = styled.div`
-  position: absolute;
+  /* position: absolute; */
   background: ${colors.background.secondary};
   right: 0.1rem;
-  width: 15rem;
+  /* width: 15rem; */
   height: 2.5rem;
   top: 3.3rem;
   border-radius: 0.2rem;
@@ -21,7 +22,7 @@ const TrackModalWrapper = styled.div`
     width: 3rem;
     height: 100%;
     border-radius: 0.5rem;
-    border-right: 1px solid ${colors.blue.primary};
+    border-left: 1px solid ${(props) => props.trackColor.primary};
     cursor: pointer;
     & > img{
         width:1rem;
@@ -87,7 +88,7 @@ const TrackModalWrapper = styled.div`
 export default function TrackModal({ removeTracksHandler, track }) {
 
   return (
-    <TrackModalWrapper onMouseDown={(e) => e.stopPropagation()}>
+    <TrackModalWrapper onMouseDown={(e) => e.stopPropagation()} trackColor={getInstrument(track.instrument).colors}>
       <div
         className="remove-container"
         onClick={() => removeTracksHandler(track.id)}

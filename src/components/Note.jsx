@@ -10,7 +10,7 @@ const NoteWrapper = styled.div`
     ${(props) => (props.onStep ? "rgb(153, 153, 153)" : "transparent")};
   box-shadow: ${(props) =>
     props.onStep && props.active
-      ? `0px 0px 12px ${props.colors.primary} , -2px -2px 5px ${props.colors.secondary}`
+      ? `0px 0px 30px ${props.colors.secondary} , -2px -2px 25px ${props.colors.primary}`
       : "transparent"};
 
   /* 1px 4px 20px ${(props) => props.colors.primary} , 2px 2px 0px ${(props) =>

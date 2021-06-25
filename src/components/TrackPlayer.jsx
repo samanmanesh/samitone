@@ -6,15 +6,22 @@ import usePlay from "../helpers/usePlay"
 import colors from "../styles";
 
 const TrackPlayerContainer = styled.div`
-  background: ${colors.background.secondary};
+  background: ${colors.background.row};
   grid-area: body;
   overflow: auto;
 `;
 
 export default function TrackPlayer() {
-  const { tracks } = useSong();
+  const { tracks,addTrack } = useSong();
   const { currentStep } = usePlay();
   
+
+  // as a default add these
+  useEffect(() => {
+    addTrack("Kick");
+    addTrack("Key");
+  },[])
+
   // const removeTracksHandler = (trackId) =>{
   //   removeTracks(trackId);
   // }

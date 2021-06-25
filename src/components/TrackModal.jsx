@@ -86,7 +86,6 @@ const TrackModalWrapper = styled.div`
 
 export default function TrackModal({ removeTracksHandler, track }) {
 
-    const {setVolume, volume}=usePlay()
   return (
     <TrackModalWrapper onMouseDown={(e) => e.stopPropagation()}>
       <div
@@ -95,7 +94,7 @@ export default function TrackModal({ removeTracksHandler, track }) {
       >
         <img src="icons/remove.svg" alt="remove" />
       </div>
-      <div className="volume-container">
+      {/* <div className="volume-container">
         <img src="icons/volume-max.svg" alt="volume" />
         <input
           type="range"
@@ -108,10 +107,9 @@ export default function TrackModal({ removeTracksHandler, track }) {
           // onChange={(e) => bpmConverter(e)}
         />
         
-        <input type="number" value={volume} onChange={(e) => setVolume(e.target.value)} />
 
 
-      </div>
+      </div> */}
     </TrackModalWrapper>
   );
 }

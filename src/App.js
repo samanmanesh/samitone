@@ -20,9 +20,7 @@ const AppWrapper = styled.div`
   grid-template-rows: ${sizes.headerHeight} auto;
   grid-template-areas:
     "playBar playBar playBar playBar"
-    /* "helper helper helper helper" */
     "body body body body";
-  /* "effect effect effect effect"; */
 `;
 
 const FakeSidebar = styled.div`
@@ -45,9 +43,7 @@ function App() {
       <MainProvider>
         <PlayProvider>
           <ControlBar />
-          {/* <AssistantBar /> */}
           <TrackPlayer />
-          {/* <Effect /> */}
           <FakeSidebar />
         </PlayProvider>
       </MainProvider>

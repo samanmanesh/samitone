@@ -48,7 +48,6 @@ export const PlayProvider = (props) => {
   //* Updates the callback when values change
   useEffect(() => {
     if (loop) {
-      // generateSongEffects();
       loop.callback = playCallback;
     }
   }, [tracks]);

@@ -1,14 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import colors from "../styles";
 import useSong from "../helpers/useSong";
 import Modal from "./Modal";
-import {
-  getInstrumentsByType,
-  instruments,
-  InstrumentType,
-} from "../helpers/instruments";
+import { InstrumentType } from "../helpers/instruments";
 import usePlay from "../helpers/usePlay";
 import BpmModal from "./BpmModal";
 import useClickOutside from "../helpers/useClickOutside";
@@ -47,8 +42,7 @@ const Header = styled.div`
     }
   }
   & > p {
-    /* background:pink; */
-    margin-left:1.2rem;
+    margin-left: 1.2rem;
     font-size: 1.5ch;
   }
 `;
@@ -70,23 +64,19 @@ const ControlPanel = styled.div`
   display: flex;
   margin-left: auto;
 
-  /* margin-right: 30rem; */
   margin-right: auto;
   & > button {
     all: unset;
     cursor: pointer;
-    /* margin: 0.1rem; */
     padding: 0.5rem;
   }
   & > span {
-    /* background: #622424; */
     padding-top: 0.7rem;
     margin-left: 0.5rem;
   }
 `;
 
 const AddTrack = styled.div`
-  /* display: flex; */
   padding: 0;
   margin: 0;
   cursor: pointer;
@@ -98,16 +88,14 @@ const AddTrack = styled.div`
     margin: 0.1rem 0 0.1rem 1rem;
     width: 3rem;
     height: 2rem;
-    
+
     & > button {
       all: unset;
     }
   }
- 
 `;
 // #endregion
 
-// export default function ControlBar({ stepLength, setStepLength })
 export default function ControlBar() {
   const { options, setOptions, addTrack } = useSong();
   const { play, pause, on } = usePlay();
@@ -132,17 +120,12 @@ export default function ControlBar() {
 
   return (
     <Header>
-      {/* <section>
-        <DisplayPanel />
-      </section> */}
-
       <AddTrack ref={domNode}>
         <div onClick={() => setShowModal(InstrumentType.Beat)}>
-          <button >
+          <button>
             <img src="icons/plus.svg" alt="plus" />
           </button>
         </div>
-        
       </AddTrack>
       <p>New Track</p>
       {showModal && (
@@ -160,7 +143,9 @@ export default function ControlBar() {
 
       <div
         className="speed-bar-container"
-        onClick={() => (setShowBpmModal((prev) => !prev), setShowInfoModal(false))}
+        onClick={() => (
+          setShowBpmModal((prev) => !prev), setShowInfoModal(false)
+        )}
         ref={domNode}
       >
         <On check={on}></On>
@@ -174,7 +159,7 @@ export default function ControlBar() {
 
       <div className="info" onClick={() => setShowInfoModal((prev) => !prev)}>
         <img src="icons/info.svg" alt="info" />
-      {showInfoModal && <InfoModal />}
+        {showInfoModal && <InfoModal />}
       </div>
     </Header>
   );

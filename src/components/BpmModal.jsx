@@ -42,7 +42,6 @@ const ModalWrapper = styled.div`
     grid-area: main;
     justify-self: start;
     align-self: center;
-    /* margin-left: 0.5rem; */
     -webkit-appearance: none; //Override default CSS styles
     appearance: none;
     width: 85%; /* Full-width */
@@ -82,19 +81,7 @@ const ModalWrapper = styled.div`
   .bpm-select {
     grid-area: bar;
     align-self: center;
-    /* justify-self: center; */
-    /* justify-self: end; */
   }
-
-  /* .time-sig-select {
-    grid-area: sig;
-    justify-self: center;
-  } */
-
-  /* .name-time-sig {
-    grid-area: nameSig;
-    justify-self: center;
-  } */
 
   .name-bars {
     grid-area: nameBar;
@@ -102,18 +89,18 @@ const ModalWrapper = styled.div`
     justify-self: center;
     margin-right: 0.2rem;
     margin-left: 0.4rem;
-    /* justify-self: end; */
-    /* margin-right: 1rem; */
   }
 `;
 
 // #endregion
 
 export default function BpmModal() {
-    const { options, setOptions } = useSong();
-    const lengthOptions = ["4", "8", "16", "24"];
-  const [selectedBarsIndex, setSelectedBarsIndex] = useState(lengthOptions.indexOf(`${options.stepLength}`));
-  
+  const { options, setOptions } = useSong();
+  const lengthOptions = ["4", "8", "16", "24"];
+  const [selectedBarsIndex, setSelectedBarsIndex] = useState(
+    lengthOptions.indexOf(`${options.stepLength}`)
+  );
+
   const bpmConverter = (e) => {
     const bpm = e.target.value;
     const hz = bpm / 60;
@@ -122,10 +109,9 @@ export default function BpmModal() {
     setOptions({ ...options, bps: hz });
   };
 
-
   useEffect(() => {
-      setOptions({ ...options, stepLength: lengthOptions[selectedBarsIndex]});
-  }, [selectedBarsIndex])
+    setOptions({ ...options, stepLength: lengthOptions[selectedBarsIndex] });
+  }, [selectedBarsIndex]);
 
   return (
     <ModalWrapper onMouseDown={(e) => e.stopPropagation()}>
@@ -138,9 +124,7 @@ export default function BpmModal() {
         min="70"
         max="150"
         className="slider"
-        // value={bps}
         value={options.bps * 60}
-        // onChange={(e) => setBps(e.target.value)}
         onChange={(e) => bpmConverter(e)}
       />
 
@@ -151,14 +135,6 @@ export default function BpmModal() {
         className="bpm-select"
       />
       <span className="name-bars">BARS</span>
-
-      {/* <SelectInput
-        options={["4/4", "8/8"]}
-        selectedIndex={selectedTimeSigIndex}
-        setSelectedIndex={setSelectedTimeSigIndex}
-        className="time-sig-select"
-      />
-      <p className="name-bars">BARS</p> */}
     </ModalWrapper>
   );
 }

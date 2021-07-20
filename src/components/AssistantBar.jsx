@@ -14,9 +14,7 @@ export default function AssistantBar() {
   return (
     <BarWrapper>
       <select
-        // value={stepLength}
         value={options.stepLength}
-        // onChange={(e) => setStepLength(e.target.value)}
         onChange={(e) => setOptions({ ...options, stepLength: e.target.value })}
         key="step-select"
       >

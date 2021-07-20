@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import Note from "./Note";
 import {
   getInstrument,
-  instruments,
   InstrumentType,
 } from "../helpers/instruments";
 import TrackRowController from "./TrackRowController";
@@ -37,7 +36,6 @@ const NotesWrapper = styled.div`
 
 const Notes = styled.div`
   background: ${colors.background.row};
-  /* position: relative; */
   z-index: 0;
   display: flex;
   padding: 0 0 0 1rem;

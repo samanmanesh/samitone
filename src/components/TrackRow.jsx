@@ -57,7 +57,7 @@ const Notes = styled.div`
 
 // #endregion
 
-export default function TrackRow({ track, currentStep }) {
+export default function TrackRow({ track, currentStep, setEditTrack }) {
   const { updateTrack, options } = useSong();
 
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -80,6 +80,7 @@ export default function TrackRow({ track, currentStep }) {
           track={track}
           isCollapsed={isCollapsed}
           setIsCollapsed={setIsCollapsed}
+          setEditTrack={setEditTrack}
         />
 
         <NotesWrapper>

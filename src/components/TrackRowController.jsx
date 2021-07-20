@@ -105,9 +105,9 @@ export default function TrackRowController({
   track,
   isCollapsed,
   setIsCollapsed,
+  setEditTrack
 }) {
   const { updateTrack, removeTracks } = useSong();
-  const [showTrackModal, setShowTrackModal] = useState(false);
   const [showInstrumentsModal, setShowInstrumentsModal] = useState(false);
 
   // const changedInstrument = (instrument) => {
@@ -127,14 +127,14 @@ export default function TrackRowController({
   };
 
   let domNode = useClickOutside(() => {
-    setShowTrackModal(false);
+    // setShowTrackModal(false);
   });
 
   return (
     <TrackController trackColor={getInstrument(track.instrument).colors}>
       <div className="synth-container">
         <div
-          onClick={() => setShowInstrumentsModal((prev) => !prev)}
+          onClick={() => setEditTrack(track)}
           className="change-instrument"
         >
           <img
@@ -172,14 +172,14 @@ export default function TrackRowController({
         <button className="solo">Solo</button> */}
         <div
           className="more"
-          onClick={() => setShowTrackModal((prev) => !prev)}
+          onClick={() => setEditTrack(track)}
           ref={domNode}
         >
           <img src="icons/more.svg" alt="" />
         </div>
-        {showTrackModal && (
+        {/* {showTrackModal && (
           <TrackModal removeTracksHandler={removeTracksHandler} track={track} />
-        )}
+        )} */}
       </div>
 
       {getInstrument(track.instrument).type === InstrumentType.Synth && (

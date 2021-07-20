@@ -14,7 +14,7 @@ const TrackModalWrapper = styled.div`
   top: 3.3rem;
   border-radius: 0.2rem;
   display: flex;
-  z-index: 10;
+  /* z-index: 10; */
 
   .remove-container {
     display: grid;

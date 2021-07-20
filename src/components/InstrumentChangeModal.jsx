@@ -17,7 +17,7 @@ const ModalWrapper = styled.div`
   /*  */
   display: grid;
   place-items: center;
-  /* position: absolute; */
+  /* position: relative; */
   z-index: 15;
 `;
 const ModalContainer = styled.div`

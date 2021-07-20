@@ -1,13 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
-import {
-  getInstrumentsByType,
-  instruments,
-  InstrumentType,
-} from "../helpers/instruments";
-
+import { getInstrumentsByType, InstrumentType } from "../helpers/instruments";
 
 // #region - styling -
 const ModalWrapper = styled.div`
@@ -16,10 +11,8 @@ const ModalWrapper = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  /*  */
   display: grid;
   place-items: center;
-  /* position: relative; */
   z-index: 15;
 `;
 const ModalContainer = styled.div`
@@ -33,13 +26,11 @@ const ModalContainer = styled.div`
     font-size: 2ch;
     font-weight: bolder;
     margin-left: 42%;
-    
   }
 
   .beat-container {
     display: flex;
     align-content: center;
-    /* justify-content: space-between; */
     align-items: stretch;
     flex-wrap: wrap;
     border-bottom: 4px solid ${colors.background.secondary};
@@ -53,15 +44,12 @@ const ModalContainer = styled.div`
       display: grid;
       place-items: center;
       border-radius: 0.3rem;
-      
-
     }
   }
 
   .synth-container {
     display: flex;
     align-content: center;
-    /* justify-content: space-between; */
     align-items: stretch;
     flex-wrap: wrap;
 
@@ -78,23 +66,19 @@ const ModalContainer = styled.div`
   }
 `;
 const InstrumentWrapper = styled.div`
-  /* background: blue; */
   background: ${(props) => props.instrumentColor.secondary};
-  :hover{
-        background: ${(props) => props.instrumentColor.primary};
-        transition: all 0.5s ease;
-      }
+  :hover {
+    background: ${(props) => props.instrumentColor.primary};
+    transition: all 0.5s ease;
+  }
 `;
 
 // #endregion
-export default function Modal({ showModal, setShowModal }) {
-  const { options, setOptions, addTrack } = useSong();
-  
-  
+export default function Modal({  setShowModal }) {
+  const { addTrack } = useSong();
 
   const handleAddTrack = (instrumentName) => {
     addTrack(instrumentName);
-    // setShowModal(false);
   };
 
   return (

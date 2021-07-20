@@ -34,8 +34,8 @@ const ModalWrapper = styled.div`
     padding: 1rem;
     font-size: 1.8ch;
 
-    :last-child{
-      padding:0;
+    :last-child {
+      padding: 0;
       font-size: 1.3ch;
     }
     & > h3 {
@@ -53,14 +53,14 @@ export default function InfoModal() {
           I’m <strong>Samitone,</strong>
         </h3>{" "}
         <br />
-        an uncomplicated music sequencer web app.
+        A straightforward music sequencer web app.
         <br /> <br />
-         I offer various samples and beats that you can choose and set in
-        desirable sequences to play for you. <br /> <br />
-        By clicking on each square you make it ‘on’ and ‘off ’ to make sound and
-        vice versa. I hope you find it easy and have a lot of fun. In case that
-        you like to have a conversation you can <br /> <br />{" "}
-          <strong> &nbsp; &nbsp; Connect with me </strong>
+        I offer various samples and beats for you to experiment with.
+        <br /> 
+        Toggle notes by clicking on them, and press play to listen to your song.
+        <br /> <br />
+        Enjoy!<br /> <br /> In case that you like to have a conversation you can <br />{" "}
+        <br /> <strong> &nbsp; &nbsp; Connect with me: </strong>
       </p>
       {/* <p>Connect With Me</p> */}
       <div>
@@ -86,7 +86,9 @@ export default function InfoModal() {
           <img src="icons/social-instagram.svg" alt="instagram" />
         </a>
       </div>
-      <p>Made by <strong>Saman Manesh</strong> </p>
+      <p>
+        Made by <strong>Saman Manesh</strong>{" "}
+      </p>
     </ModalWrapper>
   );
 }

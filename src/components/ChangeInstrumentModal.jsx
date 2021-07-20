@@ -4,6 +4,7 @@ import colors from "../styles";
 import { getInstrumentsByType, InstrumentType } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
 
+//#region - styling -
 const ModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.1);
   position: absolute;
@@ -32,7 +33,6 @@ const ModalContainer = styled.div`
   .beat-container {
     display: flex;
     align-content: center;
-    /* justify-content: space-between; */
     align-items: stretch;
     flex-wrap: wrap;
     border-bottom: 4px solid ${colors.background.secondary};
@@ -52,7 +52,6 @@ const ModalContainer = styled.div`
   .synth-container {
     display: flex;
     align-content: center;
-    /* justify-content: space-between; */
     align-items: stretch;
     flex-wrap: wrap;
 
@@ -68,6 +67,7 @@ const ModalContainer = styled.div`
     }
   }
 `;
+
 const InstrumentWrapper = styled.div`
   background: ${(props) => props.instrumentColor.secondary};
   :hover {
@@ -75,6 +75,7 @@ const InstrumentWrapper = styled.div`
     transition: all 0.5s ease;
   }
 `;
+// #endregion
 export default function ChangeInstrumentModal({ show, track, handleClose }) {
   const { updateTrack } = useSong();
   if (!show) return null;

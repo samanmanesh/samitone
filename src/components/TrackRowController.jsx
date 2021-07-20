@@ -52,6 +52,7 @@ const TrackController = styled.div`
       /* position: relative; */
       margin-left: 0.5rem;
       /* background: #7b1a1a; */
+      cursor: pointer;
       padding: 0 0.2rem;
       & > select {
         all: unset;

@@ -3,8 +3,6 @@ import styled from "styled-components";
 import useSong from "../helpers/useSong";
 import colors from "../styles";
 const DisplayPanelWrapper = styled.div`
-  /* background: #874c4c; */
-  /* padding: 0.5rem; */
   display: flex;
 
   & > div {

@@ -22,12 +22,6 @@ export default function TrackPlayer() {
     addTrack("Key");
   }, []);
 
-  // const removeTracksHandler = (trackId) =>{
-  //   removeTracks(trackId);
-  // }
-
-  console.log(editTrack);
-
   return (
     <TrackPlayerContainer>
       {tracks &&

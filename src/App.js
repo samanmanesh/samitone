@@ -1,9 +1,7 @@
 import { MainProvider } from "./MainContext";
 import { PlayProvider } from "./contexts/PlayContext";
 import TrackPlayer from "./components/TrackPlayer";
-import Effect from "./components/Effect";
 import ControlBar from "./components/ControlBar";
-import AssistantBar from "./components/AssistantBar";
 import styled from "styled-components";
 import colors from "./styles";
 import { sizes } from "./styles";

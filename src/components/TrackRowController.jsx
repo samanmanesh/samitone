@@ -1,40 +1,32 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import colors from "../styles";
-import { v4 as uuidv4 } from "uuid";
 import {
   getInstrument,
   getInstrumentsByType,
-  instruments,
   InstrumentType,
 } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
 import TrackModal from "./TrackModal";
 import useClickOutside from "../helpers/useClickOutside";
-import InstrumentChangeModal from "./InstrumentChangeModal";
 
 //#region - styling -
 
 const TrackController = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: start; */
   padding: 1.5rem 0 0 0;
   margin-bottom: 0;
-  /* background: #b16b10; */
   min-width: 15rem;
   min-height: 2rem;
   position: relative;
-  /* z-index: 100; */
   border-radius: 0 .9rem;
   border-bottom: 1px solid ${(props) => props.trackColor.primary};
   
-  /* justify-content:space-between; */
   
   
   .synth-container {
     display: flex;
-    /* background: #610707; */
     align-items: center;
     justify-content: space-between;
     & > button {
@@ -49,14 +41,11 @@ const TrackController = styled.div`
     }
 
     .change-instrument {
-      /* position: relative; */
       margin-left: 0.5rem;
-      /* background: #7b1a1a; */
       cursor: pointer;
       padding: 0 0.2rem;
       & > select {
         all: unset;
-        /* display: none; */
         max-width: 2rem;
       }
       & img {
@@ -72,7 +61,6 @@ const TrackController = styled.div`
     .more {
       margin-right: 0.5rem;
       margin-left: 0.5rem;
-      /* position: relative; */
       cursor: pointer;
     }
 
@@ -108,13 +96,8 @@ export default function TrackRowController({
   setEditTrack
 }) {
   const { updateTrack, removeTracks } = useSong();
-  // const [showInstrumentsModal, setShowInstrumentsModal] = useState(false);
   const [showTrackModal, setShowTrackModal] = useState(false);
 
-  // const changedInstrument = (instrument) => {
-  //   console.log(instrument,"read the changeInst")
-  //   updateTrack(track.id, { ...track, instrument: instrument });
-  // };
 
   // Get what this track type is
   const currentInstrumentType = getInstrument(track.instrument).type;
@@ -145,32 +128,9 @@ export default function TrackRowController({
                 : "icons/sound.svg"
             }
           />
-          {/* <select
-            // value={track.instrument}
 
-            onChange={(e) => changedInstrument(e.target.value)}
-            key="instrument-selector"
-          >
-            {instrumentKeys.map((e, i) => (
-              <option value={e} key={`instrument-selector__${i}`}>
-                {e}
-              </option>
-            ))}
-          </select> */}
         </div>
-
-        {/* {showInstrumentsModal && (
-          <InstrumentChangeModal
-            // changedInstrument={changedInstrument}
-            setShowInstrumentsModal={setShowInstrumentsModal}
-            track={track}
-          />
-        )} */}
-
         <span>{track.instrument}</span>
-
-        {/* <button className="mute">Mute</button>
-        <button className="solo">Solo</button> */}
         <div
           className="more"
           onClick={() => setShowTrackModal(prev => !prev)}
@@ -190,7 +150,7 @@ export default function TrackRowController({
         >
           <img
             src={isCollapsed ? "icons/arrow-down.svg" : "icons/arrow-up.svg"}
-            alt=""
+            alt="arrow"
           />
         </div>
       )}

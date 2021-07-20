@@ -108,7 +108,8 @@ export default function TrackRowController({
   setEditTrack
 }) {
   const { updateTrack, removeTracks } = useSong();
-  const [showInstrumentsModal, setShowInstrumentsModal] = useState(false);
+  // const [showInstrumentsModal, setShowInstrumentsModal] = useState(false);
+  const [showTrackModal, setShowTrackModal] = useState(false);
 
   // const changedInstrument = (instrument) => {
   //   console.log(instrument,"read the changeInst")
@@ -120,14 +121,14 @@ export default function TrackRowController({
 
   // Get all instruments of same InstrumentType
   const instruments = getInstrumentsByType(currentInstrumentType);
-  const instrumentKeys = instruments.map((e) => e.name);
+  // const instrumentKeys = instruments.map((e) => e.name);
 
   const removeTracksHandler = (trackId) => {
     removeTracks(trackId);
   };
 
   let domNode = useClickOutside(() => {
-    // setShowTrackModal(false);
+    setShowTrackModal(false);
   });
 
   return (
@@ -158,13 +159,13 @@ export default function TrackRowController({
           </select> */}
         </div>
 
-        {showInstrumentsModal && (
+        {/* {showInstrumentsModal && (
           <InstrumentChangeModal
             // changedInstrument={changedInstrument}
             setShowInstrumentsModal={setShowInstrumentsModal}
             track={track}
           />
-        )}
+        )} */}
 
         <span>{track.instrument}</span>
 
@@ -172,14 +173,14 @@ export default function TrackRowController({
         <button className="solo">Solo</button> */}
         <div
           className="more"
-          onClick={() => setEditTrack(track)}
+          onClick={() => setShowTrackModal(prev => !prev)}
           ref={domNode}
         >
           <img src="icons/more.svg" alt="" />
         </div>
-        {/* {showTrackModal && (
+        {showTrackModal && (
           <TrackModal removeTracksHandler={removeTracksHandler} track={track} />
-        )} */}
+        )}
       </div>
 
       {getInstrument(track.instrument).type === InstrumentType.Synth && (

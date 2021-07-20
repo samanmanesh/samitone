@@ -3,13 +3,12 @@ import styled from "styled-components";
 import colors from "../styles";
 
 const ModalWrapper = styled.div`
-  /* background: ${colors.background.primaryDark}; */
+  
   background: rgba(0, 0, 0, 0.674);
   width: 14rem;
   height: 93%;
   position: fixed;
   top: 4rem;
-  /* left: 1.5rem; */
   right: 0.1rem;
   border: 1px solid rgb(37, 37, 37);
   border-radius: 0.5rem;
@@ -62,7 +61,6 @@ export default function InfoModal() {
         Enjoy!<br /> <br /> In case that you like to have a conversation you can <br />{" "}
         <br /> <strong> &nbsp; &nbsp; Connect with me: </strong>
       </p>
-      {/* <p>Connect With Me</p> */}
       <div>
         <a href="https://github.com/samanmanesh" target="_blank">
           <img src="icons/social-github.svg" alt="github" />

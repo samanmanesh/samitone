@@ -97,7 +97,7 @@ const AddTrack = styled.div`
 // #endregion
 
 export default function ControlBar() {
-  const { options} = useSong();
+  const { options } = useSong();
   const { play, pause, on } = usePlay();
   const [showModal, setShowModal] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
@@ -144,7 +144,7 @@ export default function ControlBar() {
       <div
         className="speed-bar-container"
         onClick={() => (
-          setShowBpmModal((prev) => !prev) , setShowInfoModal(false)
+          setShowBpmModal((prev) => !prev), setShowInfoModal(false)
         )}
         ref={domNode}
       >
@@ -157,7 +157,10 @@ export default function ControlBar() {
       </div>
       {showBpmModal && <BpmModal />}
 
-      <div className="info" onClick={() => setShowInfoModal((prev) => !prev)}>
+      <div
+        className="info"
+        onClick={() => !showInfoModal && setShowInfoModal(true)}
+      >
         <img src="icons/info.svg" alt="info" />
         {showInfoModal && <InfoModal />}
       </div>

@@ -1,5 +1,6 @@
 import * as Tone from "tone";
 import colors from "../styles";
+import { BASE_MEDIA_URL } from "./constants";
 
 export const InstrumentType = {
   Synth: "synth",
@@ -24,7 +25,7 @@ export const instruments = [
       urls: {
         C2: "Kick.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -36,7 +37,7 @@ export const instruments = [
       urls: {
         C2: "Kick2.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -48,7 +49,7 @@ export const instruments = [
       urls: {
         C2: "808-1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -60,7 +61,7 @@ export const instruments = [
       urls: {
         C2: "808-2.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -72,7 +73,7 @@ export const instruments = [
       urls: {
         C2: "808-3.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -84,7 +85,7 @@ export const instruments = [
       urls: {
         C2: "808-4.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -96,7 +97,7 @@ export const instruments = [
       urls: {
         C2: "808-5.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -108,7 +109,7 @@ export const instruments = [
       urls: {
         C2: "Clap_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -120,7 +121,7 @@ export const instruments = [
       urls: {
         C2: "Claves_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -132,7 +133,7 @@ export const instruments = [
       urls: {
         C2: "Conga_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -144,7 +145,7 @@ export const instruments = [
       urls: {
         C2: "Conga 2_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -156,7 +157,7 @@ export const instruments = [
       urls: {
         C2: "Crash_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -168,7 +169,7 @@ export const instruments = [
       urls: {
         C2: "Hat_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -180,7 +181,7 @@ export const instruments = [
       urls: {
         C2: "Hat 2_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -192,7 +193,7 @@ export const instruments = [
       urls: {
         C2: "Shaker_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -204,7 +205,7 @@ export const instruments = [
       urls: {
         C2: "Stick_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -216,7 +217,7 @@ export const instruments = [
       urls: {
         C2: "Tom_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -228,7 +229,7 @@ export const instruments = [
       urls: {
         C2: "Tom 2_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -240,7 +241,7 @@ export const instruments = [
       urls: {
         C2: "Triangle_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -252,7 +253,7 @@ export const instruments = [
       urls: {
         C2: "Rim_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -264,7 +265,7 @@ export const instruments = [
       urls: {
         C2: "Snap_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -276,7 +277,7 @@ export const instruments = [
       urls: {
         C2: "Snare1_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -288,7 +289,7 @@ export const instruments = [
       urls: {
         C2: "Snare2_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -300,7 +301,7 @@ export const instruments = [
       urls: {
         C2: "Guitar-1_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -312,7 +313,7 @@ export const instruments = [
       urls: {
         C2: "Guitar-2_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -324,7 +325,7 @@ export const instruments = [
       urls: {
         C2: "Guitar-3_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -336,7 +337,7 @@ export const instruments = [
       urls: {
         C2: "Guitar-4_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -348,7 +349,7 @@ export const instruments = [
       urls: {
         C2: "Guitar-5_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -360,7 +361,7 @@ export const instruments = [
       urls: {
         C2: "Key 1_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -372,7 +373,7 @@ export const instruments = [
       urls: {
         C2: "Key 2_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -384,7 +385,7 @@ export const instruments = [
       urls: {
         C2: "Key 3_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -396,7 +397,7 @@ export const instruments = [
       urls: {
         C2: "Key 4_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -408,7 +409,7 @@ export const instruments = [
       urls: {
         C2: "Key 5_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -420,7 +421,7 @@ export const instruments = [
       urls: {
         C2: "Key 6_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Synth,
@@ -432,7 +433,7 @@ export const instruments = [
       urls: {
         C2: "ANOTHERONE_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -444,7 +445,7 @@ export const instruments = [
       urls: {
         C2: "EWEYEAH_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -456,7 +457,7 @@ export const instruments = [
       urls: {
         C2: "HA_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -468,7 +469,7 @@ export const instruments = [
       urls: {
         C2: "HEY_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -480,7 +481,7 @@ export const instruments = [
       urls: {
         C2: "HOLDUP_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 0,
     type: InstrumentType.Beat,
@@ -492,7 +493,7 @@ export const instruments = [
       urls: {
         C2: "HUH_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -504,7 +505,7 @@ export const instruments = [
       urls: {
         C2: "JYEA_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -516,7 +517,7 @@ export const instruments = [
       urls: {
         C2: "UGH.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -528,7 +529,7 @@ export const instruments = [
       urls: {
         C2: "UGH_2.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 5,
     type: InstrumentType.Beat,
@@ -540,7 +541,7 @@ export const instruments = [
       urls: {
         C2: "YEAUH_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 0,
     type: InstrumentType.Beat,
@@ -552,7 +553,7 @@ export const instruments = [
       urls: {
         C2: "GUN_1.mp3",
       },
-      baseUrl: "/Media/",
+      baseUrl: BASE_MEDIA_URL,
     }),
     octave: 0,
     type: InstrumentType.Beat,

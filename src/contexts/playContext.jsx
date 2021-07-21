@@ -1,4 +1,4 @@
-import React, { createContext, useState, useRef, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import * as Tone from "tone";
 import { getInstrument } from "../helpers/instruments";
 import useSong from "../helpers/useSong";

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import colors from "../styles";
 import {
   getInstrument,
-  getInstrumentsByType,
   InstrumentType,
 } from "../helpers/instruments";
 import useSong from "../helpers/useSong";
@@ -95,15 +94,15 @@ export default function TrackRowController({
   setIsCollapsed,
   setEditTrack
 }) {
-  const { updateTrack, removeTracks } = useSong();
+  const {  removeTracks } = useSong();
   const [showTrackModal, setShowTrackModal] = useState(false);
 
 
   // Get what this track type is
-  const currentInstrumentType = getInstrument(track.instrument).type;
+  // const currentInstrumentType = getInstrument(track.instrument).type;
 
   // Get all instruments of same InstrumentType
-  const instruments = getInstrumentsByType(currentInstrumentType);
+  // const instruments = getInstrumentsByType(currentInstrumentType);
   // const instrumentKeys = instruments.map((e) => e.name);
 
   const removeTracksHandler = (trackId) => {
@@ -127,6 +126,7 @@ export default function TrackRowController({
                 ? "icons/drum-machine.svg"
                 : "icons/sound.svg"
             }
+            alt="beat icon and sound icon"
           />
 
         </div>

@@ -62,7 +62,7 @@ export default function InfoModal() {
         <br /> <strong> &nbsp; &nbsp; Connect with me: </strong>
       </p>
       <div>
-        <a href="https://github.com/samanmanesh" target="_blank">
+        <a href="https://github.com/samanmanesh" target="_blank" rel="noreferrer">
           <img src="icons/social-github.svg" alt="github" />
         </a>
       </div>
@@ -70,17 +70,18 @@ export default function InfoModal() {
         <a
           href="https://www.linkedin.com/in/saman-manesh-96b257213/"
           target="_blank"
+          rel="noreferrer"
         >
           <img src="icons/social-linkedin.svg" alt="linked in" />
         </a>
       </div>
       <div>
-        <a href="mailto:samanmanesh7@gmail.com" target="_blank">
+        <a href="mailto:samanmanesh7@gmail.com" target="_blank" rel="noreferrer">
           <img src="icons/social-mail.svg" alt="mail" />
         </a>
       </div>
       <div>
-        <a href="https://instagram.com/samansmanesh" target="_blank">
+        <a href="https://instagram.com/samansmanesh" target="_blank" rel="noreferrer">
           <img src="icons/social-instagram.svg" alt="instagram" />
         </a>
       </div>

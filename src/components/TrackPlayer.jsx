@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState} from "react";
 import TrackRow from "./TrackRow";
 import styled from "styled-components";
 import useSong from "../helpers/useSong";
